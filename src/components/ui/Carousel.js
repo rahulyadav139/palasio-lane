@@ -3,19 +3,19 @@ import { useEffect, useState } from 'react';
 
 const carouselData = [
   {
-    image: './Assets/slides/bike-body-covers.webp',
+    image: require('../../assets/carousel-images/bike-body-covers.webp'),
     id: 'slide-1',
   },
   {
-    image: './Assets/slides/car-body-covers.webp',
+    image: require('../../assets/carousel-images/car-body-covers.webp'),
     id: 'slide-2',
   },
   {
-    image: './Assets/slides/car-organizers.webp',
+    image: require('../../assets/carousel-images/car-organizers.webp'),
     id: 'slide-3',
   },
   {
-    image: './Assets/slides/car-seat-covers.webp',
+    image: require('../../assets/carousel-images/car-seat-covers.webp'),
     id: 'slide-4',
   },
 ];
@@ -31,20 +31,24 @@ const Carousel = props => {
     return () => clearInterval(timer);
   }, [index]);
 
-  const nextSlideHandler = index => {
-    if (index === carouselData.length) {
+  const nextSlideHandler = () => {
+    if (index === carouselData.length - 1) {
       return setIndex(0);
     }
 
     setIndex(prev => prev + 1);
   };
 
-  const prevSlideHandler = index => {
+  const prevSlideHandler = () => {
     if (index === 0) {
-      return setIndex(carouselData.length);
+      return setIndex(carouselData.length - 1);
     }
 
     setIndex(prev => prev - 1);
+  };
+
+  const goToSlideHandler = i => {
+    setIndex(i);
   };
 
   return (
@@ -67,9 +71,11 @@ const Carousel = props => {
       </button>
       <div class="dot-container">
         {carouselData.map((el, i) => (
-          <div class={i === index ? 'dot active' : 'dot'}></div>
+          <div
+            onClick={goToSlideHandler.bind(null, i)}
+            class={i === index ? 'dot active' : 'dot'}
+          ></div>
         ))}
-        <div class="dot active"></div>
       </div>
     </div>
   );
