@@ -1,0 +1,27 @@
+.footer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) 1.5fr;
+  background: var(--primary-color-dark);
+  padding: 5rem;
+  color: var(--white-color);
+}
+
+.footer .input-field-icon {
+  background: var(--white-color);
+}
+
+.footer-col h3 {
+  margin-bottom: 1rem;
+}
+
+.footer-col p {
+  color: var(--grey-color);
+  margin: 0.5rem auto;
+  transition: all 0.2s ease-in-out;
+  font-size: 0.8rem;
+}
+.footer-col:not(.flex) p:hover {
+  color: var(--white-color);
+  transform: translateX(0.5rem);
+  cursor: pointer;
+}
