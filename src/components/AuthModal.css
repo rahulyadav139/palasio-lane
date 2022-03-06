@@ -1,0 +1,88 @@
+.hidden-modal {
+  visibility: hidden;
+}
+.modal-backdrop {
+  z-index: 60;
+}
+
+.modal-auth {
+  /* width: 100%;
+  max-width: 43.75rem; */
+  display: flex;
+  /* margin: auto; */
+  /* left: 50%; */
+  /* position: absolute; */
+  /* transform: translateX(-50%); */
+  /* transition: all 0.5s ease-in-out;
+  z-index: 70; */
+}
+.modal-auth .input-field-icon {
+  width: 100%;
+}
+/* .modal-login {
+  top: -100%;
+}
+.modal-signup {
+  bottom: -100%;
+}
+
+.modal-login-show {
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+.modal-signup-show {
+  bottom: 50%;
+  transform: translateY(50%) translateX(-50%);
+} */
+.modal-auth__brand {
+  flex-basis: 40%;
+  background: var(--primary-color);
+}
+.modal-auth__form {
+  flex-basis: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 2rem;
+  background: var(--white-color);
+}
+.modal-auth__form label {
+  display: block;
+  font-size: 0.8rem;
+}
+.input-field-icon label {
+  display: inline-flex;
+}
+
+.modal-auth .btn-dismiss {
+  position: absolute;
+  margin: 2rem;
+  top: 0;
+  right: 0;
+}
+.modal-auth .brand-logo {
+  color: var(--white-color);
+  font-size: 3rem;
+}
+.wrapper-username {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.wrapper-username input {
+  width: 100%;
+}
+.wrapper-username label {
+  margin-bottom: 0.5rem;
+}
+
+@media only screen and (max-width: 450px) {
+  .modal-auth__brand {
+    display: none;
+  }
+  .modal-auth {
+    display: block;
+    width: 80%;
+  }
+}
