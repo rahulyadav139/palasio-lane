@@ -1,0 +1,39 @@
+/* slides */
+.slides {
+  position: relative;
+  margin: 1rem auto;
+}
+.slide img {
+  height: 100%;
+}
+
+.btn-right,
+.btn-left {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.btn-right {
+  right: 1rem;
+}
+.btn-left {
+  left: 1rem;
+}
+.dot-container {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+}
+.dot-container .dot {
+  background: var(--grey-color);
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+}
+.dot.active {
+  background: var(--black-color);
+}
