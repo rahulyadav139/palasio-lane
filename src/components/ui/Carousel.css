@@ -30,9 +30,10 @@
 }
 .dot-container .dot {
   background: var(--grey-color);
-  width: 0.5rem;
-  height: 0.5rem;
+  width: 0.75rem;
+  height: 0.75rem;
   border-radius: 50%;
+  cursor: pointer;
 }
 .dot.active {
   background: var(--black-color);

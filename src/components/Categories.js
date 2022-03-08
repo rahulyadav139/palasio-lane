@@ -7,9 +7,24 @@ const categoriesData = [
     id: 'cat-01',
     subCategory: [
       {
-        name: '',
+        name: 'Car Armrest',
         id: 'cat-01-01',
-        image: require(''),
+        image: require('../assets/categories/interior/car-armrest-4-400x400.webp'),
+      },
+      {
+        name: 'Car Armrest',
+        id: 'cat-01-01',
+        image: require('../assets/categories/interior/car-armrest-4-400x400.webp'),
+      },
+      {
+        name: 'Car Armrest',
+        id: 'cat-01-01',
+        image: require('../assets/categories/interior/car-armrest-4-400x400.webp'),
+      },
+      {
+        name: 'Car Armrest',
+        id: 'cat-01-01',
+        image: require('../assets/categories/interior/car-armrest-4-400x400.webp'),
       },
     ],
   },
@@ -17,7 +32,7 @@ const categoriesData = [
 
 const Categories = props => {
   return (
-    <Fragment>
+    <div class="categories-container">
       {categoriesData.map(el => (
         <div key={el.id} class="categories-tab">
           {el.subCategory.map(el => (
@@ -28,7 +43,7 @@ const Categories = props => {
           ))}
         </div>
       ))}
-    </Fragment>
+    </div>
   );
 };
 export default Categories;
