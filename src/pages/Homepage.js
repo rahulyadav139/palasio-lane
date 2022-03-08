@@ -5,6 +5,7 @@ import Carousel from '../components/ui/Carousel';
 import Categories from '../components/Categories';
 import Testimonies from '../components/Testimony';
 import Footer from '../components/Footer';
+import Banner from '../components/Banner';
 
 import ScrollTopButton from '../components/ScrollTopButton';
 const Homepage = props => {
@@ -14,6 +15,7 @@ const Homepage = props => {
       <main className="main-homepage">
         <Carousel />
         <Categories />
+        <Banner />
         <Testimonies />
       </main>
       <Footer />
