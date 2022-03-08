@@ -9,14 +9,14 @@ const Categories = props => {
         <Fragment>
           <div className=" collection-title">
             <div className="text-center collection-name ">{el.collection}</div>
-            <button className="btn error">View All</button>
+            <button className="btn primary">View All</button>
           </div>
 
           <div key={el.id} class="categories-tab">
             {el.categories.map(el => (
               <div key={el.id} class="image-card shadow">
                 <img class="image" src={el.imageRef} alt="" />
-                <p class="text-small">{el.categoryName}</p>
+                <p class="">{el.categoryName}</p>
               </div>
             ))}
           </div>

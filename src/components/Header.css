@@ -60,6 +60,16 @@ a {
 .nav-bar input[type='checkbox'] {
   display: none;
 }
+.nav-bar .input-field-icon {
+  flex-grow: 1;
+  margin: 0 5rem;
+  border: none;
+  border-bottom: 1.5px solid var(--primary-color-dark);
+}
+.nav-bar .input-field-icon span,
+.nav-bar .input-field-icon input::placeholder {
+  color: var(--primary-color-dark);
+}
 
 .hamburger-icon {
   display: none;
