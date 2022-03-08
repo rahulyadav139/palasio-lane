@@ -10,6 +10,28 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.collection-title {
+  margin-bottom: 1rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.collection-title button {
+  position: absolute;
+  /* top: 0; */
+  right: 0;
+}
+.collection-name {
+  /* padding: 0.5rem; */
+  /* background: var(--primary-color-dark); */
+  /* color: var(--white-color); */
+  font-size: 1.5rem;
+  font-weight: bold;
+  /* margin-bottom: 1rem; */
 }
 
 /* .categories-container input {
