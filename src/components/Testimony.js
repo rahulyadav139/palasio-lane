@@ -54,7 +54,7 @@ const Testimonies = props => {
     setIndex(i);
   };
   return (
-    <div class="testimonial-container">
+    <div className="testimonial-container">
       {testimoniesData.map((el, i) => (
         <div
           key={el.id}
@@ -62,16 +62,16 @@ const Testimonies = props => {
             i === index ? 'testimonial shadow' : 'testimonial hidden shadow'
           }
         >
-          <p class="testimonial__text">{el.content}</p>
-          <div class="avatar medium">
+          <p className="testimonial__text">{el.content}</p>
+          <div className="avatar medium">
             <img src={el.avatar} alt={el.id} />
           </div>
-          <p class="heading-5">{el.testimonyName}</p>
-          <p class="text-grey">{el.designation}</p>
+          <p className="heading-5">{el.testimonyName}</p>
+          <p className="text-grey">{el.designation}</p>
         </div>
       ))}
 
-      <div class="dot-container">
+      <div className="dot-container">
         {testimoniesData.map((el, i) => (
           <div
             key={i + 1}

@@ -4,7 +4,7 @@ import collectionData from '../assets/collection-data.json';
 
 const Categories = props => {
   return (
-    <div class="categories-container">
+    <div className="categories-container">
       {collectionData.map(el => (
         <Fragment>
           <div className=" collection-title">
@@ -12,11 +12,11 @@ const Categories = props => {
             <button className="btn primary">View All</button>
           </div>
 
-          <div key={el.id} class="categories-tab">
+          <div key={el.id} className="categories-tab">
             {el.categories.map(el => (
-              <div key={el.id} class="image-card shadow">
-                <img class="image" src={el.imageRef} alt="" />
-                <p class="">{el.categoryName}</p>
+              <div key={el.id} className="image-card shadow">
+                <img className="image" src={el.imageRef} alt="" />
+                <p className="">{el.categoryName}</p>
               </div>
             ))}
           </div>

@@ -5,46 +5,46 @@ import SearchInput from './SearchInput';
 
 const Header = props => {
   return (
-    <header class="nav-bar shadow">
-      <div class="hamburger-icon">
-        <i class="bi bi-list"></i>
+    <header className="nav-bar shadow">
+      <div className="hamburger-icon">
+        <i className="bi bi-list"></i>
       </div>
-      <div class="hamburger-menu__backdrop hidden"></div>
-      <div class="hamburger-menu hamburger-menu--hide">
-        <div class="brand">
-          <span class="brand__logo">
-            <i class="bi bi-hurricane"></i>
+      <div className="hamburger-menu__backdrop hidden"></div>
+      <div className="hamburger-menu hamburger-menu--hide">
+        <div className="brand">
+          <span className="brand__logo">
+            <i className="bi bi-hurricane"></i>
           </span>
-          <span class="brand__text">PALASIO LANE</span>
+          <span className="brand__text">PALASIO LANE</span>
         </div>
-        <div class="hr-line fad"></div>
-        <ul class="hamburger-menu__items">
-          <li class="hamburger-menu__item">Home</li>
-          <li class="hamburger-menu__item">My Profile</li>
-          <li class="hamburger-menu__item">My Orders</li>
+        <div className="hr-line fad"></div>
+        <ul className="hamburger-menu__items">
+          <li className="hamburger-menu__item">Home</li>
+          <li className="hamburger-menu__item">My Profile</li>
+          <li className="hamburger-menu__item">My Orders</li>
         </ul>
-        <div class="btn-container">
-          <button class="btn primary">
+        <div className="btn-container">
+          <button className="btn primary">
             <a href="/">Logout</a>
           </button>
         </div>
 
-        <div class="btn-container">
-          <button class="btn primary">
+        <div className="btn-container">
+          <button className="btn primary">
             <a href="./login.html">Login</a>
           </button>
-          <button class="btn primary outline">
+          <button className="btn primary outline">
             <a href="./signup.html"></a>Signup
           </button>
         </div>
-        <div class="hr-line fad"></div>
+        <div className="hr-line fad"></div>
       </div>
 
-      <div class="brand">
-        <span class="brand__logo">
-          <i class="bi bi-hurricane"></i>
+      <div className="brand">
+        <span className="brand__logo">
+          <i className="bi bi-hurricane"></i>
         </span>
-        <span class="brand__text">
+        <span className="brand__text">
           PALASIO
           <br />
           LANE

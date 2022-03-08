@@ -6,9 +6,9 @@ const ScrollTopButton = () => {
   return (
     <button
       onClick={scrollToTopHandler}
-      class="btn-scroll-top btn icon medium circle primary float bottom right"
+      className="btn-scroll-top btn icon medium circle primary float bottom right"
     >
-      <i class="fas fa-arrow-up"></i>
+      <i className="fas fa-arrow-up"></i>
     </button>
   );
 };

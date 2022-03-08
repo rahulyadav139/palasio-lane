@@ -2,10 +2,10 @@ import './SearchInput.css';
 
 const SearchInput = props => {
   return (
-    <div class="input-field-icon">
+    <div className="input-field-icon">
       <label>
-        <span class="icon small">
-          <i class="bi bi-search"></i>
+        <span className="icon small">
+          <i className="bi bi-search"></i>
         </span>
         <input placeholder="Search" type="search" />
       </label>

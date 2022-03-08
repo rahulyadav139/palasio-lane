@@ -34,28 +34,28 @@ const Carousel = props => {
   };
 
   return (
-    <div class="slides">
+    <div className="slides">
       {carouselData.map((el, i) => (
-        <div key={el.id} class="slide">
+        <div key={el.id} className="slide">
           <img
-            class={i === index ? 'img-responsive' : 'img-responsive hidden'}
+            className={i === index ? 'img-responsive' : 'img-responsive hidden'}
             src={el.image}
             alt={el.id}
           />
         </div>
       ))}
 
-      <button onClick={nextSlideHandler} class="icon medium btn-right">
-        <i class="bi bi-chevron-right"></i>
+      <button onClick={nextSlideHandler} className="icon medium btn-right">
+        <i className="bi bi-chevron-right"></i>
       </button>
-      <button onClick={prevSlideHandler} class="icon medium btn-left">
-        <i class="bi bi-chevron-left"></i>
+      <button onClick={prevSlideHandler} className="icon medium btn-left">
+        <i className="bi bi-chevron-left"></i>
       </button>
-      <div class="dot-container">
+      <div className="dot-container">
         {carouselData.map((el, i) => (
           <div
             onClick={goToSlideHandler.bind(null, i)}
-            class={i === index ? 'dot active' : 'dot'}
+            className={i === index ? 'dot active' : 'dot'}
           ></div>
         ))}
       </div>

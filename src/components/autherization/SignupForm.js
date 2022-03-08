@@ -2,33 +2,33 @@ import './AuthForm.css';
 
 const SignupForm = props => {
   return (
-    <form class="auth-form">
-      <h1 class="text-primary">Sign up</h1>
-      <div class="wrapper-username">
+    <form className="auth-form">
+      <h1 className="text-primary">Sign up</h1>
+      <div className="wrapper-username">
         <div>
           <label for="firstname">First Name</label>
-          <input class="input-field" id="firstname" type="text" />
+          <input className="input-field" id="firstname" type="text" />
         </div>
         <div>
           <label for="lastname">Last Name</label>
-          <input class="input-field" id="lastname" type="text" />
+          <input className="input-field" id="lastname" type="text" />
         </div>
       </div>
       <label for="email">Email</label>
-      <input class="input-field" id="email" type="email" />
+      <input className="input-field" id="email" type="email" />
       <label for="password">Password</label>
 
-      <input class="input-field" id="password" type="password" />
+      <input className="input-field" id="password" type="password" />
       <label for="confirm-password">Confirm Password</label>
 
-      <input class="input-field" id="confirm-password" type="password" />
+      <input className="input-field" id="confirm-password" type="password" />
 
-      <div class="flex end">
-        <a class="link text-small" href="#">
+      <div className="flex end">
+        <a className="link text-small" href="#">
           forgot password?
         </a>
       </div>
-      <button type="button" class="btn primary">
+      <button type="button" className="btn primary">
         Signup
       </button>
       <p>
