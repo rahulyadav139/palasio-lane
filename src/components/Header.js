@@ -24,18 +24,12 @@ const Header = props => {
           <li className="hamburger-menu__item">My Orders</li>
         </ul>
         <div className="btn-container">
-          <button className="btn primary">
-            <a href="/">Logout</a>
-          </button>
+          <button className="btn primary">Logout</button>
         </div>
 
         <div className="btn-container">
-          <button className="btn primary">
-            <a href="./login.html">Login</a>
-          </button>
-          <button className="btn primary outline">
-            <a href="./signup.html"></a>Signup
-          </button>
+          <button className="btn primary">Login</button>
+          <button className="btn primary outline">Signup</button>
         </div>
         <div className="hr-line fad"></div>
       </div>

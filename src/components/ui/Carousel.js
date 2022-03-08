@@ -7,7 +7,11 @@ const Carousel = props => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      nextSlideHandler(index);
+      if (index === carouselData.length - 1) {
+        return setIndex(0);
+      }
+
+      setIndex(prev => prev + 1);
     }, 4000);
 
     return () => clearInterval(timer);
