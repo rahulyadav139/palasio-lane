@@ -1,9 +1,9 @@
 .categories-container {
   margin-bottom: 3rem;
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
   align-items: center;
-  width: 100%;
+  width: 100%; */
 }
 
 .categories-tab {

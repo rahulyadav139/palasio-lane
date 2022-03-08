@@ -11,8 +11,8 @@ const Homepage = props => {
   return (
     <Fragment>
       <Header />
+      <Carousel />
       <main className="main-homepage">
-        <Carousel />
         <Categories />
         <Testimonies />
       </main>

@@ -1,44 +1,16 @@
 import { Fragment } from 'react';
 import './Categories.css';
-
-const categoriesData = [
-  {
-    category: 'interior',
-    id: 'cat-01',
-    subCategory: [
-      {
-        name: 'Car Armrest',
-        id: 'cat-01-01',
-        image: require('../assets/categories/interior/car-armrest-4-400x400.webp'),
-      },
-      {
-        name: 'Car Armrest',
-        id: 'cat-01-01',
-        image: require('../assets/categories/interior/car-armrest-4-400x400.webp'),
-      },
-      {
-        name: 'Car Armrest',
-        id: 'cat-01-01',
-        image: require('../assets/categories/interior/car-armrest-4-400x400.webp'),
-      },
-      {
-        name: 'Car Armrest',
-        id: 'cat-01-01',
-        image: require('../assets/categories/interior/car-armrest-4-400x400.webp'),
-      },
-    ],
-  },
-];
+import collectionData from '../assets/collection-data.json';
 
 const Categories = props => {
   return (
     <div class="categories-container">
-      {categoriesData.map(el => (
+      {collectionData.map(el => (
         <div key={el.id} class="categories-tab">
-          {el.subCategory.map(el => (
+          {el.categories.map(el => (
             <div key={el.id} class="image-card shadow">
-              <img class="image" src={el.image} alt="" />
-              <p class="text-small">{el.name}</p>
+              <img class="image" src={el.imageRef} alt="" />
+              <p class="text-small">{el.categoryName}</p>
             </div>
           ))}
         </div>

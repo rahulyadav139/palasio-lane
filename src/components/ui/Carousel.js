@@ -1,24 +1,6 @@
 import './Carousel.css';
 import { useEffect, useState } from 'react';
-
-const carouselData = [
-  {
-    image: require('../../assets/carousel-images/bike-body-covers.webp'),
-    id: 'slide-1',
-  },
-  {
-    image: require('../../assets/carousel-images/car-body-covers.webp'),
-    id: 'slide-2',
-  },
-  {
-    image: require('../../assets/carousel-images/car-organizers.webp'),
-    id: 'slide-3',
-  },
-  {
-    image: require('../../assets/carousel-images/car-seat-covers.webp'),
-    id: 'slide-4',
-  },
-];
+import carouselData from '../../assets/carousel-data.json';
 
 const Carousel = props => {
   const [index, setIndex] = useState(0);

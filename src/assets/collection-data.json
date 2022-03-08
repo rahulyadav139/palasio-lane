@@ -1,0 +1,31 @@
+[{
+    "id": "col-01",
+    "collection": "Interior",
+    "categories": [{
+            "id": "cat-01-01",
+            "categoryName": "Car Seat Covers",
+            "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-seat-cover-sm.webp"
+        },
+        {
+            "id": "cat-01-02",
+            "categoryName": "Car Seat Cushions",
+            "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-seat-cushions.webp"
+        },
+        {
+            "id": "cat-01-03",
+            "categoryName": "Car Footmats",
+            "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/footmat-sm.webp"
+
+        },
+        {
+            "id": "cat-01-04",
+            "categoryName": "Car Organizers",
+            "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-organizers-sm.webp"
+        },
+        {
+            "id": "cat-01-05",
+            "categoryName": "Car Steering Covers",
+            "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-steering-covers-sm.webp"
+        }
+    ]
+}]
