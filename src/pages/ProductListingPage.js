@@ -1,6 +1,13 @@
 import './ProductListingPage.css';
+import { Fragment } from 'react';
+import { Footer, Header } from '../components';
 
 const ProductListingPage = props => {
-  return <h1>Product Listing Page</h1>;
+  return (
+    <Fragment>
+      <Header />
+      <Footer />
+    </Fragment>
+  );
 };
 export default ProductListingPage;
