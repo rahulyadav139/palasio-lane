@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import './Categories.css';
-import collectionData from '../assets/collection-data.json';
+import collectionData from '../../data/collection-data.json';
 
 const Categories = props => {
   return (
@@ -25,4 +25,4 @@ const Categories = props => {
     </div>
   );
 };
-export default Categories;
+export { Categories };

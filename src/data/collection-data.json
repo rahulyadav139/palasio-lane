@@ -31,7 +31,7 @@
     },
     {
         "id": "col-02",
-        "collection": "Car Interior",
+        "collection": "Car Exterior",
         "categories": [{
                 "id": "cat-02-01",
                 "categoryName": "Car Mud Flap",
@@ -106,7 +106,7 @@
             },
             {
                 "id": "cat-04-03",
-                "categoryName": "Shark Fin Anntena",
+                "categoryName": "Shark Fin Antenna",
                 "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/shark-fin-anntena.webp"
 
             },

@@ -1,13 +1,15 @@
 import './Homepage.css';
 import { Fragment } from 'react';
-import Header from '../components/Header';
-import Carousel from '../components/ui/Carousel';
-import Categories from '../components/Categories';
-import Testimonies from '../components/Testimony';
-import Footer from '../components/Footer';
-import Banner from '../components/Banner';
+import {
+  Header,
+  Carousel,
+  Categories,
+  Testimonies,
+  Footer,
+  Banner,
+  ScrollTopButton,
+} from '../components';
 
-import ScrollTopButton from '../components/ScrollTopButton';
 const Homepage = props => {
   return (
     <Fragment>

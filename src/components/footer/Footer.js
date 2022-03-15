@@ -56,4 +56,4 @@ const Footer = props => {
     </footer>
   );
 };
-export default Footer;
+export { Footer };

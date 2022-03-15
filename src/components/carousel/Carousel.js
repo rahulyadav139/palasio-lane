@@ -1,6 +1,6 @@
 import './Carousel.css';
 import { useEffect, useState } from 'react';
-import carouselData from '../../assets/carousel-data.json';
+import carouselData from '../../data/carousel-data.json';
 
 const Carousel = props => {
   const [index, setIndex] = useState(0);
@@ -66,4 +66,4 @@ const Carousel = props => {
     </div>
   );
 };
-export default Carousel;
+export { Carousel };

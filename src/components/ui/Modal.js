@@ -12,9 +12,12 @@ const Modal = props => {
   return (
     <Fragment>
       {ReactDom.createPortal(<ModalBackdrop />, overlay)}
-      {ReactDom.createPortal(<div className='modal-wrapper'>{props.children}</div>, overlay)}
+      {ReactDom.createPortal(
+        <div className="modal-wrapper">{props.children}</div>,
+        overlay
+      )}
     </Fragment>
   );
 };
 
-export default Modal;
+export { Modal };

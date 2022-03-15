@@ -1,9 +1,9 @@
 import './AuthModal.css';
-import Modal from './ui/Modal';
+import { Modal } from '../ui/Modal';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 
-const LoginModal = props => {
+const AuthModal = props => {
   const isLogin = props.isLogin;
   return (
     <Modal>
@@ -24,4 +24,4 @@ const LoginModal = props => {
     </Modal>
   );
 };
-export default LoginModal;
+export { AuthModal };

@@ -1,5 +1,5 @@
 import './Banner.css';
-import bannerData from '../assets/banner-data.json';
+import bannerData from '../../data/banner-data.json';
 
 const Banner = props => {
   return (
@@ -12,4 +12,4 @@ const Banner = props => {
     </div>
   );
 };
-export default Banner;
+export { Banner };
