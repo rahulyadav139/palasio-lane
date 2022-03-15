@@ -6,6 +6,7 @@ import Cart from './pages/Cart';
 import { AuthModal } from './components';
 import { useAuthModal } from './contexts/auth-modal-context';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import ProductDetailPage from './pages/ProductDetailPage';
 
 function App() {
   const { isAuthModal, resetModal, switchModal, isAuthTypeLogin } =
@@ -25,6 +26,8 @@ function App() {
           path="/products/:collection/:category"
           element={<ProductListingPage />}
         />
+
+        <Route path="/product/:productId" element={<ProductDetailPage />} />
 
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/cart" element={<Cart />} />
