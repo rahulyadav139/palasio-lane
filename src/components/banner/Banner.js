@@ -5,7 +5,7 @@ const Banner = props => {
   return (
     <div className="banner-container">
       {bannerData.map(el => (
-        <div className="banner">
+        <div key={el.id} className="banner">
           <img className="img-responsive" src={el.image} alt="banner-1" />
         </div>
       ))}
