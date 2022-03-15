@@ -1,4 +1,5 @@
 import './ProductCard';
+import { Link } from 'react-router-dom';
 
 const ProductCard = props => {
   const {
@@ -35,12 +36,14 @@ const ProductCard = props => {
           <i class="far fa-heart"></i>
         </button>
       </div>
-      <h2 class="product-title">{title.substring(0, 22) + '...'}</h2>
+      <Link to="/">
+        <h2 class="product-title">{title.substring(0, 22) + '...'}</h2>
+      </Link>
       {discount !== 0 && (
         <div class="price">
           <div class="price__original">{price}</div>
           <div class="price__discounted">
-            {Math.floor(price * (discount / 100))}
+            {Math.floor(price * ((100 - discount) / 100))}
           </div>
         </div>
       )}
