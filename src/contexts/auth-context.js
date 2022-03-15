@@ -18,12 +18,14 @@ const AuthProvider = props => {
     token: '',
   });
 
+  console.log(state);
+
   const loginHandler = token => {
-    dispatch({ token, isAuth: '' });
+    dispatch({ type: 'LOGIN', token });
   };
 
   const logoutHandler = token => {
-    dispatch({ token: '', isAuth: '' });
+    dispatch({ type: 'LOGOUT' });
   };
 
   const defaultValue = {
