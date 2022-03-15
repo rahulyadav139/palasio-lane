@@ -33,7 +33,12 @@ const SignupForm = props => {
       </button>
       <p>
         Already a member?{' '}
-        <span className="text-bold text-primary-dark">Login</span>
+        <span
+          onClick={props.onSwitch}
+          className="btn-switch text-bold text-primary-dark"
+        >
+          Login
+        </span>
       </p>
     </form>
   );

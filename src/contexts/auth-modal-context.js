@@ -1,23 +1,23 @@
 import React, { useContext, useReducer } from 'react';
 
-const ModalContext = React.createContext();
+const AuthModalContext = React.createContext();
 
-const modalReducer = (state, action) => {
+const authModalReducer = (state, action) => {
   switch (action.type) {
     case 'SWITCH':
       return { ...state, isAuthTypeLogin: !state.isAuthTypeLogin };
 
     case 'RESET':
-      return { isModal: false, isAuthTypeLogin: true };
+      return { isAuthModal: false, isAuthTypeLogin: true };
 
     case 'SHOW':
-      return { ...state, isModal: true };
+      return { ...state, isAuthModal: true };
   }
 };
 
-const ModalProvider = props => {
-  const [state, dispatch] = useReducer(modalReducer, {
-    isModal: false,
+const AuthModalProvider = props => {
+  const [state, dispatch] = useReducer(authModalReducer, {
+    isAuthModal: false,
     isAuthTypeLogin: true,
   });
 
@@ -26,6 +26,7 @@ const ModalProvider = props => {
   };
 
   const resetModalHandler = () => {
+    console.log('test');
     dispatch({ type: 'RESET' });
   };
 
@@ -34,7 +35,7 @@ const ModalProvider = props => {
   };
 
   const defaultValue = {
-    isModal: state.isModal,
+    isAuthModal: state.isAuthModal,
     isAuthTypeLogin: state.isAuthTypeLogin,
     switchModal: switchModalHandler,
     resetModal: resetModalHandler,
@@ -42,12 +43,12 @@ const ModalProvider = props => {
   };
 
   return (
-    <ModalContext.Provider value={defaultValue}>
+    <AuthModalContext.Provider value={defaultValue}>
       {props.children}
-    </ModalContext.Provider>
+    </AuthModalContext.Provider>
   );
 };
 
-const useModal = () => useContext(ModalContext);
+const useAuthModal = () => useContext(AuthModalContext);
 
-export { ModalProvider, useModal };
+export { AuthModalProvider, useAuthModal };

@@ -1,13 +1,13 @@
 import { AuthProvider } from './auth-context';
-import { ModalProvider } from './modal-context';
+import { AuthModalProvider } from './auth-modal-context';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 const Providers = props => {
   return (
     <Router>
-      <ModalProvider>
+      <AuthModalProvider>
         <AuthProvider>{props.children}</AuthProvider>
-      </ModalProvider>
+      </AuthModalProvider>
     </Router>
   );
 };

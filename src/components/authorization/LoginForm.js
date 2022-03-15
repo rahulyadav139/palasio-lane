@@ -28,7 +28,9 @@ const LoginForm = props => {
       </button>
       <p>
         New to palasio lane?{' '}
-        <span className="text-bold text-primary-dark">Sign up</span>
+        <span onClick={props.onSwitch} className="btn-switch text-bold text-primary-dark">
+          Sign up
+        </span>
       </p>
     </form>
   );

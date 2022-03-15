@@ -1,8 +1,12 @@
 import './Navigation.css';
 import { useAuth } from '../../contexts/auth-context';
+import { useAuthModal } from '../../contexts/auth-modal-context';
 
 const Navigation = props => {
   const { isAuth, logoutHandler } = useAuth();
+
+  const { showModal } = useAuthModal();
+  // console.log(showModal);
 
   return (
     <nav>
@@ -74,7 +78,12 @@ const Navigation = props => {
         )}
         {!isAuth && (
           <li className="login-item">
-            <button className="btn-login btn primary text-bold">Login</button>
+            <button
+              onClick={showModal}
+              className="btn-login btn primary text-bold"
+            >
+              Login
+            </button>
           </li>
         )}
       </ul>

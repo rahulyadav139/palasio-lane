@@ -2,11 +2,13 @@ import './AuthModal.css';
 import { Modal } from '../ui/Modal';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
+import { useModal } from '../../contexts/auth-modal-context';
 
 const AuthModal = props => {
-  const isLogin = props.isLogin;
+  const { isAuthTypeLogin, onReset, onSwitch } = props;
+
   return (
-    <Modal>
+    <Modal onReset={onReset}>
       <div className="modal-login modal-auth shadow">
         <div className="modal-auth__brand flex center col">
           <div className="brand-logo">
@@ -15,9 +17,13 @@ const AuthModal = props => {
           <h1 className="text-white">palasio lane</h1>
         </div>
 
-        {isLogin ? <LoginForm /> : <SignupForm />}
+        {isAuthTypeLogin ? (
+          <LoginForm onSwitch={onSwitch} />
+        ) : (
+          <SignupForm onSwitch={onSwitch} />
+        )}
 
-        <button className="btn-dismiss btn icon medium">
+        <button onClick={onReset} className="btn-dismiss btn icon medium">
           <i className="fas fa-times"></i>
         </button>
       </div>
