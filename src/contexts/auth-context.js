@@ -18,8 +18,6 @@ const AuthProvider = props => {
     token: '',
   });
 
-  console.log(state);
-
   const loginHandler = token => {
     dispatch({ type: 'LOGIN', token });
   };
