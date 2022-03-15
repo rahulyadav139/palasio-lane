@@ -10,18 +10,18 @@ const ProductCard = props => {
     discount,
     exclusive,
     rating,
-  } = props;
+  } = props.product;
 
   const productCardClasses = exclusive
-    ? 'card shadow exclusive ecom'
+    ? 'card shadow ribbon ecom'
     : 'card shadow ecom';
 
   return (
-    <div class={productCardClasses} ribbon-content="exclusive">
+    <div class={productCardClasses} ribbon-content="Exclusive">
       <div class="image">
         <img src={imageUrl} alt={title} />
 
-        {discount && (
+        {discount !== 0 && (
           <span class="badge highlight top left">{`-${discount}%`}</span>
         )}
 
@@ -36,9 +36,9 @@ const ProductCard = props => {
         </button>
       </div>
       <h2 class="product-title">{title.substring(0, 22) + '...'}</h2>
-      {discount && (
+      {discount !== 0 && (
         <div class="price">
-          <div class="price__old">{price}</div>
+          <div class="price__original">{price}</div>
           <div class="price__discounted">
             {Math.floor(price * (discount / 100))}
           </div>
@@ -62,4 +62,4 @@ const ProductCard = props => {
     </div>
   );
 };
-export { ProductCard };
+export default ProductCard;

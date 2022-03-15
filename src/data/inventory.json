@@ -2,11 +2,11 @@
         "title": "Custom PU Leather Car Seat Covers",
         "brand": "Show Stopper",
         "price": 10099,
-        "quantity": 20,
-        "imageUrl": "https://www.autofurnish.com/content/imagesthumbs0192841_3d-custom-pu-leather-car-seat-covers-for-maruti-swift-2018-ht-501-belles.jpeg",
+        "quantity": 0,
+        "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192841_3d-custom-pu-leather-car-seat-covers-for-maruti-swift-2018-ht-501-belles.jpeg",
         "discount": 0,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Tiago"
         },
@@ -30,7 +30,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192839_3d-custom-pu-leather-car-seat-covers-for-maruti-swift-2018-ht-501-belles_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Altroz"
         },
@@ -54,7 +54,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192842_3d-custom-pu-leather-car-seat-covers-for-maruti-swift-2018-ht-501-belles_560.jpeg",
         "discount": 5,
         "exclusive": true,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Harrier"
         },
@@ -78,7 +78,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192840_3d-custom-pu-leather-car-seat-covers-for-maruti-swift-2018-ht-501-belles_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Tigor"
         },
@@ -102,7 +102,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192843_3d-custom-pu-leather-car-seat-covers-for-chevrolet-aveo-ht-502-caviar_560.jpeg",
         "discount": 0,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra Thar"
         },
@@ -126,8 +126,8 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192845_3d-custom-pu-leather-car-seat-covers-for-chevrolet-aveo-ht-502-caviar_560.jpeg",
         "discount": 0,
         "exclusive": false,
-        "carCompatible": {
-            "manufacturer": "Tata",
+        "car": {
+            "manufacturer": "Mahindra",
             "model": "Mahindra Scorpio"
         },
         "description": ["Made by fine quality Automotive Grade PU Leather.",
@@ -150,8 +150,8 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192846_3d-custom-pu-leather-car-seat-covers-for-chevrolet-aveo-ht-502-caviar_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": {
-            "manufacturer": "Tata",
+        "car": {
+            "manufacturer": "Mahindra",
             "model": "Mahindra XUV700"
         },
         "description": ["Made by fine quality Automotive Grade PU Leather.",
@@ -174,8 +174,8 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192847_3d-custom-pu-leather-car-seat-covers-for-chevrolet-aveo-ht-502-caviar_560.jpeg",
         "discount": 5,
         "exclusive": false,
-        "carCompatible": {
-            "manufacturer": "Tata",
+        "car": {
+            "manufacturer": "Mahindra",
             "model": "Mahindra Alturas"
         },
         "description": ["Made by fine quality Automotive Grade PU Leather.",
@@ -198,7 +198,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192848_3d-custom-pu-leather-car-seat-covers-for-chevrolet-aveo-ht-502-caviar_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Tiago"
         },
@@ -222,7 +222,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192854_3d-custom-pu-leather-car-seat-covers-for-chevrolet-aveo-ht-504-tigno_560.jpeg",
         "discount": 20,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Altroz"
         },
@@ -246,7 +246,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192855_3d-custom-pu-leather-car-seat-covers-for-chevrolet-aveo-ht-504-tigno_560.jpeg",
         "discount": 5,
         "exclusive": true,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Harrier"
         },
@@ -270,7 +270,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192856_3d-custom-pu-leather-car-seat-covers-for-chevrolet-aveo-ht-504-tigno_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Tigor"
         },
@@ -294,7 +294,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192857_3d-custom-pu-leather-car-seat-covers-for-chevrolet-aveo-ht-504-tigno_560.jpeg",
         "discount": 5,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra Thar"
         },
@@ -318,7 +318,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192858_3d-custom-pu-leather-car-seat-covers-for-chevrolet-aveo-ht-504-tigno_560.jpeg",
         "discount": 0,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra Scorpio"
         },
@@ -342,7 +342,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192859_3d-custom-pu-leather-car-seat-covers-for-chevrolet-aveo-ht-505-mojo_560.jpeg",
         "discount": 10,
         "exclusive": true,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra XUV700"
         },
@@ -366,7 +366,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192860_3d-custom-pu-leather-car-seat-covers-for-chevrolet-aveo-ht-505-mojo_560.jpeg",
         "discount": 5,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra Alturas"
         },
@@ -390,7 +390,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191438_7d-premium-universal-backrest-cushion-hecta-6850-set-of-two-beige_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": "universal",
+        "car": "universal",
         "description": ["Great for head and neck support while driving, reading or watching TV.",
             "Provides rest, relaxation and comfort to your neck and mind during hectic car rides and reduces whiplash injuries while driving.",
             "Filled with 100% pure Polly-fill.",
@@ -411,7 +411,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191439_7d-premium-universal-backrest-cushion-hecta-6850-set-of-two-black_560.jpeg",
         "discount": 5,
         "exclusive": false,
-        "carCompatible": "universal",
+        "car": "universal",
         "description": ["Great for head and neck support while driving, reading or watching TV.",
             "Provides rest, relaxation and comfort to your neck and mind during hectic car rides and reduces whiplash injuries while driving.",
             "Filled with 100% pure Polly-fill.",
@@ -432,7 +432,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191440_7d-premium-universal-backrest-cushion-hecta-6850-set-of-two-coffee_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": "universal",
+        "car": "universal",
         "description": ["Great for head and neck support while driving, reading or watching TV.",
             "Provides rest, relaxation and comfort to your neck and mind during hectic car rides and reduces whiplash injuries while driving.",
             "Filled with 100% pure Polly-fill.",
@@ -453,7 +453,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191441_7d-premium-universal-backrest-cushion-hecta-6850-set-of-two-tan_560.jpeg",
         "discount": 10,
         "exclusive": true,
-        "carCompatible": "universal",
+        "car": "universal",
         "description": ["Great for head and neck support while driving, reading or watching TV.",
             "Provides rest, relaxation and comfort to your neck and mind during hectic car rides and reduces whiplash injuries while driving.",
             "Filled with 100% pure Polly-fill.",
@@ -474,7 +474,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191442_combo-of-7d-premium-car-pillow-neck-rest-hecta-6840-back-cushion-hecta-6850-each-set-of-two-black_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": "universal",
+        "car": "universal",
         "description": ["Great for head and neck support while driving, reading or watching TV.",
             "Provides rest, relaxation and comfort to your neck and mind during hectic car rides and reduces whiplash injuries while driving.",
             "Filled with 100% pure Polly-fill.",
@@ -495,7 +495,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191443_combo-of-7d-premium-car-pillow-neck-rest-hecta-6841-back-cushion-hecta-6851-each-set-of-two-beige_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": "universal",
+        "car": "universal",
         "description": ["Great for head and neck support while driving, reading or watching TV.",
             "Provides rest, relaxation and comfort to your neck and mind during hectic car rides and reduces whiplash injuries while driving.",
             "Filled with 100% pure Polly-fill.",
@@ -516,7 +516,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191444_combo-of-7d-premium-car-pillow-neck-rest-hecta-6842-back-cushion-hecta-6852-each-set-of-two-tan_560.jpeg",
         "discount": 20,
         "exclusive": false,
-        "carCompatible": "universal",
+        "car": "universal",
         "description": ["Great for head and neck support while driving, reading or watching TV.",
             "Provides rest, relaxation and comfort to your neck and mind during hectic car rides and reduces whiplash injuries while driving.",
             "Filled with 100% pure Polly-fill.",
@@ -537,7 +537,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191445_combo-of-7d-premium-car-pillow-neck-rest-hecta-6843-back-cushion-hecta-6853-each-set-of-two-coffee_560.jpeg",
         "discount": 30,
         "exclusive": true,
-        "carCompatible": "universal",
+        "car": "universal",
         "description": ["Great for head and neck support while driving, reading or watching TV.",
             "Provides rest, relaxation and comfort to your neck and mind during hectic car rides and reduces whiplash injuries while driving.",
             "Filled with 100% pure Polly-fill.",
@@ -558,7 +558,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192931_set-of-2-car-neck-rest-cushion-beige-red_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": "universal",
+        "car": "universal",
         "description": ["Great for head and neck support while driving, reading or watching TV.",
             "Provides rest, relaxation and comfort to your neck and mind during hectic car rides and reduces whiplash injuries while driving.",
             "Filled with 100% pure Polly-fill.",
@@ -579,7 +579,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191455_premium-memory-foam-full-backrest-cushion-with-neck-rest-black_560.jpeg",
         "discount": 10,
         "exclusive": true,
-        "carCompatible": "universal",
+        "car": "universal",
         "description": ["Great for head and neck support while driving, reading or watching TV.",
             "Provides rest, relaxation and comfort to your neck and mind during hectic car rides and reduces whiplash injuries while driving.",
             "Filled with 100% pure Polly-fill.",
@@ -600,7 +600,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191356_car-wooden-bead-seat-cushion-with-velvet-border-beige_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": "universal",
+        "car": "universal",
         "description": ["Great for head and neck support while driving, reading or watching TV.",
             "Provides rest, relaxation and comfort to your neck and mind during hectic car rides and reduces whiplash injuries while driving.",
             "Filled with 100% pure Polly-fill.",
@@ -621,7 +621,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191357_car-wooden-bead-seat-cushion-with-velvet-border-black_560.jpeg",
         "discount": 40,
         "exclusive": false,
-        "carCompatible": "universal",
+        "car": "universal",
         "description": ["Great for head and neck support while driving, reading or watching TV.",
             "Provides rest, relaxation and comfort to your neck and mind during hectic car rides and reduces whiplash injuries while driving.",
             "Filled with 100% pure Polly-fill.",
@@ -642,7 +642,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0202565_5d-premium-custom-fitted-car-mats-for-audi-a4-2021-beige_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Tiago"
         },
@@ -670,7 +670,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0202576_5d-premium-custom-fitted-car-mats-for-audi-a4-2021-black_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Altroz"
         },
@@ -697,7 +697,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0202582_5d-premium-custom-fitted-car-mats-for-audi-a4-2021-coffee_560.jpeg",
         "discount": 0,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Harrier"
         },
@@ -724,7 +724,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0202569_5d-premium-custom-fitted-car-mats-for-audi-a4-2021-tan_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Tigor"
         },
@@ -751,7 +751,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0201628_5d-premium-custom-fitted-car-mats-for-skoda-octavia-2021-beige_560.jpeg",
         "discount": 0,
         "exclusive": true,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra Thar"
         },
@@ -778,7 +778,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0201626_5d-premium-custom-fitted-car-mats-for-skoda-octavia-2021-black_560.jpeg",
         "discount": 20,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra Scorpio"
         },
@@ -805,7 +805,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0201627_5d-premium-custom-fitted-car-mats-for-skoda-octavia-2021-coffee_560.jpeg",
         "discount": 5,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra XUV700"
         },
@@ -832,7 +832,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0201625_5d-premium-custom-fitted-car-mats-for-jeep-compass-2021-tan_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra Alturas"
         },
@@ -859,7 +859,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0204708_5d-premium-custom-fitted-car-mats-for-audi-r8-2015-beige_560.jpeg",
         "discount": 0,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Tiago"
         },
@@ -886,7 +886,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0204692_5d-premium-custom-fitted-car-mats-for-audi-r8-2015-black_560.jpeg",
         "discount": 0,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Altroz"
         },
@@ -913,7 +913,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191366_7d-designer-car-auto-seat-back-multi-pocket-storage-bag-organizer-with-car-meal-tray-black-red_560.jpeg",
         "discount": 10,
         "exclusive": true,
-        "carCompatible": "universal",
+        "car": "universal",
         "description": ["Durable Premium Quilted PU Leather 7D Construction.",
             "Delegate Sitching.",
             "3D Pocket Storage Design.",
@@ -935,7 +935,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191365_3d-car-auto-seat-back-multi-pocket-storage-bag-organizer-with-car-meal-tray-beige_560.jpeg",
         "discount": 0,
         "exclusive": false,
-        "carCompatible": "universal",
+        "car": "universal",
         "description": ["Durable Premium Quilted PU Leather 7D Construction.",
             "Delegate Sitching.",
             "3D Pocket Storage Design.",
@@ -957,7 +957,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191368_3d-car-auto-seat-back-multi-pocket-storage-bag-organizer-holder-hanger-accessory-set-of-two-tan_560.jpeg",
         "discount": 20,
         "exclusive": false,
-        "carCompatible": "universal",
+        "car": "universal",
         "description": ["Durable Premium Quilted PU Leather 7D Construction.",
             "Delegate Sitching.",
             "3D Pocket Storage Design.",
@@ -979,7 +979,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191404_compact-car-auto-seat-back-multi-pocket-storage-bag-organizer-holder-hanger-accessory-coffee_560.jpeg",
         "discount": 50,
         "exclusive": false,
-        "carCompatible": "universal",
+        "car": "universal",
         "description": ["Durable Premium Quilted PU Leather 7D Construction.",
             "Delegate Sitching.",
             "3D Pocket Storage Design.",
@@ -1001,7 +1001,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191411_combo-of-compact-car-auto-seat-back-multi-pocket-storage-bag-organizer-holder-hanger-accessory-tan-s_560.jpeg",
         "discount": 20,
         "exclusive": false,
-        "carCompatible": "universal",
+        "car": "universal",
         "description": ["Durable Premium Quilted PU Leather 7D Construction.",
             "Delegate Sitching.",
             "3D Pocket Storage Design.",
@@ -1023,7 +1023,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191371_3d-car-auto-seat-back-multi-pocket-storage-bag-organizer-with-car-meal-tray-black_560.jpeg",
         "discount": 50,
         "exclusive": true,
-        "carCompatible": "universal",
+        "car": "universal",
         "description": ["Durable Premium Quilted PU Leather 7D Construction.",
             "Delegate Sitching.",
             "3D Pocket Storage Design.",
@@ -1045,7 +1045,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191373_car-multi-tray-cup-cum-food-holder-stand-table-for-travel_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": "universal",
+        "car": "universal",
         "description": ["Durable Premium Quilted PU Leather 7D Construction.",
             "Delegate Sitching.",
             "3D Pocket Storage Design.",
@@ -1067,7 +1067,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191295_premium-car-sun-visor-tissue-holder-box-with-free-tissues-cherry_560.jpeg",
         "discount": 0,
         "exclusive": false,
-        "carCompatible": "universal",
+        "car": "universal",
         "description": ["Easy Installation: The back of car tissue holder with hanging elastic clips, makes it install firmly on car sun visor, car seat back, car door.",
             "Safe Driving: Keep all your loose tissues organized and will not distract your attention while driving, much safer than putting your tissue box on the car seat.",
             "Easy Refilling: Tissue box size: 9x5.5x1.5in (Tissues are included). Convenient button clasp, makes it easy to open and refill with new tissues.",
@@ -1087,7 +1087,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191387_3d-car-auto-seat-back-multi-pocket-storage-bag-organizer-holder-hanger-accessory-beige_560.jpeg",
         "discount": 0,
         "exclusive": false,
-        "carCompatible": "universal",
+        "car": "universal",
         "description": ["Durable Premium Quilted PU Leather 7D Construction.",
             "Delegate Sitching.",
             "3D Pocket Storage Design.",
@@ -1109,7 +1109,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191388_3d-car-auto-seat-back-multi-pocket-storage-bag-organizer-holder-hanger-accessory-coffee_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": "universal",
+        "car": "universal",
         "description": ["Durable Premium Quilted PU Leather 7D Construction.",
             "Delegate Sitching.",
             "3D Pocket Storage Design.",
@@ -1131,7 +1131,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191390_3d-car-auto-seat-back-multi-pocket-storage-bag-organizer-holder-hanger-accessory-tan_560.jpeg",
         "discount": 0,
         "exclusive": true,
-        "carCompatible": "universal",
+        "car": "universal",
         "description": ["Durable Premium Quilted PU Leather 7D Construction.",
             "Delegate Sitching.",
             "3D Pocket Storage Design.",
@@ -1153,7 +1153,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191392_3d-car-auto-seat-back-multi-pocket-storage-bag-organizer-with-car-meal-tray-tan.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": "universal",
+        "car": "universal",
         "description": ["Durable Premium Quilted PU Leather 7D Construction.",
             "Delegate Sitching.",
             "3D Pocket Storage Design.",
@@ -1175,7 +1175,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191393_7d-designer-car-auto-seat-back-multi-pocket-storage-bag-organizer-with-car-meal-tray-beige_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": "universal",
+        "car": "universal",
         "description": ["Durable Premium Quilted PU Leather 7D Construction.",
             "Delegate Sitching.",
             "3D Pocket Storage Design.",
@@ -1197,7 +1197,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191394_7d-designer-car-auto-seat-back-multi-pocket-storage-bag-organizer-with-car-meal-tray-black_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": "universal",
+        "car": "universal",
         "description": ["Durable Premium Quilted PU Leather 7D Construction.",
             "Delegate Sitching.",
             "3D Pocket Storage Design.",
@@ -1219,7 +1219,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0204061_leatherite-car-steering-cover-for-all-cars-bay-beige_560.jpeg",
         "discount": 0,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Tiago"
         },
@@ -1244,7 +1244,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0204067_leatherite-car-steering-cover-for-all-cars-coral-beige_560.jpeg",
         "discount": 10,
         "exclusive": true,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Altroz"
         },
@@ -1269,7 +1269,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0204068_leatherite-car-steering-cover-for-all-cars-ebony-beige_560.jpeg",
         "discount": 20,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Harrier"
         },
@@ -1294,7 +1294,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0204069_leatherite-car-steering-cover-for-all-cars-fawn-black_560.jpeg",
         "discount": 20,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Tigor"
         },
@@ -1319,7 +1319,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0204072_leatherite-car-steering-cover-for-all-cars-red-black_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra Thar"
         },
@@ -1344,7 +1344,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0204070_leatherite-car-steering-cover-for-all-cars-yellow-black_560.jpeg",
         "discount": 0,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra Scorpio"
         },
@@ -1369,7 +1369,7 @@
         "imageUrl": "https://www.covercraft.com/images/products/hero/covercraft-custom-ultratect-car-cover_c-ccut_tan_main1.jpg",
         "discount": 50,
         "exclusive": true,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra XUV700"
         },
@@ -1394,7 +1394,7 @@
         "imageUrl": "https://www.covercraft.com/us/en/images/products/hero/covercraft-custom-ultratect-car-cover_c-ccut_black_main1.jpg",
         "discount": 0,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra Alturas"
         },
@@ -1419,7 +1419,7 @@
         "imageUrl": "https://www.covercraft.com/us/en/images/products/hero/covercraft-custom-ultratect-car-cover_c-ccut_gray_main1.jpg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Tiago"
         },
@@ -1444,7 +1444,7 @@
         "imageUrl": "https://www.covercraft.com/us/en/images/products/hero/covercraft-custom-ultratect-car-cover_c-ccut_blue_main1.jpg",
         "discount": 60,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Altroz"
         },
@@ -1469,7 +1469,7 @@
         "imageUrl": "https://www.covercraft.com/images/products/hero/covercraft-custom-ultratect-car-cover_c-ccut_tan_main1.jpg",
         "discount": 0,
         "exclusive": true,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Harrier"
         },
@@ -1494,7 +1494,7 @@
         "imageUrl": "https://www.covercraft.com/us/en/images/products/hero/covercraft-custom-ultratect-car-cover_c-ccut_black_main1.jpg",
         "discount": 20,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Tigor"
         },
@@ -1519,8 +1519,8 @@
         "imageUrl": "https://www.covercraft.com/us/en/images/products/hero/covercraft-custom-ultratect-car-cover_c-ccut_gray_main1.jpg",
         "discount": 50,
         "exclusive": false,
-        "carCompatible": {
-            "manufacturer": "Tata",
+        "car": {
+            "manufacturer": "Mahindra",
             "model": "Mahindra Thar"
         },
         "description": ["Made from a robust polypropylene fabric with a plastic coated or micro-porous film. Custom made, Custom Fit.",
@@ -1544,8 +1544,8 @@
         "imageUrl": "https://www.covercraft.com/us/en/images/products/hero/covercraft-custom-ultratect-car-cover_c-ccut_blue_main1.jpg",
         "discount": 0,
         "exclusive": false,
-        "carCompatible": {
-            "manufacturer": "Tata",
+        "car": {
+            "manufacturer": "Mahindra",
             "model": "Mahindra Scorpio"
         },
         "description": ["Made from a robust polypropylene fabric with a plastic coated or micro-porous film. Custom made, Custom Fit.",
@@ -1569,8 +1569,8 @@
         "imageUrl": "https://www.covercraft.com/images/products/hero/covercraft-custom-ultratect-car-cover_c-ccut_tan_main1.jpg",
         "discount": 20,
         "exclusive": false,
-        "carCompatible": {
-            "manufacturer": "Tata",
+        "car": {
+            "manufacturer": "Mahindra",
             "model": "Mahindra XUV700"
         },
         "description": ["Made from a robust polypropylene fabric with a plastic coated or micro-porous film. Custom made, Custom Fit.",
@@ -1594,8 +1594,8 @@
         "imageUrl": "https://www.covercraft.com/us/en/images/products/hero/covercraft-custom-ultratect-car-cover_c-ccut_black_main1.jpg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": {
-            "manufacturer": "Tata",
+        "car": {
+            "manufacturer": "Mahindra",
             "model": "Mahindra Alturas"
         },
         "description": ["Made from a robust polypropylene fabric with a plastic coated or micro-porous film. Custom made, Custom Fit.",
@@ -1619,7 +1619,7 @@
         "imageUrl": "https://www.covercraft.com/us/en/images/products/hero/covercraft-custom-ultratect-car-cover_c-ccut_gray_main1.jpg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Tiago"
         },
@@ -1644,7 +1644,7 @@
         "imageUrl": "https://www.covercraft.com/us/en/images/products/hero/covercraft-custom-ultratect-car-cover_c-ccut_blue_main1.jpg",
         "discount": 10,
         "exclusive": true,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Altroz"
         },
@@ -1669,7 +1669,7 @@
         "imageUrl": "https://www.covercraft.com/images/products/hero/covercraft-custom-ultratect-car-cover_c-ccut_tan_main1.jpg",
         "discount": 0,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Harrier"
         },
@@ -1694,7 +1694,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192057_hella-red-grill-super-tone-horn-set-12v300500-hz105-118-db-2-m_560.jpeg",
         "discount": 0,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Tigor"
         },
@@ -1717,7 +1717,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192060_hella-te16-twin-tone-horn-12v400500hz105-118-db-2m-black_560.jpeg",
         "discount": 10,
         "exclusive": true,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra Thar"
         },
@@ -1740,7 +1740,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192054_roots-megasonic-high-and-low-tone-horn-12v_560.jpeg",
         "discount": 0,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra Scorpio"
         },
@@ -1763,7 +1763,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192067_hella-blue-trumpet-horn-kit-12-v-400500-hz-universal-fit_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra XUV700"
         },
@@ -1786,7 +1786,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192068_hella-chrome-trumpet-horn-set-12v400500-hz105-118-db-2m_560.jpeg",
         "discount": 0,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra Alturas"
         },
@@ -1809,7 +1809,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192069_hella-pearl-trumpet-horn-set-12v400500-hz105-118-db-2m_560.jpeg",
         "discount": 0,
         "exclusive": true,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Tiago"
         },
@@ -1832,7 +1832,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192073_roots-vibrosonic-high-and-low-tone-horn-12v_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Altroz"
         },
@@ -1855,7 +1855,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192282_asi-car-bumper-scratch-guardprotector-for-maruti-suzuki-baleno-new-set-of-4_560.jpeg",
         "discount": 20,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Harrier"
         },
@@ -1878,7 +1878,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192285_asi-car-custom-fit-bumper-scratch-protectors-for-honda-wrv-set-of-4_560.jpeg",
         "discount": 20,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Tigor"
         },
@@ -1901,7 +1901,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192288_asi-car-custom-fit-bumper-scratch-protectors-for-maruti-suzuki-ciaz-set-of-4_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra Thar"
         },
@@ -1924,7 +1924,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192288_asi-car-custom-fit-bumper-scratch-protectors-for-maruti-suzuki-ciaz-set-of-4_560.jpeg",
         "discount": 0,
         "exclusive": true,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra Scorpio"
         },
@@ -1947,7 +1947,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192283_asi-car-custom-fit-bumper-scratch-protectors-for-honda-amaze-2016-2017-set-of-4_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra XUV700"
         },
@@ -1971,7 +1971,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192284_asi-car-custom-fit-bumper-scratch-protectors-for-honda-city-2017-2018-set-of-4_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra Alturas"
         },
@@ -1995,7 +1995,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192287_asi-car-custom-fit-bumper-scratch-protectors-for-maruti-suzuki-celerio-set-of-4_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Tiago"
         },
@@ -2018,7 +2018,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192294_asi-car-custom-fit-bumper-scratch-protectors-for-maruti-suzuki-vitara-brezza-set-of-4_560.jpeg",
         "discount": 10,
         "exclusive": true,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Altroz"
         },
@@ -2041,7 +2041,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192296_asi-car-custom-fit-bumper-scratch-protectors-for-renault-kwid-set-of-4_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Harrier"
         },
@@ -2064,7 +2064,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192297_asi-chrome-bumper-scratch-protectors-for-maruti-suzuki-new-swift-2015-2017_560.jpeg",
         "discount": 5,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Tigor"
         },
@@ -2087,7 +2087,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192785_frameless-wiper-blades-for-toyota-camry-new-d600mm-24-p480mm-19_560.jpeg",
         "discount": 0,
         "exclusive": true,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra Thar"
         },
@@ -2112,7 +2112,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191999_f8-series-premium-silicon-wiper-blade-300mm-12_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra Scorpio"
         },
@@ -2137,7 +2137,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192000_f8-series-premium-silicon-wiper-blade-350mm-14_560.jpeg",
         "discount": 40,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra XUV700"
         },
@@ -2162,7 +2162,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192002_f8-series-premium-silicon-wiper-blade-450mm-18_560.jpeg",
         "discount": 0,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra Alturas"
         },
@@ -2187,7 +2187,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192003_f8-series-premium-silicon-wiper-blade-480mm-19_560.jpeg",
         "discount": 0,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Tiago"
         },
@@ -2212,7 +2212,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192785_frameless-wiper-blades-for-toyota-camry-new-d600mm-24-p480mm-19_560.jpeg",
         "discount": 20,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Altroz"
         },
@@ -2237,7 +2237,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191999_f8-series-premium-silicon-wiper-blade-300mm-12_560.jpeg",
         "discount": 20,
         "exclusive": true,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Harrier"
         },
@@ -2262,7 +2262,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192000_f8-series-premium-silicon-wiper-blade-350mm-14_560.jpeg",
         "discount": 0,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Tigor"
         },
@@ -2287,7 +2287,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192002_f8-series-premium-silicon-wiper-blade-450mm-18_560.jpeg",
         "discount": 0,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra Thar"
         },
@@ -2312,7 +2312,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0192003_f8-series-premium-silicon-wiper-blade-480mm-19_560.jpeg",
         "discount": 20,
         "exclusive": true,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra Scorpio"
         },
@@ -2337,7 +2337,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191993_reverse-sensor-black-silver-whitered_560.jpeg",
         "discount": 10,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra XUV700"
         },
@@ -2358,7 +2358,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191996_12v-4-sensors-buzzer-lcd-parking-sensor-kit-display-car-reverse-backup-radar-monitor-system-blacksil_560.jpeg",
         "discount": 20,
         "exclusive": true,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra Alturas"
         },
@@ -2379,7 +2379,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191994_premium-quality-43-tft-lcd-monitor-car-reverse-rear-view-mirror_560.jpeg",
         "discount": 20,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Tiago"
         },
@@ -2400,7 +2400,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191997_premium-quality-43-tft-lcd-monitor-car-reverse-rear-view-mirror-with-sensors_560.jpeg",
         "discount": 0,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Altroz"
         },
@@ -2421,7 +2421,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191993_reverse-sensor-black-silver-whitered_560.jpeg",
         "discount": 10,
         "exclusive": true,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Tata",
             "model": "Tata Harrier"
         },
@@ -2442,7 +2442,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191996_12v-4-sensors-buzzer-lcd-parking-sensor-kit-display-car-reverse-backup-radar-monitor-system-blacksil_560.jpeg",
         "discount": 0,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra Thar"
         },
@@ -2463,7 +2463,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191994_premium-quality-43-tft-lcd-monitor-car-reverse-rear-view-mirror_560.jpeg",
         "discount": 30,
         "exclusive": false,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra Scorpio"
         },
@@ -2484,7 +2484,7 @@
         "imageUrl": "https://www.autofurnish.com/content/images/thumbs/0191997_premium-quality-43-tft-lcd-monitor-car-reverse-rear-view-mirror-with-sensors_560.jpeg",
         "discount": 20,
         "exclusive": true,
-        "carCompatible": {
+        "car": {
             "manufacturer": "Mahindra",
             "model": "Mahindra XUV700"
         },
