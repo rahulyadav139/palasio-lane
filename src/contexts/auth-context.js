@@ -1,0 +1,45 @@
+import React, { useContext, useReducer } from 'react';
+
+const AuthContext = React.createContext();
+
+const authReducer = (state, action) => {
+  if (action.type === 'LOGIN') {
+    return { isAuth: true, token: action.token };
+  }
+
+  if (action.type === 'LOGOUT') {
+    return { isAuth: false, token: '' };
+  }
+};
+
+const AuthProvider = props => {
+  const [state, dispatch] = useReducer(authReducer, {
+    isAuth: false,
+    token: '',
+  });
+
+  const loginHandler = token => {
+    dispatch({ token, isAuth: '' });
+  };
+
+  const logoutHandler = token => {
+    dispatch({ token: '', isAuth: '' });
+  };
+
+  const defaultValue = {
+    isAuth: state.isAuth,
+    token: state.token,
+    loginHandler,
+    logoutHandler,
+  };
+
+  return (
+    <AuthContext.Provider value={defaultValue}>
+      {props.children}
+    </AuthContext.Provider>
+  );
+};
+
+const useAuth = () => useContext(AuthContext);
+
+export { useAuth, AuthProvider };
