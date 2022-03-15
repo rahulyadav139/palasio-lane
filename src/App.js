@@ -1,5 +1,6 @@
 import './App.css';
 import Homepage from './pages/Homepage';
+import Wishlist from './pages/Wishlist';
 import ProductListingPage from './pages/ProductListingPage';
 import { AuthModal } from './components';
 import { useAuthModal } from './contexts/auth-modal-context';
@@ -23,6 +24,8 @@ function App() {
           path="/products/:collection/:category"
           element={<ProductListingPage />}
         />
+
+        <Route path="/wishlist" element={<Wishlist />} />
 
         <Route path="*" element={<Homepage />} />
       </Routes>

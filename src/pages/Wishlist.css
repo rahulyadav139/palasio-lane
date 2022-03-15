@@ -1,0 +1,22 @@
+.main {
+  width: 100%;
+  max-width: 56.25rem;
+  margin: 2rem auto;
+}
+.wishlist {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(10rem, 15rem));
+  gap: 1.5rem;
+  grid-auto-flow: row dense;
+  margin-top: 1rem;
+}
+@media only screen and (max-width: 450px) {
+  .main {
+    margin: auto;
+    padding: 2rem;
+  }
+  .wishlist {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
