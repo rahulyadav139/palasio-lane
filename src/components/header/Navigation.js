@@ -5,6 +5,7 @@ import { useAuthModal } from '../../contexts/auth-modal-context';
 const Navigation = props => {
   const { isAuth, logoutHandler } = useAuth();
 
+
   const { showModal } = useAuthModal();
   // console.log(showModal);
 

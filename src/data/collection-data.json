@@ -1,30 +1,36 @@
 [{
         "id": "col-01",
         "collection": "Car Interior",
+        "param": "interior",
         "categories": [{
                 "id": "cat-01-01",
                 "categoryName": "Car Seat Covers",
+                "param": "seat covers",
                 "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-seat-cover-sm.webp"
             },
             {
                 "id": "cat-01-02",
                 "categoryName": "Car Seat Cushions",
+                "param": "seat cushions",
                 "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-seat-cushions.webp"
             },
             {
                 "id": "cat-01-03",
                 "categoryName": "Car Footmats",
+                "param": "footmats",
                 "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/footmat-sm.webp"
 
             },
             {
                 "id": "cat-01-04",
                 "categoryName": "Car Organizers",
+                "param": "organizers",
                 "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-organizers-sm.webp"
             },
             {
                 "id": "cat-01-05",
                 "categoryName": "Car Steering Covers",
+                "param": "steering covers",
                 "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-steering-covers-sm.webp"
             }
         ]
@@ -32,124 +38,37 @@
     {
         "id": "col-02",
         "collection": "Car Exterior",
+        "param": "exterior",
         "categories": [{
                 "id": "cat-02-01",
-                "categoryName": "Car Mud Flap",
+                "categoryName": "Car Body Covers",
+                "param": "body covers",
                 "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-mud-flap-sm.webp"
             },
             {
                 "id": "cat-02-02",
                 "categoryName": "Car Horns",
+                "param": "horns",
                 "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-horn-sm.webp"
             },
             {
                 "id": "cat-02-03",
                 "categoryName": "Car Bumper Guards",
+                "param": "bumper guards",
                 "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-bumper-guard-sm.webp"
 
             },
             {
                 "id": "cat-02-04",
                 "categoryName": "Car Parking Sensors and Cameras",
+                "param": "parking sensors",
                 "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-parking-sensors-and-cameras-sm.webp"
             },
             {
                 "id": "cat-02-05",
                 "categoryName": "Car Wiper Blade",
+                "param": "wiper blades",
                 "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-wiper-blades-sm.webp"
-            }
-        ]
-    },
-    {
-        "id": "col-03",
-        "collection": "Car Lights",
-        "categories": [{
-                "id": "cat-03-01",
-                "categoryName": "Car Head Lights",
-                "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/Car-Headlights.webp"
-            },
-            {
-                "id": "cat-03-02",
-                "categoryName": "Car Tail Lights",
-                "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/Car-Tail-Lights.webp"
-            },
-            {
-                "id": "cat-03-03",
-                "categoryName": "Motion Sensor Lights",
-                "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/led-light.webp"
-
-            },
-            {
-                "id": "cat-03-04",
-                "categoryName": "Car DRL Lights",
-                "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/Car-DRL-Lights.webp"
-            },
-            {
-                "id": "cat-03-05",
-                "categoryName": "Car Fog Lights",
-                "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/fog-lamp.webp"
-            }
-        ]
-    },
-    {
-        "id": "col-04",
-        "collection": "Car Styling",
-        "categories": [{
-                "id": "cat-04-01",
-                "categoryName": "Car Key Covers",
-                "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-key-covers-sm.webp"
-            },
-            {
-                "id": "cat-04-02",
-                "categoryName": "Car Door Guards ",
-                "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/Car-Door-Guards.webp"
-            },
-            {
-                "id": "cat-04-03",
-                "categoryName": "Shark Fin Antenna",
-                "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/shark-fin-anntena.webp"
-
-            },
-            {
-                "id": "cat-04-04",
-                "categoryName": "Car Door Visors",
-                "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-door-visor.webp"
-            },
-            {
-                "id": "cat-04-05",
-                "categoryName": "Car Stickers",
-                "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-stickers-sm.webp"
-            }
-        ]
-    },
-    {
-        "id": "col-05",
-        "collection": "Car Care",
-        "categories": [{
-                "id": "cat-05-01",
-                "categoryName": "Car Tyre Inflator",
-                "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-tyre-inflators-sm.webp"
-            },
-            {
-                "id": "cat-05-02",
-                "categoryName": "Car Vacuum Cleaner",
-                "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/Vacuum-Cleaner.webp"
-            },
-            {
-                "id": "cat-05-03",
-                "categoryName": "Car Jumper Cables",
-                "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-cables-sm.webp"
-
-            },
-            {
-                "id": "cat-05-04",
-                "categoryName": "Car Tow Cables",
-                "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-tow-cables-sm.webp"
-            },
-            {
-                "id": "cat-05-05",
-                "categoryName": "Car Puncture Kit",
-                "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-puncture-kits-sm.webp"
             }
         ]
     }
