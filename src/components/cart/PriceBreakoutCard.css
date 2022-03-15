@@ -1,0 +1,7 @@
+.price-breakout {
+  flex-basis: 40%;
+  gap: 0.5rem;
+  height: fit-content;
+  position: sticky;
+  top: 6rem;
+}
