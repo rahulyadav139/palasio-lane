@@ -17,7 +17,7 @@ const useInput = validateFun => {
 
   return {
     value,
-    isTouched,
+
     setIsTouched,
     isValid,
     isInvalid,
