@@ -1,8 +1,23 @@
 import './AuthForm.css';
 import { useInput } from '../../hooks/use-input';
 import { textFormatter } from '../../utils/formatter';
+import { useState, useEffect, Fragment } from 'react';
+import { useAuth } from '../../contexts/auth-context';
+import { useAuthModal } from '../../contexts/auth-modal-context';
 
 const SignupForm = props => {
+  const [toast, setToast] = useState(null);
+  const { loginHandler } = useAuth();
+  const { resetModal } = useAuthModal();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setToast(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, [toast]);
+
   const {
     value: firstName,
     setIsTouched: firstNameIsTouched,
@@ -94,86 +109,102 @@ const SignupForm = props => {
       }),
     });
 
+    if (res.status == 409) {
+      setToast('User is already registered!');
+      return;
+    }
+
     const data = await res.json();
 
-    console.log(data);
+    loginHandler(data.token);
+    resetModal();
   };
 
   return (
-    <form onSubmit={submitFormHandler} className="auth-form">
-      <h1 className="text-primary">Sign up</h1>
-      <div className="wrapper-username">
-        <div>
-          <label htmlFor="firstName">First Name</label>
-          <input
-            value={firstName}
-            onChange={firstNameChangeHandler}
-            onBlur={firstNameBlurHandler}
-            className={firstNameClasses}
-            id="firstName"
-            type="text"
-          />
+    <Fragment>
+      <form onSubmit={submitFormHandler} className="auth-form">
+        <h1 className="text-primary">Sign up</h1>
+        <div className="wrapper-username">
+          <div>
+            <label htmlFor="firstName">First Name</label>
+            <input
+              value={firstName}
+              onChange={firstNameChangeHandler}
+              onBlur={firstNameBlurHandler}
+              className={firstNameClasses}
+              id="firstName"
+              type="text"
+            />
+          </div>
+          <div>
+            <label htmlFor="lastName">Last Name</label>
+            <input
+              value={lastName}
+              onChange={lastNameChangeHandler}
+              onBlur={lastNameBlurHandler}
+              className={lastNameClasses}
+              id="lastName"
+              type="text"
+            />
+          </div>
         </div>
-        <div>
-          <label htmlFor="lastName">Last Name</label>
-          <input
-            value={lastName}
-            onChange={lastNameChangeHandler}
-            onBlur={lastNameBlurHandler}
-            className={lastNameClasses}
-            id="lastName"
-            type="text"
-          />
+        <label htmlFor="email">Email</label>
+        <input
+          value={email}
+          onChange={emailChangeHandler}
+          onBlur={emailBlurHandler}
+          className={emailClasses}
+          id="email"
+          type="email"
+        />
+        <label htmlFor="password">Password</label>
+
+        <input
+          value={password}
+          onChange={passwordChangeHandler}
+          onBlur={passwordBlurHandler}
+          className={passwordClasses}
+          id="password"
+          type="password"
+        />
+        <label htmlFor="confirm-password">Confirm Password</label>
+
+        <input
+          value={confirmPassword}
+          onChange={confirmPasswordChangeHandler}
+          onBlur={confirmPasswordBlurHandler}
+          className={confirmPasswordClasses}
+          id="confirm-password"
+          type="password"
+        />
+
+        <div className="flex end">
+          <a className="link text-small" href="#">
+            forgot password?
+          </a>
         </div>
-      </div>
-      <label htmlFor="email">Email</label>
-      <input
-        value={email}
-        onChange={emailChangeHandler}
-        onBlur={emailBlurHandler}
-        className={emailClasses}
-        id="email"
-        type="email"
-      />
-      <label htmlFor="password">Password</label>
-
-      <input
-        value={password}
-        onChange={passwordChangeHandler}
-        onBlur={passwordBlurHandler}
-        className={passwordClasses}
-        id="password"
-        type="password"
-      />
-      <label htmlFor="confirm-password">Confirm Password</label>
-
-      <input
-        value={confirmPassword}
-        onChange={confirmPasswordChangeHandler}
-        onBlur={confirmPasswordBlurHandler}
-        className={confirmPasswordClasses}
-        id="confirm-password"
-        type="password"
-      />
-
-      <div className="flex end">
-        <a className="link text-small" href="#">
-          forgot password?
-        </a>
-      </div>
-      <button type="submit" className="btn primary">
-        Signup
-      </button>
-      <p>
-        Already a member?{' '}
-        <span
-          onClick={props.onSwitch}
-          className="btn-switch text-bold text-primary-dark"
-        >
-          Login
-        </span>
-      </p>
-    </form>
+        <button type="submit" className="btn primary">
+          Signup
+        </button>
+        <p>
+          Already a member?{' '}
+          <span
+            onClick={props.onSwitch}
+            className="btn-switch text-bold text-primary-dark"
+          >
+            Login
+          </span>
+        </p>
+      </form>
+      {toast && (
+        <div class="toast danger">
+          <span class="icon small white">
+            <i class="fas fa-bell"></i>
+          </span>
+          {` ${toast}`}
+        </div>
+      )}
+    </Fragment>
   );
 };
 export default SignupForm;
