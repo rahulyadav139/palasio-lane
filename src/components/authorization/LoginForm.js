@@ -22,10 +22,7 @@ const LoginForm = props => {
     isInvalid: passwordIsInvalid,
     changeHandler: passwordChangeHandler,
     blurHandler: passwordBlurHandler,
-  } = useInput(value => value.length >= 6);
-
-  const validClasses = 'input-field responsive';
-  const inValidClasses = 'input-field responsive error';
+  } = useInput(value => value.length !== 0);
 
   const emailClasses = emailIsInvalid
     ? 'input-field responsive error'
