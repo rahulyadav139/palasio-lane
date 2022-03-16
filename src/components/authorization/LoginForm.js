@@ -1,16 +1,93 @@
 import './AuthForm.css';
+import { useInput } from '../../hooks/use-input';
+import { useAuth } from '../../contexts/auth-context';
+import { useAuthModal } from '../../contexts/auth-modal-context';
 
 const LoginForm = props => {
+  const { loginHandler } = useAuth();
+  const { resetModal } = useAuthModal();
+  const {
+    value: email,
+    setIsTouched: emailIsTouched,
+    isValid: emailIsValid,
+    isInvalid: emailIsInvalid,
+    changeHandler: emailChangeHandler,
+    blurHandler: emailBlurHandler,
+  } = useInput(value => value.includes('@') && value.includes('.'));
+
+  const {
+    value: password,
+    setIsTouched: passwordIsTouched,
+    isValid: passwordIsValid,
+    isInvalid: passwordIsInvalid,
+    changeHandler: passwordChangeHandler,
+    blurHandler: passwordBlurHandler,
+  } = useInput(value => value.length >= 6);
+
+  const validClasses = 'input-field responsive';
+  const inValidClasses = 'input-field responsive error';
+
+  const emailClasses = emailIsInvalid
+    ? 'input-field responsive error'
+    : 'input-field responsive';
+  const passwordClasses = passwordIsInvalid
+    ? 'input-field-icon responsive error'
+    : 'input-field-icon responsive';
+
+  const submitHandler = async e => {
+    e.preventDefault();
+
+    if (!emailIsValid || !passwordIsValid) {
+      emailIsTouched(true);
+      passwordIsTouched(true);
+      return;
+    }
+
+    const res = await fetch('http://localhost:8080/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    if (res.status === 404) {
+      return console.log('user not found');
+    }
+
+    if (res.status === 401) {
+      return console.log('invalid password');
+    }
+
+    const data = await res.json();
+
+    loginHandler(data.token);
+
+    resetModal();
+  };
+
   return (
-    <form className="auth-form">
+    <form onSubmit={submitHandler} className="auth-form">
       <h1 className="text-primary">Log in</h1>
       <label for="email">Email</label>
-      <input className="input-field" id="email" type="email" />
+      <input
+        value={email}
+        onChange={emailChangeHandler}
+        onBlur={emailBlurHandler}
+        className={emailClasses}
+        id="email"
+        type="email"
+      />
       <label for="password">Password</label>
 
-      <div className="input-field-icon">
+      <div className={passwordClasses}>
         <label>
-          <input type="password" />
+          <input
+            value={password}
+            onChange={passwordChangeHandler}
+            onBlur={passwordBlurHandler}
+            type="password"
+          />
           <span className="icon small">
             <i className="fas fa-eye"></i>
           </span>
@@ -23,12 +100,15 @@ const LoginForm = props => {
         </a>
       </div>
 
-      <button type="button" className="btn primary">
+      <button type="submit" className="btn primary">
         Login
       </button>
       <p>
         New to palasio lane?{' '}
-        <span onClick={props.onSwitch} className="btn-switch text-bold text-primary-dark">
+        <span
+          onClick={props.onSwitch}
+          className="btn-switch text-bold text-primary-dark"
+        >
           Sign up
         </span>
       </p>
