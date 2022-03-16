@@ -11,6 +11,8 @@ const ProductCard = props => {
     discount,
     exclusive,
     rating,
+
+    _id: prodId,
   } = props.product;
 
   const productCardClasses = exclusive
@@ -36,7 +38,7 @@ const ProductCard = props => {
           <i class="far fa-heart"></i>
         </button>
       </div>
-      <Link to="/">
+      <Link to={`/product/${prodId}`}>
         <h2 class="product-title">{title.substring(0, 22) + '...'}</h2>
       </Link>
       {discount !== 0 && (
