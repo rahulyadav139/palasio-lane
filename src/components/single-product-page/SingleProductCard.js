@@ -3,38 +3,38 @@ import './SingleProductCard.css';
 const SingleProductCard = props => {
   const { title, brand, imageUrl, price, discount } = props.product;
   return (
-    <div class="card shadow product-detail">
-      <div class="image">
-        <img class="img-responsive" src={imageUrl} alt={title} />
+    <div className="card shadow product-detail">
+      <div className="image">
+        <img className="img-responsive" src={imageUrl} alt={title} />
       </div>
-      <div class="product-detail__text">
-        <h1 class="product-brand">{title}</h1>
-        <h2 class="product-title">{brand}</h2>
-        <div class="rating">
-          4.4 <i class="fas fa-star"></i> | 3.9k Ratings
+      <div className="product-detail__text">
+        <h1 className="product-brand">{title}</h1>
+        <h2 className="product-title">{brand}</h2>
+        <div className="rating">
+          4.4 <i className="fas fa-star"></i> | 3.9k Ratings
         </div>
-        <div class="hr-line thin solid grey"></div>
+        <div className="hr-line thin solid grey"></div>
         {discount !== 0 ? (
-          <div class="price flex gap">
-            <div class="price__original">{price}</div>
-            <div class="price__discounted">
+          <div className="price flex gap">
+            <div className="price__original">{price}</div>
+            <div className="price__discounted">
               {Math.floor(price * ((100 - discount) / 100))}
             </div>
           </div>
         ) : (
-          <div class="price flex gap">
-            <div class="price__discounted">{price}</div>
+          <div className="price flex gap">
+            <div className="price__discounted">{price}</div>
           </div>
         )}
-        <div class="text-details">inclusive of all taxes</div>
-        <div class="buttons">
-          <button class="btn primary icon-with-text">
+        <div className="text-details">inclusive of all taxes</div>
+        <div className="buttons">
+          <button className="btn primary icon-with-text">
             Add to Cart
             <span>
-              <i class="fas fa-shopping-cart"></i>
+              <i className="fas fa-shopping-cart"></i>
             </span>
           </button>
-          <button class="btn outline primary">Wishlist</button>
+          <button className="btn outline primary">Wishlist</button>
         </div>
       </div>
     </div>

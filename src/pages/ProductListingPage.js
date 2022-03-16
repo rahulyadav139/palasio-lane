@@ -28,7 +28,7 @@ const ProductListingPage = props => {
           `http://localhost:8080/products?filterBy=${filterBy}`
         );
         const data = await res.json();
-        // console.log(data[0]);
+
         setProducts(data);
         setLoading(false);
       } catch (err) {
@@ -42,7 +42,7 @@ const ProductListingPage = props => {
       {!loading && (
         <Fragment>
           <Header />
-          <main class="main-section">
+          <main className="main-section">
             <Filters products={products} />
             <Listing products={products} />
           </main>

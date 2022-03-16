@@ -5,12 +5,12 @@ const FilterByPrice = props => {
   return (
     <Fragment>
       <h4>Price Range</h4>
-      <div class="filter-section__price">
+      <div className="filter-section__price">
         <p>Max</p>
-        <div class="input-field-icon price__input">
+        <div className="input-field-icon price__input">
           <label>
-            <span class="icon small">
-              <i class="fas fa-rupee-sign"></i>
+            <span className="icon small">
+              <i className="fas fa-rupee-sign"></i>
             </span>
             <input placeholder="Price" type="number" />
           </label>
@@ -21,11 +21,11 @@ const FilterByPrice = props => {
         min="1000"
         max="10000"
         step="1000"
-        class="styled-slider"
+        className="styled-slider"
         type="range"
       />
 
-      <div class="hr-line fad"></div>
+      <div className="hr-line fad"></div>
     </Fragment>
   );
 };

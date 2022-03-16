@@ -11,6 +11,7 @@ import { useParams } from 'react-router-dom';
 const ProductDetailPage = props => {
   const [product, setProduct] = useState(null);
   const params = useParams();
+
   const prodId = params.prodId;
 
   useEffect(() => {
@@ -19,7 +20,6 @@ const ProductDetailPage = props => {
         const res = await fetch(`http://localhost:8080/product/${prodId}`);
         const data = await res.json();
         setProduct(data);
-        console.log(data);
       } catch (err) {
         console.log(err);
       }
@@ -30,7 +30,7 @@ const ProductDetailPage = props => {
       {product && (
         <Fragment>
           <Header />
-          <main class="main">
+          <main className="main">
             <SingleProductCard product={product} />
             <ProductDescription product={product} />
           </main>

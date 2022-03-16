@@ -7,7 +7,7 @@ const FilterByRatings = props => {
     <Fragment>
       <h4>Rating</h4>
 
-      <div class="rating-wrapper">
+      <div className="rating-wrapper">
         {Array.from({ length: 4 }).map((el, i) => (
           <div key={uuid()}>
             <input
@@ -16,10 +16,10 @@ const FilterByRatings = props => {
               id={`rate-${4 - i}`}
               value={4 - i}
             />
-            <label for={`rate-${4 - i}`}>
-              <span class="starred">
+            <label htmlFor={`rate-${4 - i}`}>
+              <span className="starred">
                 {Array.from({ length: 4 - i }).map((el, i) => (
-                  <i key={uuid()} class="fas fa-star"></i>
+                  <i key={uuid()} className="fas fa-star"></i>
                 ))}
               </span>
             </label>

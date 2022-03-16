@@ -4,10 +4,7 @@ import { useAuthModal } from '../../contexts/auth-modal-context';
 
 const Navigation = props => {
   const { isAuth, logoutHandler } = useAuth();
-
-
   const { showModal } = useAuthModal();
-  // console.log(showModal);
 
   return (
     <nav>
@@ -19,7 +16,7 @@ const Navigation = props => {
               className="theme-toggle__checkbox"
               id="theme-toggle"
             />
-            <label className="theme-toggle__label" for="theme-toggle">
+            <label className="theme-toggle__label" htmlFor="theme-toggle">
               <span className="icon medium primary">
                 <i className="fas fa-moon"></i>{' '}
                 <i className="fas fa-sun hidden"></i>

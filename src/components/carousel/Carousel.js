@@ -1,6 +1,7 @@
 import './Carousel.css';
 import { useEffect, useState } from 'react';
 import carouselData from '../../data/carousel-data.json';
+import { v4 as uuid } from 'uuid';
 
 const Carousel = props => {
   const [index, setIndex] = useState(0);
@@ -40,7 +41,7 @@ const Carousel = props => {
   return (
     <div className="slides">
       {carouselData.map((el, i) => (
-        <div key={el.id} className="slide">
+        <div key={uuid()} className="slide">
           <img
             className={i === index ? 'img-responsive' : 'img-responsive hidden'}
             src={el.image}
@@ -58,6 +59,7 @@ const Carousel = props => {
       <div className="dot-container">
         {carouselData.map((el, i) => (
           <div
+            key={uuid()}
             onClick={goToSlideHandler.bind(null, i)}
             className={i === index ? 'dot active' : 'dot'}
           ></div>

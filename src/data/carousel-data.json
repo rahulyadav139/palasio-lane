@@ -1,17 +1,13 @@
 [{
-        "image": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/homepage/car-organizers.webp",
-        "id": "slide-1"
+        "image": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/homepage/car-organizers.webp"
     },
     {
-        "image": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/homepage/car-seat-covers.webp?ver=1.2",
-        "id": "slide-2"
+        "image": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/homepage/car-seat-covers.webp?ver=1.2"
     },
     {
-        "image": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/homepage/car-body-covers.webp",
-        "id": "slide-3"
+        "image": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/homepage/car-body-covers.webp"
     },
     {
-        "image": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/homepage/car-foot-mats.webp",
-        "id": "slide-4"
+        "image": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/homepage/car-foot-mats.webp"
     }
 ]

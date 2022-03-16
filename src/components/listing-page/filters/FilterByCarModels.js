@@ -31,9 +31,13 @@ const FilterByCarModels = ({ products }) => {
     return acc;
   }, []);
 
+  const clickHandler = e => {
+    console.log(e.target.value);
+  };
+
   return (
     <Fragment>
-      {carDetailsForFilter.length && (
+      {carDetailsForFilter.length !== 0 && (
         <Fragment>
           <h4>Car Model</h4>
           {carDetailsForFilter.map(car => (
@@ -51,6 +55,7 @@ const FilterByCarModels = ({ products }) => {
                   <li key={uuid()}>
                     <label htmlFor={`${car.manufacturer}-${i + 1}`}>
                       <input
+                        onClick={clickHandler}
                         type="checkbox"
                         id={`${car.manufacturer}-${i + 1}`}
                         value={model}

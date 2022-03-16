@@ -4,21 +4,54 @@ import FilterByPrice from './FilterByPrice';
 import FilterByRatings from './FilterByRatings';
 
 const Filters = props => {
+  const getFilteredProducts = products => {
+    return price => {
+      let firstFiltered;
+      if (!price) {
+        firstFiltered = products;
+      } else {
+        firstFiltered = products.filter(
+          product => price >= (product.price * (100 - product.discount)) / 100
+        );
+      }
+      return model => {
+        let secondFiltered;
+        if (!model) {
+          secondFiltered = firstFiltered;
+        } else {
+          secondFiltered = firstFiltered.filter(
+            product => product.car.model === model
+          );
+        }
+        return rating => {
+          let thirdFiltered;
+          if (!rating) {
+            thirdFiltered = secondFiltered;
+          } else {
+            thirdFiltered = secondFiltered.filter(
+              product => rating >= product.rating
+            );
+          }
+          return thirdFiltered;
+        };
+      };
+    };
+  };
   return (
-    <div class="filter-section">
-      <div class="filter-section__head flex space-between align-center">
-        <div class="heading-5">FILTERS</div>
+    <div className="filter-section">
+      <div className="filter-section__head flex space-between align-center">
+        <div className="heading-5">FILTERS</div>
         <button>Reset</button>
       </div>
-      <div class="first-line hr-line fad"></div>
+      <div className="first-line hr-line fad"></div>
 
       <FilterByPrice />
       <FilterByCarModels products={props.products} />
       <FilterByRatings />
 
-      <div class="filter-section__buttons">
-        <button class="btn primary">Filter</button>
-        <button class="btn-reset btn outline primary">Reset</button>
+      <div className="filter-section__buttons">
+        <button className="btn primary">Filter</button>
+        <button className="btn-reset btn outline primary">Reset</button>
       </div>
     </div>
   );
