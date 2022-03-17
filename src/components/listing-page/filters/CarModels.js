@@ -10,8 +10,22 @@ const CarModels = props => {
     setShowCarModels(prev => !prev);
   };
 
+
+
   const changeCarModelsHandler = e => {
-    console.log(e.target.value);
+   
+
+    if (e.target.checked) {
+      const newArr = [...props.carModels, e.target.value];
+      props.onGetCarModels(newArr);
+     
+      return;
+    }
+
+    const newArr = props.carModels.filter(el => el !== e.target.value);
+  
+    props.onGetCarModels(newArr);
+   
   };
 
   return (
@@ -26,6 +40,7 @@ const CarModels = props => {
                 type="checkbox"
                 id={`${manufacturer}-${i + 1}`}
                 value={model}
+                checked={props.carModels.includes(model)}
               />
               <label htmlFor={`${manufacturer}-${i + 1}`}>{model}</label>
             </li>

@@ -5,9 +5,16 @@ import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 
 const ProductListingPage = props => {
+  const [price, setPrice] = useState('');
+  const [carModels, setCarModels] = useState([]);
+  const [star, setStar] = useState(null);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const params = useParams();
+
+  // console.log(star);
+  // console.log(carModels);
+  // console.log(price);
 
   const category = params.category;
   const collection = params.collection;
@@ -37,13 +44,67 @@ const ProductListingPage = props => {
     })();
   }, [category, collection]);
 
+  const getFilteredProducts = products => {
+    return price => {
+      let firstFiltered;
+      if (!price) {
+        firstFiltered = products;
+      } else {
+        firstFiltered = products.filter(
+          product => price >= (product.price * (100 - product.discount)) / 100
+        );
+      }
+      return model => {
+        let secondFiltered;
+        if (!model) {
+          secondFiltered = firstFiltered;
+        } else {
+          secondFiltered = firstFiltered.filter(
+            product => product.car.model === model
+          );
+        }
+        return rating => {
+          let thirdFiltered;
+          if (!rating) {
+            thirdFiltered = secondFiltered;
+          } else {
+            thirdFiltered = secondFiltered.filter(
+              product => rating >= product.rating
+            );
+          }
+          return thirdFiltered;
+        };
+      };
+    };
+  };
+
+  const getPriceHandler = price => {
+    setPrice(price);
+  };
+
+  const getStarHandler = star => {
+    setStar(star);
+  };
+
+  const getCarModelsHandler = models => {
+    setCarModels(models);
+  };
+
   return (
     <Fragment>
       {!loading && (
         <Fragment>
           <Header />
           <main className="main-section">
-            <Filters products={products} />
+            <Filters
+              onGetPrice={getPriceHandler}
+              onGetStar={getStarHandler}
+              onGetCarModels={getCarModelsHandler}
+              products={products}
+              price={price}
+              star={star}
+              carModels={carModels}
+            />
             <Listing products={products} />
           </main>
           <Footer />
