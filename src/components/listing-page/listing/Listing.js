@@ -4,10 +4,11 @@ import { v4 as uuid } from 'uuid';
 import { useState } from 'react';
 
 const Listing = props => {
-  const [sortBy, setSortBy] = useState('popularity');
+  // const [sortBy, setSortBy] = useState('popularity');
 
   const changeSortByHandler = e => {
-    setSortBy(e.target.value);
+    // setSortBy(e.target.value);
+    props.onGetSortBy(e.target.value);
   };
   return (
     <div className="listing-section">
@@ -26,7 +27,7 @@ const Listing = props => {
           name="sort"
           id="popularity"
           value="popularity"
-          checked={'popularity' === sortBy}
+          checked={'popularity' === props.sort}
           onChange={changeSortByHandler}
         />
         <label htmlFor="popularity">Popularity</label>
@@ -35,7 +36,7 @@ const Listing = props => {
           name="sort"
           id="low-to-high"
           value="low-to-high"
-          checked={'low-to-high' === sortBy}
+          checked={'low-to-high' === props.sort}
           onChange={changeSortByHandler}
         />
         <label htmlFor="low-to-high">Price - Low to High</label>
@@ -44,7 +45,7 @@ const Listing = props => {
           name="sort"
           id="high-to-low"
           value="high-to-low"
-          checked={'high-to-low' === sortBy}
+          checked={'high-to-low' === props.sort}
           onChange={changeSortByHandler}
         />
         <label htmlFor="high-to-low">Price - High to Low</label>

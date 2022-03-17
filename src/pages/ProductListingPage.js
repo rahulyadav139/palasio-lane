@@ -8,6 +8,7 @@ const ProductListingPage = props => {
   const [price, setPrice] = useState('');
   const [carModels, setCarModels] = useState([]);
   const [star, setStar] = useState(null);
+  const [sortBy, setSortBy] = useState('popularity');
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const params = useParams();
@@ -42,33 +43,42 @@ const ProductListingPage = props => {
 
   const getFilteredProducts = products => {
     return price => {
-      let firstFiltered;
-      if (!price) {
-        firstFiltered = products;
-      } else {
-        firstFiltered = products.filter(
-          product => price >= (product.price * (100 - product.discount)) / 100
-        );
-      }
-      return models => {
-        let secondFiltered;
-        if (!models.length) {
-          secondFiltered = firstFiltered;
-        } else {
-          secondFiltered = firstFiltered.filter(product =>
-            models.includes(product.car.model)
+      const firstFiltered = !price
+        ? products
+        : products.filter(
+            product => price >= product.price * ((100 - product.discount) / 100)
           );
-        }
+      return models => {
+        const secondFiltered = !models.length
+          ? firstFiltered
+          : firstFiltered.filter(product => models.includes(product.car.model));
         return rating => {
-          let thirdFiltered;
-          if (!rating) {
-            thirdFiltered = secondFiltered;
-          } else {
-            thirdFiltered = secondFiltered.filter(
-              product => rating >= product.rating
-            );
-          }
-          return thirdFiltered;
+          const thirdFiltered = !rating
+            ? secondFiltered
+            : secondFiltered.filter(product => rating >= product.rating);
+          return sortBy => {
+            switch (sortBy) {
+              case 'low-to-high':
+                console.log(sortBy);
+                return thirdFiltered
+                  .slice()
+                  .sort(
+                    (a, b) =>
+                      a.price * ((100 - a.discount) / 100) -
+                      b.price * ((100 - b.discount) / 100)
+                  );
+              case 'high-to-low':
+                return thirdFiltered
+                  .slice()
+                  .sort(
+                    (a, b) =>
+                      b.price * ((100 - a.discount) / 100) -
+                      a.price * ((100 - a.discount) / 100)
+                  );
+              default:
+                return thirdFiltered;
+            }
+          };
         };
       };
     };
@@ -84,6 +94,10 @@ const ProductListingPage = props => {
 
   const getCarModelsHandler = models => {
     setCarModels(models);
+  };
+
+  const getSortByHandler = sort => {
+    setSortBy(sort);
   };
 
   return (
@@ -102,7 +116,11 @@ const ProductListingPage = props => {
               carModels={carModels}
             />
             <Listing
-              products={getFilteredProducts(products)(price)(carModels)(star)}
+              products={getFilteredProducts(products)(price)(carModels)(star)(
+                sortBy
+              )}
+              onGetSortBy={getSortByHandler}
+              sort={sortBy}
             />
           </main>
           <Footer />
