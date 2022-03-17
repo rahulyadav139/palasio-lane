@@ -12,10 +12,6 @@ const ProductListingPage = props => {
   const [loading, setLoading] = useState(false);
   const params = useParams();
 
-  // console.log(star);
-  // console.log(carModels);
-  // console.log(price);
-
   const category = params.category;
   const collection = params.collection;
 
@@ -54,13 +50,13 @@ const ProductListingPage = props => {
           product => price >= (product.price * (100 - product.discount)) / 100
         );
       }
-      return model => {
+      return models => {
         let secondFiltered;
-        if (!model) {
+        if (!models.length) {
           secondFiltered = firstFiltered;
         } else {
-          secondFiltered = firstFiltered.filter(
-            product => product.car.model === model
+          secondFiltered = firstFiltered.filter(product =>
+            models.includes(product.car.model)
           );
         }
         return rating => {
@@ -105,7 +101,9 @@ const ProductListingPage = props => {
               star={star}
               carModels={carModels}
             />
-            <Listing products={products} />
+            <Listing
+              products={getFilteredProducts(products)(price)(carModels)(star)}
+            />
           </main>
           <Footer />
         </Fragment>
