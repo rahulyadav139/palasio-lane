@@ -4,25 +4,27 @@ import {
   Footer,
   SingleProductCard,
   ProductDescription,
-} from '../components';
+} from '../../components';
 import { Fragment, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useFetch } from '../../hooks';
 
 const ProductDetailPage = props => {
   const [product, setProduct] = useState(null);
   const params = useParams();
+  const { getData } = useFetch();
 
   const prodId = params.prodId;
 
   useEffect(() => {
     (async () => {
-      try {
-        const res = await fetch(`http://localhost:8080/product/${prodId}`);
-        const data = await res.json();
-        setProduct(data);
-      } catch (err) {
-        console.log(err);
-      }
+      const { data, error } = await getData(
+        `http://localhost:8080/product/${prodId}`,
+        false
+      );
+
+      if (error) return;
+      setProduct(data);
     })();
   }, [prodId]);
   return (
@@ -40,4 +42,4 @@ const ProductDetailPage = props => {
     </Fragment>
   );
 };
-export default ProductDetailPage;
+export { ProductDetailPage };

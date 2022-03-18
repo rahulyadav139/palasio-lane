@@ -8,7 +8,7 @@ import {
   Footer,
   Banner,
   ScrollTopButton,
-} from '../components';
+} from '../../components';
 
 const Homepage = props => {
   return (
@@ -25,4 +25,4 @@ const Homepage = props => {
     </Fragment>
   );
 };
-export default Homepage;
+export { Homepage };

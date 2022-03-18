@@ -1,11 +1,10 @@
 import './AuthForm.css';
-import { useInput } from '../../hooks/use-input';
-import { useAuth } from '../../contexts/auth-context';
-import { useAuthModal } from '../../contexts/auth-modal-context';
+import { useInput, useAuth, useAuthModal, useWishlist } from '../../hooks';
 
 const LoginForm = props => {
   const { loginHandler } = useAuth();
   const { resetModal } = useAuthModal();
+  const { getUpdatedWishlist } = useWishlist();
   const {
     value: email,
     setIsTouched: emailIsTouched,
@@ -56,9 +55,13 @@ const LoginForm = props => {
       return console.log('invalid password');
     }
 
+    console.log('login');
+
     const data = await res.json();
 
     loginHandler(data.token);
+
+    getUpdatedWishlist(data.wishlist);
 
     resetModal();
   };
@@ -66,7 +69,7 @@ const LoginForm = props => {
   return (
     <form onSubmit={submitHandler} className="auth-form">
       <h1 className="text-primary">Log in</h1>
-      <label for="email">Email</label>
+      <label htmlFor="email">Email</label>
       <input
         value={email}
         onChange={emailChangeHandler}
@@ -75,7 +78,7 @@ const LoginForm = props => {
         id="email"
         type="email"
       />
-      <label for="password">Password</label>
+      <label htmlFor="password">Password</label>
 
       <div className={passwordClasses}>
         <label>

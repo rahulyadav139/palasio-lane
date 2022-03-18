@@ -1,15 +1,18 @@
-import { AuthProvider } from './auth-context';
-import { AuthModalProvider } from './auth-modal-context';
+import { AuthProvider, AuthContext } from './auth-context';
+import { AuthModalProvider, AuthModalContext } from './auth-modal-context';
+import { WishlistProvider, WishlistContext } from './wishlist-context';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 const Providers = props => {
   return (
     <Router>
       <AuthModalProvider>
-        <AuthProvider>{props.children}</AuthProvider>
+        <AuthProvider>
+          <WishlistProvider>{props.children}</WishlistProvider>
+        </AuthProvider>
       </AuthModalProvider>
     </Router>
   );
 };
 
-export default Providers;
+export { Providers, AuthContext, AuthModalContext, WishlistContext };

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import Providers from './contexts';
+import { Providers } from './contexts';
 
 ReactDOM.render(
   <React.StrictMode>

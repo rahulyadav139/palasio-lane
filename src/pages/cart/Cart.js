@@ -4,7 +4,7 @@ import {
   PriceBreakoutCard,
   Header,
   Footer,
-} from '../components';
+} from '../../components';
 import { Fragment } from 'react';
 // import { CartProductCard } from '../components/cart/CartProductCard';
 
@@ -28,4 +28,4 @@ const Cart = props => {
     </Fragment>
   );
 };
-export default Cart;
+export { Cart };

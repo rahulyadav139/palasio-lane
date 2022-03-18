@@ -1,4 +1,4 @@
-import React, { useContext, useReducer } from 'react';
+import React, { useReducer } from 'react';
 
 const AuthModalContext = React.createContext();
 
@@ -39,6 +39,7 @@ const AuthModalProvider = props => {
     switchModal: switchModalHandler,
     resetModal: resetModalHandler,
     showModal: showModalHandler,
+    dispatch,
   };
 
   return (
@@ -48,6 +49,4 @@ const AuthModalProvider = props => {
   );
 };
 
-const useAuthModal = () => useContext(AuthModalContext);
-
-export { AuthModalProvider, useAuthModal };
+export { AuthModalProvider, AuthModalContext };
