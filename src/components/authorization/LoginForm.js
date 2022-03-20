@@ -102,9 +102,9 @@ const LoginForm = props => {
       </div>
 
       <div className="flex end">
-        <a className="link text-small" href="#">
+        <span className="link text-small" href="#">
           forgot password?
-        </a>
+        </span>
       </div>
 
       <button type="submit" className="btn primary">

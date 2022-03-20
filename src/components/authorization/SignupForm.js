@@ -109,7 +109,7 @@ const SignupForm = props => {
       }),
     });
 
-    if (res.status == 409) {
+    if (res.status === 409) {
       setToast('User is already registered!');
       return;
     }
@@ -179,9 +179,9 @@ const SignupForm = props => {
         />
 
         <div className="flex end">
-          <a className="link text-small" href="#">
+          <span className="link text-small" href="#">
             forgot password?
-          </a>
+          </span>
         </div>
         <button type="submit" className="btn primary">
           Signup

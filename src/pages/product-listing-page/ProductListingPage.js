@@ -35,7 +35,7 @@ const ProductListingPage = props => {
 
       setLoading(false);
     })();
-  }, [category, collection]);
+  }, [category, collection, getData]);
 
   const getPriceHandler = price => {
     setPrice(price);

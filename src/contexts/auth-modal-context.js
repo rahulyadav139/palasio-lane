@@ -12,6 +12,8 @@ const authModalReducer = (state, action) => {
 
     case 'SHOW':
       return { ...state, isAuthModal: true };
+    default:
+      return console.log('error in dispatching an action');
   }
 };
 

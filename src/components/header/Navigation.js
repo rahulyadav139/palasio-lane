@@ -1,11 +1,5 @@
 import './Navigation.css';
-import {
-  useAuth,
-  useAuthModal,
-  useWishlist,
-  useFetch,
-  useCart,
-} from '../../hooks';
+import { useAuth, useAuthModal, useWishlist, useCart } from '../../hooks';
 import { Link } from 'react-router-dom';
 
 const Navigation = props => {

@@ -2,7 +2,7 @@ import './AuthModal.css';
 import { Modal } from '../ui/Modal';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
-import { useModal } from '../../contexts/auth-modal-context';
+
 
 const AuthModal = props => {
   const { isAuthTypeLogin, onReset, onSwitch } = props;

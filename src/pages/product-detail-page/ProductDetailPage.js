@@ -26,7 +26,7 @@ const ProductDetailPage = props => {
       if (error) return;
       setProduct(data);
     })();
-  }, [prodId]);
+  }, [prodId, getData]);
   return (
     <Fragment>
       {product && (

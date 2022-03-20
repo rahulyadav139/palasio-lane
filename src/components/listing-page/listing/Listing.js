@@ -1,7 +1,6 @@
 import './Listing.css';
 import ProductCard from '../product-card/ProductCard';
 import { v4 as uuid } from 'uuid';
-import { useState } from 'react';
 
 const Listing = props => {
   // const [sortBy, setSortBy] = useState('popularity');

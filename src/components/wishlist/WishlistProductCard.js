@@ -11,7 +11,6 @@ const WishlistProductCard = props => {
     discount,
     imageUrl,
     exclusive,
-    rating,
     _id: prodId,
   } = props.product;
   const { removeFromWishlist } = useWishlist();
@@ -21,8 +20,12 @@ const WishlistProductCard = props => {
     removeFromWishlist(prodId);
     addToCart(props.product);
   };
+
+  const wishlistProductClasses = exclusive
+    ? 'card shadow ribbon ecom'
+    : 'card shadow ecom';
   return (
-    <div className="card shadow ecom">
+    <div className={wishlistProductClasses} ribbon-content="Exclusive">
       <Link to={`/product/${prodId}`}>
         <div className="image">
           <img src={imageUrl} alt={title} />

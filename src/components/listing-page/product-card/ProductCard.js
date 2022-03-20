@@ -7,7 +7,7 @@ const ProductCard = props => {
   const { addToWishlist, removeFromWishlist, wishlist } = useWishlist();
   const { isAuth } = useAuth();
   const { showModal } = useAuthModal();
-  const { cart, addToCart } = useCart();
+  const { addToCart } = useCart();
   const {
     title,
     brand,

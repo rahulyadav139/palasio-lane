@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import './Categories.css';
 import collectionData from '../../data/collection-data.json';
 import { Link } from 'react-router-dom';

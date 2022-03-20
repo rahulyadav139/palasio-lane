@@ -1,7 +1,7 @@
 import './SingleProductCard.css';
-import { Link } from 'react-router-dom';
 
 import { useWishlist, useAuth, useAuthModal, useCart } from '../../hooks';
+import { priceFormatter } from '../../utils';
 
 const SingleProductCard = props => {
   const { showModal } = useAuthModal();
@@ -74,14 +74,14 @@ const SingleProductCard = props => {
         <div className="hr-line thin solid grey"></div>
         {discount !== 0 ? (
           <div className="price flex gap">
-            <div className="price__original">{price}</div>
+            <div className="price__original">{priceFormatter(price)}</div>
             <div className="price__discounted">
-              {Math.floor(price * ((100 - discount) / 100))}
+              {priceFormatter(price * ((100 - discount) / 100))}
             </div>
           </div>
         ) : (
           <div className="price flex gap">
-            <div className="price__discounted">{price}</div>
+            <div className="price__discounted">{priceFormatter(price)}</div>
           </div>
         )}
         <div className="text-details">inclusive of all taxes</div>
