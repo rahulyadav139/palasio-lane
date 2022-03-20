@@ -1,6 +1,6 @@
 import './ProductListingPage.css';
 import { Fragment, useEffect, useState } from 'react';
-import { Footer, Header, Filters, Listing } from '../../components';
+import { Filters, Footer, Header, Listing } from '../../components';
 import { useParams } from 'react-router-dom';
 import { getFilteredProducts } from '../../utils';
 import { useFetch } from '../../hooks';
