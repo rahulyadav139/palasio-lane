@@ -27,7 +27,7 @@ const WishlistProvider = props => {
     };
 
     const { error } = await sendData(
-      'http://localhost:8080/admin/wishlist',
+      'https://palasio-lane.herokuapp.com/admin/wishlist',
       'PUT',
       updatedWishlist,
       true
@@ -44,7 +44,7 @@ const WishlistProvider = props => {
     };
 
     const { error } = await sendData(
-      'http://localhost:8080/admin/wishlist',
+      'https://palasio-lane.herokuapp.com/admin/wishlist',
       'PUT',
       updatedWishlist,
       true

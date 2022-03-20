@@ -3,10 +3,7 @@ import ProductCard from '../product-card/ProductCard';
 import { v4 as uuid } from 'uuid';
 
 const Listing = props => {
-  // const [sortBy, setSortBy] = useState('popularity');
-
   const changeSortByHandler = e => {
-    // setSortBy(e.target.value);
     props.onGetSortBy(e.target.value);
   };
   return (

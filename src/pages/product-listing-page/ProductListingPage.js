@@ -25,7 +25,7 @@ const ProductListingPage = props => {
       setLoading(true);
 
       const { data, error } = await getData(
-        `http://localhost:8080/products?filterBy=${filterBy}`,
+        `https://palasio-lane.herokuapp.com/products?filterBy=${filterBy}`,
         false
       );
 

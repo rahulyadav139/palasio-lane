@@ -37,7 +37,7 @@ const CartProvider = props => {
     };
 
     const { error } = await sendData(
-      'http://localhost:8080/admin/cart',
+      'https://palasio-lane.herokuapp.com/admin/cart',
       'PUT',
       updatedCart,
       true
@@ -69,7 +69,7 @@ const CartProvider = props => {
     };
 
     const { error } = await sendData(
-      'http://localhost:8080/admin/cart',
+      'https://palasio-lane.herokuapp.com/admin/cart',
       'PUT',
       updatedCart,
       true
@@ -92,7 +92,7 @@ const CartProvider = props => {
     };
 
     const { error } = await sendData(
-      'http://localhost:8080/admin/cart',
+      'https://palasio-lane.herokuapp.com/admin/cart',
       'PUT',
       updatedCart,
       true

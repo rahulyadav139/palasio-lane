@@ -19,7 +19,7 @@ const ProductDetailPage = props => {
   useEffect(() => {
     (async () => {
       const { data, error } = await getData(
-        `http://localhost:8080/product/${prodId}`,
+        `https://palasio-lane.herokuapp.com/product/${prodId}`,
         false
       );
 

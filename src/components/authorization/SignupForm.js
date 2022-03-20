@@ -97,7 +97,7 @@ const SignupForm = props => {
       return;
     }
 
-    const res = await fetch('http://localhost:8080/auth/signup', {
+    const res = await fetch('https://palasio-lane.herokuapp.com/auth/signup', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
