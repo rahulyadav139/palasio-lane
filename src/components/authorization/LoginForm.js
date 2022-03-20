@@ -5,6 +5,7 @@ import {
   useAuthModal,
   useWishlist,
   useCart,
+  useFetch,
 } from '../../hooks';
 
 const LoginForm = props => {
@@ -12,6 +13,7 @@ const LoginForm = props => {
   const { resetModal } = useAuthModal();
   const { getUpdatedWishlist } = useWishlist();
   const { getUpdatedCart } = useCart();
+  const { sendData } = useFetch();
   const {
     value: email,
     setIsTouched: emailIsTouched,
@@ -46,23 +48,40 @@ const LoginForm = props => {
       return;
     }
 
-    const res = await fetch('https://palasio-lane.herokuapp.com/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password }),
-    });
+    // const res = await fetch('https://palasio-lane.herokuapp.com/auth/login', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({ email, password }),
+    // });
 
-    if (res.status === 404) {
+    // if (res.status === 404) {
+    //   return console.log('user not found');
+    // }
+
+    // if (res.status === 401) {
+    //   return console.log('invalid password');
+    // }
+
+    const { data, status, error } = await sendData(
+      'https://palasio-lane.herokuapp.com/auth/login',
+      'POST',
+      { email, password },
+      false
+    );
+
+    if (error) return;
+
+    if (status === 404) {
       return console.log('user not found');
     }
 
-    if (res.status === 401) {
+    if (status === 401) {
       return console.log('invalid password');
     }
 
-    const data = await res.json();
+    // const data = await res.json();
 
     loginHandler(data.token);
 

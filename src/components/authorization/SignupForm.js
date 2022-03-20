@@ -1,5 +1,5 @@
 import './AuthForm.css';
-import { useInput, useAuth, useAuthModal } from '../../hooks';
+import { useInput, useAuth, useAuthModal, useFetch } from '../../hooks';
 import { textFormatter } from '../../utils';
 import { useState, useEffect, Fragment } from 'react';
 // import { useAuth } from '../../contexts/auth-context';
@@ -9,6 +9,7 @@ const SignupForm = props => {
   const [toast, setToast] = useState(null);
   const { loginHandler } = useAuth();
   const { resetModal } = useAuthModal();
+  const { sendData } = useFetch();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -97,24 +98,44 @@ const SignupForm = props => {
       return;
     }
 
-    const res = await fetch('https://palasio-lane.herokuapp.com/auth/signup', {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        fullName: textFormatter(`${firstName} ${lastName}`),
-        email,
-        password,
-      }),
-    });
+    // const res = await fetch('https://palasio-lane.herokuapp.com/auth/signup', {
+    //   method: 'PUT',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     fullName: textFormatter(`${firstName} ${lastName}`),
+    //     email,
+    //     password,
+    //   }),
+    // });
 
-    if (res.status === 409) {
+    // if (res.status === 409) {
+    //   setToast('User is already registered!');
+    //   return;
+    // }
+
+    const userData = {
+      fullName: textFormatter(`${firstName} ${lastName}`),
+      email,
+      password,
+    };
+
+    const { data, error, status } = await sendData(
+      'https://palasio-lane.herokuapp.com/auth/signup',
+      'POST',
+      userData,
+      false
+    );
+
+    if (error) return;
+
+    if (status === 409) {
       setToast('User is already registered!');
       return;
     }
 
-    const data = await res.json();
+    // const data = await res.json();
 
     loginHandler(data.token);
     resetModal();
