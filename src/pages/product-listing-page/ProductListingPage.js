@@ -1,6 +1,6 @@
 import './ProductListingPage.css';
 import { Fragment, useEffect, useState } from 'react';
-import { Filters, Footer, Header, Listing } from '../../components';
+import { FilterTable, Footer, Header, Listing } from '../../components';
 import { useParams } from 'react-router-dom';
 import { getFilteredProducts } from '../../utils';
 import { useFetch } from '../../hooks';
@@ -59,7 +59,7 @@ const ProductListingPage = props => {
         <Fragment>
           <Header />
           <main className="main-section">
-            <Filters
+            <FilterTable
               onGetPrice={getPriceHandler}
               onGetStar={getStarHandler}
               onGetCarModels={getCarModelsHandler}
