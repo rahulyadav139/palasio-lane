@@ -1,44 +1,22 @@
 import './Navigation.css';
-import { useAuth, useAuthModal, useWishlist, useFetch } from '../../hooks';
+import {
+  useAuth,
+  useAuthModal,
+  useWishlist,
+  useFetch,
+  useCart,
+} from '../../hooks';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
 
-let initialized = true;
 const Navigation = props => {
   const { isAuth, logoutHandler } = useAuth();
-  const { sendData } = useFetch();
+
   const { showModal } = useAuthModal();
-  const { wishlist, errorToUpdateWishlist } = useWishlist();
+  const { wishlist } = useWishlist();
+  const { cart } = useCart();
 
-  const wishlistQty = wishlist.quantity;
-
-  useEffect(() => {
-    if (!initialized) {
-      (async () => {
-        const { error } = await sendData(
-          'http://localhost:8080/admin/wishlist',
-          'PUT',
-          wishlist,
-          true
-        );
-
-        if (error) {
-          return errorToUpdateWishlist();
-        }
-      })();
-
-      return;
-    }
-
-    if (isAuth && initialized) {
-      initialized = false;
-    }
-  }, [wishlistQty, initialized, isAuth]);
-
-  const userLogoutHandler = () => {
-    logoutHandler();
-    initialized = true;
-  };
+  const wishlistQty = wishlist.totalQuantity;
+  const cartItemsQty = cart.totalQuantity;
 
   return (
     <nav>
@@ -66,21 +44,28 @@ const Navigation = props => {
                 <button className="btn icon medium primary badge-counter">
                   <i className="fas fa-heart"></i>
                 </button>
-                {wishlist.quantity !== 0 && (
-                  <span className="badge-number">{wishlist.quantity}</span>
+                {wishlistQty !== 0 && (
+                  <span className="badge-number">{wishlistQty}</span>
                 )}
               </div>
             </Link>
           </li>
         )}
-        <li className="list-item">
-          <div className="badge-container">
-            <button className="btn icon medium primary badge-counter">
-              <i className="fas fa-shopping-cart"></i>
-            </button>
-            <span className="badge-number">10</span>
-          </div>
-        </li>
+        {isAuth && (
+          <li className="list-item">
+            <Link to="/cart">
+              <div className="badge-container">
+                <button className="btn icon medium primary badge-counter">
+                  <i className="fas fa-shopping-cart"></i>
+                </button>
+
+                {cartItemsQty !== 0 && (
+                  <span className="badge-number">{cartItemsQty}</span>
+                )}
+              </div>
+            </Link>
+          </li>
+        )}
         {isAuth && (
           <li className="profile-item list-item">
             <div className="avatar small">
@@ -106,7 +91,7 @@ const Navigation = props => {
                   <span>Orders</span>
                 </li>
               </ul>
-              <button onClick={userLogoutHandler} className="btn primary">
+              <button onClick={logoutHandler} className="btn primary">
                 Logout
               </button>
             </div>

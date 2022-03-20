@@ -1,54 +1,70 @@
 import './SingleProductCard.css';
 import { Link } from 'react-router-dom';
 
-import { useWishlist, useAuth, useAuthModal } from '../../hooks';
+import { useWishlist, useAuth, useAuthModal, useCart } from '../../hooks';
 
 const SingleProductCard = props => {
   const { showModal } = useAuthModal();
   const { isAuth } = useAuth();
+  const { cart, addToCart } = useCart();
   const { wishlist, removeFromWishlist, addToWishlist } = useWishlist();
   const {
     title,
     brand,
-    imageUrl,
     price,
+    quantity,
+    imageUrl,
     discount,
+    exclusive,
+    rating,
+
     _id: prodId,
   } = props.product;
 
-  const toggleWishListHandler = prodId => {
+  const product = {
+    title,
+    brand,
+    price,
+    quantity,
+    imageUrl,
+    discount,
+    exclusive,
+    rating,
+    _id: prodId,
+  };
+
+  const toggleWishListHandler = () => {
     if (!isAuth) return showModal();
 
-    addToWishlist(prodId);
-
-    wishlist.items.includes(prodId)
+    wishlist.items.some(el => el._id === prodId)
       ? removeFromWishlist(prodId)
-      : addToWishlist(prodId);
+      : addToWishlist(product);
+  };
+
+  const addToCartHandler = () => {
+    if (!isAuth) return showModal();
+
+    cart.items.some(el => el.product._id === prodId)
+      ? console.log('already in the cart')
+      : addToCart(product);
   };
 
   const wishlistButton =
-    isAuth && wishlist.items.includes(prodId) ? (
-      <button
-        onClick={toggleWishListHandler.bind(null, prodId)}
-        className="btn primary"
-      >
+    isAuth && wishlist.items.some(el => el._id === prodId) ? (
+      <button onClick={toggleWishListHandler} className="btn primary">
         Wishlisted
       </button>
     ) : (
-      <button
-        onClick={toggleWishListHandler.bind(null, prodId)}
-        className="btn outline primary"
-      >
+      <button onClick={toggleWishListHandler} className="btn outline primary">
         Wishlist
       </button>
     );
   return (
     <div className="card shadow product-detail">
-      <Link to={`/product/${prodId}`}>
-        <div className="image">
-          <img className="img-responsive" src={imageUrl} alt={title} />
-        </div>
-      </Link>
+      <div className="image">
+        <img className="img-responsive" src={imageUrl} alt={title} />
+      </div>
+
       <div className="product-detail__text">
         <h1 className="product-brand">{title}</h1>
         <h2 className="product-title">{brand}</h2>
@@ -70,7 +86,10 @@ const SingleProductCard = props => {
         )}
         <div className="text-details">inclusive of all taxes</div>
         <div className="buttons">
-          <button className="btn primary icon-with-text">
+          <button
+            onClick={addToCartHandler}
+            className="btn primary icon-with-text"
+          >
             Add to Cart
             <span>
               <i className="fas fa-shopping-cart"></i>

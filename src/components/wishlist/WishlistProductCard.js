@@ -1,5 +1,7 @@
 import './WishlistProductCard.css';
-import { useWishlist } from '../../hooks';
+import { useWishlist, useCart } from '../../hooks';
+import { Link } from 'react-router-dom';
+import { priceFormatter } from '../../utils';
 
 const WishlistProductCard = props => {
   const {
@@ -8,49 +10,59 @@ const WishlistProductCard = props => {
     price,
     discount,
     imageUrl,
+    exclusive,
+    rating,
     _id: prodId,
   } = props.product;
   const { removeFromWishlist } = useWishlist();
+  const { addToCart } = useCart();
+
+  const addToCartHandler = () => {
+    removeFromWishlist(prodId);
+    addToCart(props.product);
+  };
   return (
-    <div class="card shadow ecom">
-      <div class="image">
-        <img src={imageUrl} alt={title} />
+    <div className="card shadow ecom">
+      <Link to={`/product/${prodId}`}>
+        <div className="image">
+          <img src={imageUrl} alt={title} />
 
-        {discount !== 0 && (
-          <span class="badge highlight top left">{`-${discount}%`}</span>
-        )}
-        <span class="badge bottom left">
-          4.4 <i class="fas fa-star"></i> | 123
-        </span>
-      </div>
+          {discount !== 0 && (
+            <span className="badge highlight top left">{`-${discount}%`}</span>
+          )}
+          <span className="badge bottom left">
+            4.4 <i className="fas fa-star"></i> | 123
+          </span>
+        </div>
+      </Link>
 
-      <h1 class="product-brand">{brand}</h1>
+      <h1 className="product-brand">{brand}</h1>
 
-      <h2 class="product-title">{title.substring(0, 22) + '...'}</h2>
+      <h2 className="product-title">{title.substring(0, 22) + '...'}</h2>
       {discount !== 0 ? (
-        <div class="price">
-          <div class="price__original">{price}</div>
-          <div class="price__discounted">
-            {Math.floor(price * ((100 - discount) / 100))}
+        <div className="price">
+          <div className="price__original">{priceFormatter(price)}</div>
+          <div className="price__discounted">
+            {priceFormatter(price * ((100 - discount) / 100))}
           </div>
         </div>
       ) : (
-        <div class="price">
-          <div class="price__discounted">{price}</div>
+        <div className="price">
+          <div className="price__discounted">{priceFormatter(price)}</div>
         </div>
       )}
 
-      <button class="btn primary">
+      <button onClick={addToCartHandler} className="btn primary">
         <strong>
-          <i class="fas fa-shopping-cart"></i> Add to Cart
+          <i className="fas fa-shopping-cart"></i> Add to Cart
         </strong>
       </button>
 
       <button
         onClick={removeFromWishlist.bind(null, prodId)}
-        class="btn-dismiss"
+        className="btn-dismiss"
       >
-        <i class="fas fa-times"></i>
+        <i className="fas fa-times"></i>
       </button>
     </div>
   );

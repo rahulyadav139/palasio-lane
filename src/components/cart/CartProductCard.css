@@ -25,3 +25,22 @@
 .cart-item__buttons button {
   font-size: 75%;
 }
+.cart-item .price__original {
+  text-decoration: line-through;
+  color: var(--grey-color);
+}
+
+.cart-item .price__discounted {
+  color: var(--primary-color-dark);
+  font-weight: bold;
+}
+
+.cart-item .price {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+}
+.cart-item .img-responsive {
+  object-fit: contain;
+}

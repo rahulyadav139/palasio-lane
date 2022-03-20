@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import { useAuth } from './index';
 
 const useFetch = () => {
   const { token } = useAuth();
+
   const sendData = async (url, method, body, authStatus = false) => {
     let data, error, status;
     const headers = !authStatus

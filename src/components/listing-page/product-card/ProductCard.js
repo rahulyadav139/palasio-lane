@@ -1,16 +1,18 @@
 import './ProductCard.css';
 import { Link } from 'react-router-dom';
-import { useWishlist, useAuth, useAuthModal } from '../../../hooks';
+import { useWishlist, useAuth, useAuthModal, useCart } from '../../../hooks';
+import { priceFormatter } from '../../../utils';
 
 const ProductCard = props => {
   const { addToWishlist, removeFromWishlist, wishlist } = useWishlist();
   const { isAuth } = useAuth();
   const { showModal } = useAuthModal();
+  const { cart, addToCart } = useCart();
   const {
     title,
     brand,
     price,
-    quantity,
+    inStock,
     imageUrl,
     discount,
     exclusive,
@@ -18,16 +20,33 @@ const ProductCard = props => {
     _id: prodId,
   } = props.product;
 
+  const product = {
+    title,
+    brand,
+    price,
+    inStock,
+    imageUrl,
+    discount,
+    exclusive,
+    rating,
+    _id: prodId,
+  };
+
   const productCardClasses = exclusive
     ? 'card shadow ribbon ecom'
     : 'card shadow ecom';
 
-  const toggleWishListHandler = prodId => {
+  const toggleWishListHandler = () => {
     if (!isAuth) return showModal();
 
-    wishlist.items.includes(prodId)
+    wishlist.items.some(el => el._id === prodId)
       ? removeFromWishlist(prodId)
-      : addToWishlist(prodId);
+      : addToWishlist(product);
+  };
+
+  const addToCartHandler = () => {
+    if (!isAuth) return showModal();
+    addToCart(product);
   };
 
   return (
@@ -48,11 +67,11 @@ const ProductCard = props => {
       <div className="flex space-between">
         <h1 className="product-brand">{brand}</h1>
         <button
-          onClick={toggleWishListHandler.bind(null, prodId)}
+          onClick={toggleWishListHandler}
           className="btn btn-wishlist icon medium primary"
         >
-          {isAuth && wishlist.items.includes(prodId) ? (
-            <i class="fas fa-heart"></i>
+          {isAuth && wishlist.items.some(el => el._id === prodId) ? (
+            <i className="fas fa-heart"></i>
           ) : (
             <i className="far fa-heart"></i>
           )}
@@ -63,23 +82,23 @@ const ProductCard = props => {
 
       {discount !== 0 && (
         <div className="price">
-          <div className="price__original">{price}</div>
+          <div className="price__original">{priceFormatter(price)}</div>
           <div className="price__discounted">
-            {Math.floor(price * ((100 - discount) / 100))}
+            {priceFormatter(price * ((100 - discount) / 100))}
           </div>
         </div>
       )}
       {!discount && (
         <div className="price">
-          <div className="price__discounted">{price}</div>
+          <div className="price__discounted">{priceFormatter(price)}</div>
         </div>
       )}
 
-      <button className="btn primary">
+      <button onClick={addToCartHandler} className="btn primary">
         <strong>Add</strong>
       </button>
 
-      {!quantity && (
+      {!inStock && (
         <span className="overlay">
           <p>out of stock</p>
         </span>

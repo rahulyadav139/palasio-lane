@@ -32,7 +32,7 @@ function App() {
         <Route path="/product/:prodId" element={<ProductDetailPage />} />
 
         {isAuth && <Route path="/wishlist" element={<Wishlist />} />}
-        <Route path="/cart" element={<Cart />} />
+        {isAuth && <Route path="/cart" element={<Cart />} />}
 
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

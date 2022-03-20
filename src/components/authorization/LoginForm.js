@@ -1,10 +1,17 @@
 import './AuthForm.css';
-import { useInput, useAuth, useAuthModal, useWishlist } from '../../hooks';
+import {
+  useInput,
+  useAuth,
+  useAuthModal,
+  useWishlist,
+  useCart,
+} from '../../hooks';
 
 const LoginForm = props => {
   const { loginHandler } = useAuth();
   const { resetModal } = useAuthModal();
   const { getUpdatedWishlist } = useWishlist();
+  const { getUpdatedCart } = useCart();
   const {
     value: email,
     setIsTouched: emailIsTouched,
@@ -55,13 +62,13 @@ const LoginForm = props => {
       return console.log('invalid password');
     }
 
-    console.log('login');
-
     const data = await res.json();
 
     loginHandler(data.token);
 
     getUpdatedWishlist(data.wishlist);
+
+    getUpdatedCart(data.cart);
 
     resetModal();
   };

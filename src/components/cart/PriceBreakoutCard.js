@@ -1,30 +1,51 @@
 import './PriceBreakoutCard.css';
+import { priceFormatter } from '../../utils';
 
-const PriceBreakoutCard = props => {
+const PriceBreakoutCard = ({ cart }) => {
+  const price = cart.items.reduce(
+    (acc, el) => (acc += el.product.price * el.quantity),
+    0
+  );
+  const discountedPrice = cart.items.reduce(
+    (acc, el) =>
+      (acc +=
+        el.product.price * el.quantity * ((100 - el.product.discount) / 100)),
+    0
+  );
+  const discount = price - discountedPrice;
+  const tax = discountedPrice * 0.18;
+
+  const shippingCharges = discountedPrice < 1000 ? discountedPrice * 0.1 : 0;
+
+  const totalPrice = price - discount + tax + shippingCharges;
   return (
-    <div class="price-breakout card shadow flex col">
-      <div class="heading-5">PRICE DETAILS</div>
-      <div class="hr-line solid grey"></div>
-      <div class="flex space-between">
-        <p class="text-small">Price (2 items)</p>
-        <p class="text-small">Rs 4999</p>
+    <div className="price-breakout card shadow flex col">
+      <div className="heading-5">PRICE DETAILS</div>
+      <div className="hr-line solid grey"></div>
+      <div className="flex space-between">
+        <p className="text-small">{`Price (${cart.totalQuantity} items)`}</p>
+        <p className="text-small">{priceFormatter(price)}</p>
       </div>
-      <div class="flex space-between">
-        <p class="text-small">Discount</p>
-        <p class="text-small">- Rs 4999</p>
+      <div className="flex space-between">
+        <p className="text-small">Discount</p>
+        <p className="text-small">{`- ${priceFormatter(discount)}`}</p>
       </div>
-      <div class="flex space-between">
-        <p class="text-small">Delivery Charges</p>
-        <p class="text-small">Rs 4999</p>
+      <div className="flex space-between">
+        <p className="text-small">Tax</p>
+        <p className="text-small">{priceFormatter(tax)}</p>
       </div>
-      <div class="hr-line solid grey"></div>
-      <div class="flex space-between align-center">
-        <p class="text-bold">TOTAL AMOUNT</p>
-        <p class="text-bold">Rs 4999</p>
+      <div className="flex space-between">
+        <p className="text-small">Delivery Charges</p>
+        <p className="text-small">{priceFormatter(shippingCharges)}</p>
       </div>
-      <div class="hr-line solid grey"></div>
-      <p>You will save Rs 1999 on this order</p>
-      <button class="btn primary">Place Order</button>
+      <div className="hr-line solid grey"></div>
+      <div className="flex space-between align-center">
+        <p className="text-bold">TOTAL AMOUNT</p>
+        <p className="text-bold">{priceFormatter(totalPrice)}</p>
+      </div>
+      <div className="hr-line solid grey"></div>
+      <p>{`You will save ${priceFormatter(discount)} on this order`}</p>
+      <button className="btn primary">Place Order</button>
     </div>
   );
 };

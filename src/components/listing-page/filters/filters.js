@@ -25,6 +25,8 @@ const Filters = props => {
       />
       <FilterByRatings onGetStar={props.onGetStar} star={props.star} />
 
+      <div className="first-line hr-line fad"></div>
+
       <div className="filter-section__buttons">
         <button className="btn primary">Filter</button>
         <button className="btn-reset btn outline primary">Reset</button>

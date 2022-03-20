@@ -8,4 +8,14 @@ const textFormatter = str => {
   return formattedStr;
 };
 
-export { textFormatter };
+const priceFormatter = price => {
+  const formatterPrice = price.toLocaleString('en-IN', {
+    style: 'currency',
+    currency: 'INR',
+    maximumFractionDigits: 0,
+  });
+
+  return formatterPrice;
+};
+
+export { textFormatter, priceFormatter };
