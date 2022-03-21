@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 const Navigation = props => {
   const { isAuth, logoutHandler } = useAuth();
-
   const { showModal } = useAuthModal();
   const { wishlist } = useWishlist();
   const { cart } = useCart();
