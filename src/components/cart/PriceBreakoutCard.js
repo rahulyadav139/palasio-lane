@@ -2,11 +2,14 @@ import './PriceBreakoutCard.css';
 import { priceFormatter } from '../../utils';
 
 const PriceBreakoutCard = ({ cart }) => {
-  const price = cart.items.reduce(
+  const cartItemsQty = cart.reduce((acc, el) => (acc += el.quantity), 0);
+  console.log(cartItemsQty);
+  const price = cart.reduce(
     (acc, el) => (acc += el.product.price * el.quantity),
     0
   );
-  const discountedPrice = cart.items.reduce(
+  console.log(price);
+  const discountedPrice = cart.reduce(
     (acc, el) =>
       (acc +=
         el.product.price * el.quantity * ((100 - el.product.discount) / 100)),
@@ -23,7 +26,7 @@ const PriceBreakoutCard = ({ cart }) => {
       <div className="heading-5">PRICE DETAILS</div>
       <div className="hr-line solid grey"></div>
       <div className="flex space-between">
-        <p className="text-small">{`Price (${cart.totalQuantity} items)`}</p>
+        <p className="text-small">{`Price (${cartItemsQty} items)`}</p>
         <p className="text-small">{priceFormatter(price)}</p>
       </div>
       <div className="flex space-between">

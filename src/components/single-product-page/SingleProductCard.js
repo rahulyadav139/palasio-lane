@@ -15,9 +15,7 @@ const SingleProductCard = props => {
     quantity,
     imageUrl,
     discount,
-    exclusive,
     rating,
-
     _id: prodId,
   } = props.product;
 
@@ -28,7 +26,6 @@ const SingleProductCard = props => {
     quantity,
     imageUrl,
     discount,
-    exclusive,
     rating,
     _id: prodId,
   };
@@ -36,7 +33,7 @@ const SingleProductCard = props => {
   const toggleWishListHandler = () => {
     if (!isAuth) return showModal();
 
-    wishlist.items.some(el => el._id === prodId)
+    wishlist.some(el => el._id === prodId)
       ? removeFromWishlist(prodId)
       : addToWishlist(product);
   };
@@ -44,13 +41,13 @@ const SingleProductCard = props => {
   const addToCartHandler = () => {
     if (!isAuth) return showModal();
 
-    cart.items.some(el => el.product._id === prodId)
+    cart.some(el => el.product._id === prodId)
       ? console.log('already in the cart')
       : addToCart(product);
   };
 
   const wishlistButton =
-    isAuth && wishlist.items.some(el => el._id === prodId) ? (
+    isAuth && wishlist.some(el => el._id === prodId) ? (
       <button onClick={toggleWishListHandler} className="btn primary">
         Wishlisted
       </button>

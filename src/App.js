@@ -17,6 +17,8 @@ function App() {
 
   const { isAuth } = useAuth();
 
+  console.log('test');
+
   return (
     <div className="App">
       <Routes>

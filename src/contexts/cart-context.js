@@ -3,103 +3,102 @@ import { useFetch } from '../hooks';
 
 const CartContext = React.createContext();
 
-let updatedCartItems, updatedTotalQuantity, prodIndex, updatedCart;
+let prodIndex, updatedCart;
+let addToCartIsReady = true;
+let removeFromCartIsReady = true;
+let removeSingleProductIsReady = true;
 
 const CartProvider = props => {
-  const [cart, setCart] = useState({
-    items: [],
-    totalQuantity: 0,
-  });
+  const [cart, setCart] = useState([]);
+
+  console.log(cart);
 
   const { sendData } = useFetch();
 
   const addToCartHandler = async product => {
     const { _id: prodId } = product;
-    prodIndex = cart.items.findIndex(el => el.product._id === prodId);
 
-    if (prodIndex >= 0) {
-      if (cart.items[prodIndex].inStock > product.quantity) return;
+    console.log('test');
 
-      updatedCartItems = cart.items.slice();
+    console.log(addToCartIsReady);
 
-      updatedCartItems[prodIndex].quantity += 1;
+    if (addToCartIsReady) {
+      addToCartIsReady = false;
 
-      updatedTotalQuantity = cart.totalQuantity + 1;
-    } else {
-      updatedCartItems = [...cart.items, { product: product, quantity: 1 }];
+      prodIndex = cart.findIndex(el => el.product._id === prodId);
 
-      updatedTotalQuantity = cart.totalQuantity + 1;
-    }
+      if (prodIndex >= 0) {
+        if (cart[prodIndex].product.inStock <= cart[prodIndex].quantity) {
+          addToCartIsReady = true;
+          return console.log('all instock products are added to the cart');
+        }
+        updatedCart = cart.slice();
 
-    updatedCart = {
-      items: updatedCartItems,
-      totalQuantity: updatedTotalQuantity,
-    };
+        updatedCart[prodIndex].quantity += 1;
+      } else {
+        updatedCart = [...cart, { product, quantity: 1 }];
+      }
 
-    const { error } = await sendData(
-      'https://palasio-lane.herokuapp.com/admin/cart',
-      'PUT',
-      updatedCart,
-      true
-    );
+      const { error } = await sendData(
+        'https://palasio-lane.herokuapp.com/admin/cart',
+        'PUT',
+        updatedCart,
+        true
+      );
 
-    if (!error) {
-      setCart(updatedCart);
+      if (!error) {
+        setCart(updatedCart);
+      }
+
+      addToCartIsReady = true;
     }
   };
   const removeFromCartHandler = async prodId => {
-    prodIndex = cart.items.findIndex(el => el.product._id === prodId);
+    if (removeFromCartIsReady) {
+      removeFromCartIsReady = false;
+      prodIndex = cart.findIndex(el => el.product._id === prodId);
 
-    if (prodIndex < 0) return;
+      if (prodIndex < 0) return;
 
-    if (cart.items[prodIndex].quantity === 1) {
-      updatedCartItems = cart.items.filter(el => el.product._id !== prodId);
-      updatedTotalQuantity = cart.totalQuantity -= 1;
-    } else {
-      updatedCartItems = cart.items.slice();
+      if (cart[prodIndex].quantity === 1) {
+        updatedCart = cart.filter(el => el.product._id !== prodId);
+      } else {
+        updatedCart = cart.slice();
 
-      updatedCartItems[prodIndex].quantity -= 1;
+        updatedCart[prodIndex].quantity -= 1;
+      }
 
-      updatedTotalQuantity = cart.totalQuantity - 1;
-    }
+      const { error } = await sendData(
+        'https://palasio-lane.herokuapp.com/admin/cart',
+        'PUT',
+        updatedCart,
+        true
+      );
 
-    updatedCart = {
-      items: updatedCartItems,
-      totalQuantity: updatedTotalQuantity,
-    };
-
-    const { error } = await sendData(
-      'https://palasio-lane.herokuapp.com/admin/cart',
-      'PUT',
-      updatedCart,
-      true
-    );
-
-    if (!error) {
-      setCart(updatedCart);
+      if (!error) {
+        setCart(updatedCart);
+      }
+      removeFromCartIsReady = true;
     }
   };
 
   const removeSingleProductHandler = async prodId => {
-    prodIndex = cart.items.findIndex(el => el.product._id === prodId);
+    if (removeSingleProductIsReady) {
+      removeSingleProductIsReady = false;
 
-    updatedCartItems = cart.items.filter(el => el.product._id !== prodId);
-    updatedTotalQuantity = cart.totalQuantity -= cart.items[prodIndex].quantity;
+      updatedCart = cart.filter(el => el.product._id !== prodId);
 
-    updatedCart = {
-      items: updatedCartItems,
-      totalQuantity: updatedTotalQuantity,
-    };
+      const { error } = await sendData(
+        'https://palasio-lane.herokuapp.com/admin/cart',
+        'PUT',
+        updatedCart,
+        true
+      );
 
-    const { error } = await sendData(
-      'https://palasio-lane.herokuapp.com/admin/cart',
-      'PUT',
-      updatedCart,
-      true
-    );
-
-    if (!error) {
-      setCart(updatedCart);
+      if (!error) {
+        setCart(updatedCart);
+      }
+      removeSingleProductIsReady = true;
     }
   };
 

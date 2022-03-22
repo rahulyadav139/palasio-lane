@@ -11,7 +11,11 @@ import { v4 as uuid } from 'uuid';
 
 const Cart = props => {
   const { cart } = useCart();
-  const cartQty = cart.totalQuantity;
+  console.log(cart);
+  const cartItemsQty = cart.reduce((acc, el) => (acc += el.quantity), 0) ?? 0;
+
+  const headingMsg =
+    cartItemsQty > 1 ? `( ${cartItemsQty} items )` : `( ${cartItemsQty} item )`;
 
   return (
     <Fragment>
@@ -19,13 +23,12 @@ const Cart = props => {
 
       <main className="main">
         <div className="heading-4">
-          My Cart{' '}
-          <span className="text-grey heading-6">{`( ${cartQty} items )`}</span>
+          My Cart <span className="text-grey heading-6">{headingMsg}</span>
         </div>
         <div className="hr-line fad"></div>
         <div className="cart">
           <div className="cart-items">
-            {cart.items.map(el => (
+            {cart.map(el => (
               <CartProductCard
                 key={uuid()}
                 product={el.product}
@@ -33,7 +36,7 @@ const Cart = props => {
               />
             ))}
           </div>
-          {cart.items.length !== 0 && <PriceBreakoutCard cart={cart} />}
+          {cart.length !== 0 && <PriceBreakoutCard cart={cart} />}
         </div>
       </main>
 

@@ -21,11 +21,8 @@ const WishlistProductCard = props => {
     addToCart(props.product);
   };
 
-  const wishlistProductClasses = exclusive
-    ? 'card shadow ribbon ecom'
-    : 'card shadow ecom';
   return (
-    <div className={wishlistProductClasses} ribbon-content="Exclusive">
+    <div className="card shadow ecom">
       <Link to={`/product/${prodId}`}>
         <div className="image">
           <img src={imageUrl} alt={title} />

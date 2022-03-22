@@ -8,8 +8,8 @@ const Navigation = props => {
   const { wishlist } = useWishlist();
   const { cart } = useCart();
 
-  const wishlistQty = wishlist.totalQuantity;
-  const cartItemsQty = cart.totalQuantity;
+  const wishlistQty = wishlist.length;
+  const cartItemsQty = cart.reduce((acc, el) => (acc += el.quantity), 0);
 
   return (
     <nav>

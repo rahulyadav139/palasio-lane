@@ -7,7 +7,7 @@ const ProductCard = props => {
   const { addToWishlist, removeFromWishlist, wishlist } = useWishlist();
   const { isAuth } = useAuth();
   const { showModal } = useAuthModal();
-  const { addToCart } = useCart();
+  const { cart, addToCart } = useCart();
   const {
     title,
     brand,
@@ -27,7 +27,6 @@ const ProductCard = props => {
     inStock,
     imageUrl,
     discount,
-    exclusive,
     rating,
     _id: prodId,
   };
@@ -39,14 +38,18 @@ const ProductCard = props => {
   const toggleWishListHandler = () => {
     if (!isAuth) return showModal();
 
-    wishlist.items.some(el => el._id === prodId)
+    wishlist.some(el => el._id === prodId)
       ? removeFromWishlist(prodId)
       : addToWishlist(product);
   };
 
   const addToCartHandler = () => {
     if (!isAuth) return showModal();
-    addToCart(product);
+    // addToCart(product);
+
+    cart.some(el => el.product._id === prodId)
+      ? console.log('already in the cart')
+      : addToCart(product);
   };
 
   return (
@@ -70,7 +73,7 @@ const ProductCard = props => {
           onClick={toggleWishListHandler}
           className="btn btn-wishlist icon medium primary"
         >
-          {isAuth && wishlist.items.some(el => el._id === prodId) ? (
+          {isAuth && wishlist.some(el => el._id === prodId) ? (
             <i className="fas fa-heart"></i>
           ) : (
             <i className="far fa-heart"></i>

@@ -14,6 +14,7 @@ const CartProductCard = props => {
     imageUrl,
     discount,
     _id: prodId,
+   
   } = props.product;
   const quantity = props.quantity;
 

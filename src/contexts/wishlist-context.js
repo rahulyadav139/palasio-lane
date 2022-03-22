@@ -4,53 +4,54 @@ import { useFetch } from '../hooks';
 
 const WishlistContext = React.createContext();
 
-let updatedItems, updatedWishlist, isExist;
+let updatedWishlist, isExist;
+let addToWishlistIsReady = true;
+let removeFromWishlistIsReady = true;
 
 const WishlistProvider = props => {
-  const [wishlist, setWishlist] = useState({
-    items: [],
-    totalQuantity: 0,
-  });
+  const [wishlist, setWishlist] = useState([]);
 
   const { sendData } = useFetch();
 
   const addToWishlist = async product => {
     const prodId = product._id;
 
-    isExist = wishlist.items.includes(prodId);
+    isExist = wishlist.includes(prodId);
 
     if (isExist) return wishlist;
-    updatedItems = [...wishlist.items, product];
-    updatedWishlist = {
-      items: updatedItems,
-      totalQuantity: wishlist.totalQuantity + 1,
-    };
 
-    const { error } = await sendData(
-      'https://palasio-lane.herokuapp.com/admin/wishlist',
-      'PUT',
-      updatedWishlist,
-      true
-    );
+    if (addToWishlistIsReady) {
+      addToWishlistIsReady = false;
 
-    if (!error) setWishlist(updatedWishlist);
+      updatedWishlist = [...wishlist, product];
+
+      const { error } = await sendData(
+        'https://palasio-lane.herokuapp.com/admin/wishlist',
+        'PUT',
+        updatedWishlist,
+        true
+      );
+
+      if (!error) setWishlist(updatedWishlist);
+      addToWishlistIsReady = true;
+    }
   };
   const removeFromWishlist = async prodId => {
-    updatedItems = wishlist.items.filter(el => el._id !== prodId);
+    if (removeFromWishlistIsReady) {
+      removeFromWishlistIsReady = false;
 
-    updatedWishlist = {
-      items: updatedItems,
-      totalQuantity: wishlist.totalQuantity - 1,
-    };
+      updatedWishlist = wishlist.filter(el => el._id !== prodId);
 
-    const { error } = await sendData(
-      'https://palasio-lane.herokuapp.com/admin/wishlist',
-      'PUT',
-      updatedWishlist,
-      true
-    );
+      const { error } = await sendData(
+        'https://palasio-lane.herokuapp.com/admin/wishlist',
+        'PUT',
+        updatedWishlist,
+        true
+      );
 
-    if (!error) setWishlist(updatedWishlist);
+      if (!error) setWishlist(updatedWishlist);
+      removeFromWishlistIsReady = true;
+    }
   };
 
   const getUpdatedWishlist = wishlist => {
