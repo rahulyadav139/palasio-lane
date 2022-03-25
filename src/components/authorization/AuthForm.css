@@ -16,6 +16,9 @@
 .input-field-icon label {
   display: inline-flex;
 }
+.btn-switch {
+  cursor: pointer;
+}
 
 .wrapper-username {
   display: grid;

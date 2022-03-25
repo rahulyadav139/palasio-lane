@@ -1,8 +1,9 @@
 .modal-backdrop {
   z-index: 60;
+  background: rgba(0, 0, 0, 0.5);
 }
 .modal-wrapper {
-  position: absolute;
+  position: fixed;
   width: 100%;
   max-width: 43.75rem;
   left: 50%;
