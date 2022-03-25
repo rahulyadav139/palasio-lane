@@ -12,6 +12,9 @@
   gap: 1rem;
   margin-bottom: 1rem;
 }
+.categories-tab a {
+  display: block;
+}
 
 .collection-title {
   margin-bottom: 1rem;
@@ -20,7 +23,7 @@
   justify-content: center;
   align-items: center;
 }
-.collection-title button {
+.collection-title a {
   position: absolute;
   /* top: 0; */
   right: 0;
@@ -64,6 +67,7 @@
 } */
 .image-card {
   display: flex;
+  height: 100%;
   flex-direction: column;
   gap: 0.5rem;
   text-align: center;
