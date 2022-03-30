@@ -14,6 +14,7 @@ const LoginForm = props => {
   const { getUpdatedWishlist } = useWishlist();
   const { getUpdatedCart } = useCart();
   const { sendData } = useFetch();
+  const setToast = props.setToast;
   const {
     value: email,
     setIsTouched: emailIsTouched,
@@ -48,22 +49,6 @@ const LoginForm = props => {
       return;
     }
 
-    // const res = await fetch('https://palasio-lane.herokuapp.com/auth/login', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({ email, password }),
-    // });
-
-    // if (res.status === 404) {
-    //   return console.log('user not found');
-    // }
-
-    // if (res.status === 401) {
-    //   return console.log('invalid password');
-    // }
-
     const { data, status, error } = await sendData(
       'https://palasio-lane.herokuapp.com/auth/login',
       'POST',
@@ -74,14 +59,12 @@ const LoginForm = props => {
     if (error) return;
 
     if (status === 404) {
-      return console.log('user not found');
+      return setToast('user not found');
     }
 
     if (status === 401) {
-      return console.log('invalid password');
+      return setToast('invalid password');
     }
-
-    // const data = await res.json();
 
     loginHandler(data.token);
 

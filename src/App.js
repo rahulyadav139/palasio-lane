@@ -7,9 +7,10 @@ import {
   Cart,
 } from './pages';
 
-import { AuthModal } from './components';
-import { useAuthModal, useAuth } from './hooks';
+import { AuthModal, Loading } from './components';
+import { useAuthModal, useAuth, useLoading } from './hooks';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 function App() {
   const { isAuthModal, resetModal, switchModal, isAuthTypeLogin } =
@@ -17,7 +18,13 @@ function App() {
 
   const { isAuth } = useAuth();
 
-  console.log('test');
+  const { loading } = useLoading();
+
+  useEffect(() => {
+    loading
+      ? document.querySelector('body').classList.add('no-overflow')
+      : document.querySelector('body').classList.remove('no-overflow');
+  }, [loading]);
 
   return (
     <div className="App">
@@ -38,6 +45,8 @@ function App() {
 
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
+
+      {loading && <Loading />}
 
       {isAuthModal && (
         <AuthModal

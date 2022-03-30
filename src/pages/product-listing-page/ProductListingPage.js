@@ -7,7 +7,6 @@ import { useFetch } from '../../hooks';
 
 const ProductListingPage = props => {
   const [showFilters, setShowFilters] = useState(false);
-  console.log(showFilters);
   const [price, setPrice] = useState('');
   const [carModels, setCarModels] = useState([]);
   const [star, setStar] = useState(null);

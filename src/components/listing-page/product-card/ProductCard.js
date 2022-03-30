@@ -102,9 +102,11 @@ const ProductCard = props => {
       </button>
 
       {!inStock && (
-        <span className="overlay">
-          <p>out of stock</p>
-        </span>
+        <Link to={`/product/${prodId}`}>
+          <span className="overlay">
+            <p>out of stock</p>
+          </span>
+        </Link>
       )}
     </div>
   );

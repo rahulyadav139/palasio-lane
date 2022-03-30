@@ -6,18 +6,10 @@ import { useState, useEffect, Fragment } from 'react';
 // import { useAuthModal } from '../../contexts/auth-modal-context';
 
 const SignupForm = props => {
-  const [toast, setToast] = useState(null);
   const { loginHandler } = useAuth();
   const { resetModal } = useAuthModal();
   const { sendData } = useFetch();
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setToast(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, [toast]);
+  const setToast = props.setToast;
 
   const {
     value: firstName,
@@ -94,26 +86,9 @@ const SignupForm = props => {
     }
 
     if (password !== confirmPassword) {
-      console.log("password doesn't match");
+      setToast("password doesn't match");
       return;
     }
-
-    // const res = await fetch('https://palasio-lane.herokuapp.com/auth/signup', {
-    //   method: 'PUT',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     fullName: textFormatter(`${firstName} ${lastName}`),
-    //     email,
-    //     password,
-    //   }),
-    // });
-
-    // if (res.status === 409) {
-    //   setToast('User is already registered!');
-    //   return;
-    // }
 
     const userData = {
       fullName: textFormatter(`${firstName} ${lastName}`),
@@ -123,7 +98,7 @@ const SignupForm = props => {
 
     const { data, error, status } = await sendData(
       'https://palasio-lane.herokuapp.com/auth/signup',
-      'POST',
+      'PUT',
       userData,
       false
     );
@@ -134,8 +109,6 @@ const SignupForm = props => {
       setToast('User is already registered!');
       return;
     }
-
-    // const data = await res.json();
 
     loginHandler(data.token);
     resetModal();
@@ -217,14 +190,6 @@ const SignupForm = props => {
           </span>
         </p>
       </form>
-      {toast && (
-        <div class="toast danger">
-          <span class="icon small white">
-            <i class="fas fa-bell"></i>
-          </span>
-          {` ${toast}`}
-        </div>
-      )}
     </Fragment>
   );
 };

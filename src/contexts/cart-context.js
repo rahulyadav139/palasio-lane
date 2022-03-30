@@ -11,8 +11,6 @@ let removeSingleProductIsReady = true;
 const CartProvider = props => {
   const [cart, setCart] = useState([]);
 
-  console.log(cart);
-
   const { sendData } = useFetch();
 
   const addToCartHandler = async product => {

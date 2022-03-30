@@ -1,30 +1,14 @@
 .modal-auth {
-  /* width: 100%;
-  max-width: 43.75rem; */
   display: flex;
-  margin: auto;
-  /* left: 50%; */
-  /* position: absolute; */
-  /* transform: translateX(-50%); */
-  /* transition: all 0.5s ease-in-out;
-  z-index: 70; */
-}
-
-/* .modal-login {
-  top: -100%;
-}
-.modal-signup {
-  bottom: -100%;
-}
-
-.modal-login-show {
+  position: fixed;
+  width: 100%;
+  max-width: 43.75rem;
+  left: 50%;
   top: 50%;
   transform: translateY(-50%) translateX(-50%);
+  z-index: 70;
 }
-.modal-signup-show {
-  bottom: 50%;
-  transform: translateY(50%) translateX(-50%);
-} */
+
 .modal-auth__brand {
   flex-basis: 40%;
   background: var(--primary-color);

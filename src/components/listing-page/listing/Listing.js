@@ -17,7 +17,7 @@ const Listing = props => {
       <div className="listing">
         <div className="listing-section__head heading-5">
           Showing All Products
-          <span className="text-grey heading-6">( showing 20 products)</span>
+          <span className="text-grey heading-6">{`( showing ${props.products.length} products)`}</span>
           <button onClick={props.onFilters} className="btn-filter">
             <i className="bi bi-filter-right"></i>Filter
           </button>
