@@ -4,3 +4,12 @@
   grid-template-columns: 2fr 8fr;
   gap: 1rem;
 }
+
+@media only screen and (max-width: 450px) {
+  .main-section {
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    /* position: relative; */
+  }
+}

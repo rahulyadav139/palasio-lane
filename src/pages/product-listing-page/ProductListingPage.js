@@ -6,6 +6,8 @@ import { getFilteredProducts } from '../../utils';
 import { useFetch } from '../../hooks';
 
 const ProductListingPage = props => {
+  const [showFilters, setShowFilters] = useState(false);
+  console.log(showFilters);
   const [price, setPrice] = useState('');
   const [carModels, setCarModels] = useState([]);
   const [star, setStar] = useState(null);
@@ -53,6 +55,9 @@ const ProductListingPage = props => {
     setSortBy(sort);
   };
 
+  const showFiltersHandler = () => {
+    setShowFilters(prev => !prev);
+  };
   return (
     <Fragment>
       {!loading && (
@@ -67,13 +72,18 @@ const ProductListingPage = props => {
               price={price}
               star={star}
               carModels={carModels}
+              onFilters={showFiltersHandler}
+              filterStatus={showFilters}
             />
+
             <Listing
               products={getFilteredProducts(products)(price)(carModels)(star)(
                 sortBy
               )}
               onGetSortBy={getSortByHandler}
               sort={sortBy}
+              onFilters={showFiltersHandler}
+              filterStatus={showFilters}
             />
           </main>
           <Footer />

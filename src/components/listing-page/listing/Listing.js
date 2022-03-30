@@ -7,12 +7,18 @@ const Listing = props => {
     props.onGetSortBy(e.target.value);
   };
   return (
-    <div className="listing-section">
+    <div
+      className={
+        props.filterStatus
+          ? 'listing-section hide-listing-section'
+          : 'listing-section'
+      }
+    >
       <div className="listing">
         <div className="listing-section__head heading-5">
           Showing All Products
           <span className="text-grey heading-6">( showing 20 products)</span>
-          <button className="btn-filter">
+          <button onClick={props.onFilters} className="btn-filter">
             <i className="bi bi-filter-right"></i>Filter
           </button>
         </div>
