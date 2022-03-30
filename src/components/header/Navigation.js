@@ -1,8 +1,10 @@
 import './Navigation.css';
 import { useAuth, useAuthModal, useWishlist, useCart } from '../../hooks';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 const Navigation = props => {
+  const [theme, setTheme] = useState(localStorage.getItem('theme') ?? 'light');
   const { isAuth, logoutHandler } = useAuth();
   const { showModal } = useAuthModal();
   const { wishlist } = useWishlist();
@@ -10,6 +12,22 @@ const Navigation = props => {
 
   const wishlistQty = wishlist.length;
   const cartItemsQty = cart.reduce((acc, el) => (acc += el.quantity), 0);
+
+  useEffect(() => {
+    theme === 'dark'
+      ? document.querySelector('body').classList.add('dark-theme')
+      : document.querySelector('body').classList.remove('dark-theme');
+  }, [theme]);
+
+  const themeHandler = e => {
+    if (e.target.checked) {
+      setTheme('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      setTheme('light');
+      localStorage.setItem('theme', 'light');
+    }
+  };
 
   return (
     <nav>
@@ -20,11 +38,13 @@ const Navigation = props => {
               type="checkbox"
               className="theme-toggle__checkbox"
               id="theme-toggle"
+              onChange={themeHandler}
             />
             <label className="theme-toggle__label" htmlFor="theme-toggle">
               <span className="icon medium primary">
-                <i className="fas fa-moon"></i>{' '}
-                <i className="fas fa-sun hidden"></i>
+                <i
+                  className={theme === 'light' ? 'fas fa-moon' : 'fas fa-sun'}
+                ></i>
               </span>
             </label>
           </div>

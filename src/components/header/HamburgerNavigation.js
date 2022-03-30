@@ -26,6 +26,7 @@ const HamburgerNavigation = props => {
     setIsHamburgerNav(false);
     showModal();
   };
+
   return (
     <Fragment>
       <div
