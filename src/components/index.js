@@ -7,3 +7,5 @@ export { Header } from './header/Header';
 export { ScrollTopButton } from './scroll-top-button/ScrollTopButton';
 export { Testimonies } from './testimonies/Testimonies';
 export { Modal } from './ui/Modal';
+export { Filters } from './listing-page/filters/Filters';
+export { Listing } from './listing-page/listing/Listing';

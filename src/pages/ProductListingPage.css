@@ -1,0 +1,6 @@
+.main-section {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 2fr 8fr;
+  gap: 1rem;
+}

@@ -1,0 +1,26 @@
+.filter-section {
+  padding: 1rem;
+}
+.filter-section__head button {
+  outline: none;
+  background: none;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--grey-color);
+  border: none;
+  border-bottom: 1.5px solid var(--primary-color);
+  cursor: pointer;
+}
+.filter-section h4 {
+  margin-bottom: 0.5rem;
+}
+.filter-section__price {
+  margin: 0.5rem;
+}
+.filter-section .hr-line {
+  margin: 1rem auto;
+}
+
+.filter-section__buttons {
+  display: none;
+}

@@ -1,0 +1,118 @@
+.listing-section {
+  padding: 1rem;
+}
+.listing-section .heading-5 {
+  margin-bottom: 0.5rem;
+}
+.listing-section .sorting-container {
+  margin-bottom: 1rem;
+}
+.sorting-container input {
+  display: none;
+}
+.sorting-container label {
+  border-bottom: 1.5px solid transparent;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+.sorting-container input:checked + label {
+  border-color: var(--primary-color);
+  font-weight: bold;
+}
+.listing-section__products {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(10rem, auto));
+  gap: 1.5rem;
+  grid-auto-flow: row dense;
+}
+.listing-section__sorting {
+  margin-bottom: 1rem;
+}
+
+.listing-section__pages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.listing-section__pages ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+.listing-section__pages ul li {
+  padding: 0.5rem;
+  background: var(--off-white-color);
+  cursor: pointer;
+  font-weight: bold;
+}
+.dark-theme .listing-section__pages ul li {
+  background: var(--black-color);
+}
+
+.listing-section__actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.listing-section__actions button:last-child {
+  grid-column-start: 3;
+}
+.listing-section__head button {
+  display: none;
+}
+.listing-section__pages {
+  margin: 1rem auto;
+}
+
+@media only screen and (max-width: 450px) {
+  .filter-section {
+    display: none;
+    font-size: 14.4px;
+    width: 100%;
+    transition: transform 0.5s;
+    transform: translateY(-110%);
+  }
+  .filter-section-show {
+    transform: translateY(0);
+  }
+  .listing-section {
+    width: 100%;
+  }
+  .listing-section__products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .main-section {
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .filter-section__buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+    position: sticky;
+    bottom: 0;
+    background: var(--white-color);
+    padding-bottom: 1rem;
+  }
+  .filter-section__head {
+    display: none;
+  }
+  .filter-section .first-line {
+    display: none;
+  }
+  .listing-section__head {
+    display: flex;
+    align-items: center;
+  }
+  .listing-section__head button {
+    margin-left: auto;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid var(--primary-color);
+    background: transparent;
+    display: block;
+  }
+}
