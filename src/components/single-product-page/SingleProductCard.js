@@ -31,7 +31,7 @@ const SingleProductCard = props => {
     title,
     brand,
     price,
-    quantity,
+    inStock,
     imageUrl,
     discount,
     rating,
@@ -82,7 +82,8 @@ const SingleProductCard = props => {
         <h1 className="product-brand">{title}</h1>
         <h2 className="product-title">{brand}</h2>
         <div className="rating">
-          4.4 <i className="fas fa-star"></i> | 3.9k Ratings
+          {rating} <i className="fas fa-star"></i> |{' '}
+          {Math.floor(Math.random() * 1000)} Ratings
         </div>
         <div className="hr-line thin solid grey"></div>
         {discount !== 0 ? (

@@ -24,6 +24,7 @@ const ProductDetailPage = props => {
       );
 
       if (error) return;
+
       setProduct(data);
     })();
   }, [prodId, getData]);
