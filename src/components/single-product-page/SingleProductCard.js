@@ -1,10 +1,17 @@
 import './SingleProductCard.css';
 
-import { useWishlist, useAuth, useAuthModal, useCart } from '../../hooks';
+import {
+  useWishlist,
+  useAuth,
+  useAuthModal,
+  useCart,
+  useToast,
+} from '../../hooks';
 import { priceFormatter } from '../../utils';
 
 const SingleProductCard = props => {
   const { showModal } = useAuthModal();
+  const { setToast } = useToast();
   const { isAuth } = useAuth();
   const { cart, addToCart } = useCart();
   const { wishlist, removeFromWishlist, addToWishlist } = useWishlist();
@@ -17,6 +24,7 @@ const SingleProductCard = props => {
     discount,
     rating,
     _id: prodId,
+    inStock,
   } = props.product;
 
   const product = {
@@ -38,11 +46,19 @@ const SingleProductCard = props => {
       : addToWishlist(product);
   };
 
+  const addToCartBtnClasses = inStock
+    ? 'btn primary icon-with-text'
+    : 'btn primary icon-with-text disable';
+
   const addToCartHandler = () => {
     if (!isAuth) return showModal();
 
     cart.some(el => el.product._id === prodId)
-      ? console.log('already in the cart')
+      ? setToast({
+          status: true,
+          type: 'loading',
+          message: 'Already in the cart!',
+        })
       : addToCart(product);
   };
 
@@ -85,7 +101,8 @@ const SingleProductCard = props => {
         <div className="buttons">
           <button
             onClick={addToCartHandler}
-            className="btn primary icon-with-text"
+            className={addToCartBtnClasses}
+            disabled={inStock ? false : true}
           >
             Add to Cart
             <span>

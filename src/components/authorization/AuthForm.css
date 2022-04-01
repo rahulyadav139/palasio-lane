@@ -32,3 +32,6 @@
 .wrapper-username label {
   margin-bottom: 0.5rem;
 }
+.btn-show-password {
+  cursor: pointer;
+}

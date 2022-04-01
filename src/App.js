@@ -7,24 +7,19 @@ import {
   Cart,
 } from './pages';
 
-import { AuthModal, Loading } from './components';
-import { useAuthModal, useAuth, useLoading } from './hooks';
+import { AuthModal, Loading, Toast } from './components';
+import { useAuthModal, useAuth, useLoading, useToast } from './hooks';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { useEffect } from 'react';
 
 function App() {
   const { isAuthModal, resetModal, switchModal, isAuthTypeLogin } =
     useAuthModal();
 
+  const { toast } = useToast();
+
   const { isAuth } = useAuth();
 
   const { loading } = useLoading();
-
-  useEffect(() => {
-    loading
-      ? document.querySelector('body').classList.add('no-overflow')
-      : document.querySelector('body').classList.remove('no-overflow');
-  }, [loading]);
 
   return (
     <div className="App">
@@ -55,6 +50,8 @@ function App() {
           isAuthTypeLogin={isAuthTypeLogin}
         />
       )}
+
+      {toast.status && <Toast />}
     </div>
   );
 }

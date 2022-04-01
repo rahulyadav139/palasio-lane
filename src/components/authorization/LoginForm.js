@@ -6,7 +6,9 @@ import {
   useWishlist,
   useCart,
   useFetch,
+  useToast,
 } from '../../hooks';
+import { useState } from 'react';
 
 const LoginForm = props => {
   const { loginHandler } = useAuth();
@@ -14,7 +16,8 @@ const LoginForm = props => {
   const { getUpdatedWishlist } = useWishlist();
   const { getUpdatedCart } = useCart();
   const { sendData } = useFetch();
-  const setToast = props.setToast;
+  const { setToast } = useToast();
+  const [showPassword, setShowPassword] = useState(false);
   const {
     value: email,
     setIsTouched: emailIsTouched,
@@ -56,14 +59,27 @@ const LoginForm = props => {
       false
     );
 
-    if (error) return;
+    if (error)
+      return setToast({
+        status: true,
+        message: 'Something went wrong!',
+        type: 'danger',
+      });
 
     if (status === 404) {
-      return setToast('user not found');
+      return setToast({
+        status: true,
+        message: 'User not found',
+        type: 'danger',
+      });
     }
 
     if (status === 401) {
-      return setToast('invalid password');
+      return setToast({
+        status: true,
+        message: 'Invalid password',
+        type: 'danger',
+      });
     }
 
     loginHandler(data.token);
@@ -73,6 +89,34 @@ const LoginForm = props => {
     getUpdatedCart(data.cart);
 
     resetModal();
+  };
+
+  const guestLoginHandler = async () => {
+    const { data, error } = await sendData(
+      'https://palasio-lane.herokuapp.com/auth/login',
+      'POST',
+      { email: 'rahul@gmail.com', password: 'rahulyadav' },
+      false
+    );
+
+    if (error)
+      return setToast({
+        status: true,
+        message: 'Something went wrong!',
+        type: 'danger',
+      });
+
+    loginHandler(data.token);
+
+    getUpdatedWishlist(data.wishlist);
+
+    getUpdatedCart(data.cart);
+
+    resetModal();
+  };
+
+  const showPasswordHandler = () => {
+    setShowPassword(prev => !prev);
   };
 
   return (
@@ -92,13 +136,17 @@ const LoginForm = props => {
       <div className={passwordClasses}>
         <label>
           <input
+            id="password"
             value={password}
             onChange={passwordChangeHandler}
             onBlur={passwordBlurHandler}
-            type="password"
+            type={showPassword ? 'text' : 'password'}
           />
-          <span className="icon small">
-            <i className="fas fa-eye"></i>
+          <span
+            className="icon small btn-show-password"
+            onClick={showPasswordHandler}
+          >
+            <i className={showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'}></i>
           </span>
         </label>
       </div>
@@ -111,6 +159,14 @@ const LoginForm = props => {
 
       <button type="submit" className="btn primary">
         Login
+      </button>
+
+      <button
+        onClick={guestLoginHandler}
+        type="button"
+        className="btn outline primary"
+      >
+        Guest Login
       </button>
       <p>
         New to palasio lane?{' '}

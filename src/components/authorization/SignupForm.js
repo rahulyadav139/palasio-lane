@@ -1,5 +1,11 @@
 import './AuthForm.css';
-import { useInput, useAuth, useAuthModal, useFetch } from '../../hooks';
+import {
+  useInput,
+  useAuth,
+  useAuthModal,
+  useFetch,
+  useToast,
+} from '../../hooks';
 import { textFormatter } from '../../utils';
 import { useState, useEffect, Fragment } from 'react';
 // import { useAuth } from '../../contexts/auth-context';
@@ -9,7 +15,9 @@ const SignupForm = props => {
   const { loginHandler } = useAuth();
   const { resetModal } = useAuthModal();
   const { sendData } = useFetch();
-  const setToast = props.setToast;
+  const { setToast } = useToast();
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const {
     value: firstName,
@@ -62,10 +70,14 @@ const SignupForm = props => {
   const firstNameClasses = firstNameIsInvalid ? inValidClasses : validClasses;
   const lastNameClasses = lastNameIsInvalid ? inValidClasses : validClasses;
   const emailClasses = emailIsInvalid ? inValidClasses : validClasses;
-  const passwordClasses = passwordIsInvalid ? inValidClasses : validClasses;
+
+  const passwordClasses = passwordIsInvalid
+    ? 'input-field-icon responsive error'
+    : 'input-field-icon responsive';
+
   const confirmPasswordClasses = confirmPasswordIsInvalid
-    ? inValidClasses
-    : validClasses;
+    ? ' input-field-icon responsive error'
+    : ' input-field-icon responsive';
 
   const submitFormHandler = async e => {
     e.preventDefault();
@@ -86,7 +98,11 @@ const SignupForm = props => {
     }
 
     if (password !== confirmPassword) {
-      setToast("password doesn't match");
+      setToast({
+        status: true,
+        message: "password doesn't match",
+        type: 'danger',
+      });
       return;
     }
 
@@ -106,12 +122,24 @@ const SignupForm = props => {
     if (error) return;
 
     if (status === 409) {
-      setToast('User is already registered!');
+      setToast({
+        status: true,
+        message: 'User is already registered!',
+        type: 'danger',
+      });
       return;
     }
 
     loginHandler(data.token);
     resetModal();
+  };
+
+  const showPasswordHandler = () => {
+    setShowPassword(prev => !prev);
+  };
+
+  const showConfirmPasswordHandler = () => {
+    setShowConfirmPassword(prev => !prev);
   };
 
   return (
@@ -153,24 +181,50 @@ const SignupForm = props => {
         />
         <label htmlFor="password">Password</label>
 
-        <input
-          value={password}
-          onChange={passwordChangeHandler}
-          onBlur={passwordBlurHandler}
-          className={passwordClasses}
-          id="password"
-          type="password"
-        />
+        <div className={passwordClasses}>
+          <label>
+            <input
+              id="password"
+              value={password}
+              onChange={passwordChangeHandler}
+              onBlur={passwordBlurHandler}
+              type={showPassword ? 'text' : 'password'}
+            />
+            <span
+              className="icon small btn-show-password"
+              onClick={showPasswordHandler}
+            >
+              <i
+                className={showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'}
+              ></i>
+            </span>
+          </label>
+        </div>
+
         <label htmlFor="confirm-password">Confirm Password</label>
 
-        <input
-          value={confirmPassword}
-          onChange={confirmPasswordChangeHandler}
-          onBlur={confirmPasswordBlurHandler}
-          className={confirmPasswordClasses}
-          id="confirm-password"
-          type="password"
-        />
+        <div className={confirmPasswordClasses}>
+          <label>
+            <input
+              value={confirmPassword}
+              onChange={confirmPasswordChangeHandler}
+              onBlur={confirmPasswordBlurHandler}
+              id="confirm-password"
+              className="input-field "
+              type={showConfirmPassword ? 'text' : 'password'}
+            />
+            <span
+              className="icon small btn-show-password"
+              onClick={showConfirmPasswordHandler}
+            >
+              <i
+                className={
+                  showConfirmPassword ? 'fas fa-eye-slash' : 'fas fa-eye'
+                }
+              ></i>
+            </span>
+          </label>
+        </div>
 
         <div className="flex end">
           <span className="link text-small" href="#">

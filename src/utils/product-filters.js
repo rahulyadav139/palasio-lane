@@ -12,7 +12,7 @@ const getFilteredProducts = products => {
       return rating => {
         const thirdFiltered = !rating
           ? secondFiltered
-          : secondFiltered.filter(product => rating >= product.rating);
+          : secondFiltered.filter(product => product.rating >= rating);
         return sortBy => {
           switch (sortBy) {
             case 'low-to-high':

@@ -6,4 +6,5 @@ export {
   useWishlist,
   useCart,
   useLoading,
+  useToast,
 } from './use-context';

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useFetch } from '../hooks';
+import { useFetch, useToast } from '../hooks';
 
 const CartContext = React.createContext();
 
@@ -9,16 +9,18 @@ let removeFromCartIsReady = true;
 let removeSingleProductIsReady = true;
 
 const CartProvider = props => {
+  const { setToast } = useToast();
+
   const [cart, setCart] = useState([]);
+
+ 
 
   const { sendData } = useFetch();
 
   const addToCartHandler = async product => {
     const { _id: prodId } = product;
 
-    console.log('test');
-
-    console.log(addToCartIsReady);
+   
 
     if (addToCartIsReady) {
       addToCartIsReady = false;
@@ -28,7 +30,11 @@ const CartProvider = props => {
       if (prodIndex >= 0) {
         if (cart[prodIndex].product.inStock <= cart[prodIndex].quantity) {
           addToCartIsReady = true;
-          return console.log('all instock products are added to the cart');
+          return setToast({
+            status: true,
+            message: 'All instock products are added to the cart!',
+            type: 'loading',
+          });
         }
         updatedCart = cart.slice();
 

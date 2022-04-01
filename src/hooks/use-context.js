@@ -5,6 +5,7 @@ import {
   WishlistContext,
   CartContext,
   LoadingContext,
+  ToastContext,
 } from '../contexts';
 
 const useAuth = () => useContext(AuthContext);
@@ -17,4 +18,6 @@ const useCart = () => useContext(CartContext);
 
 const useLoading = () => useContext(LoadingContext);
 
-export { useAuth, useAuthModal, useWishlist, useCart, useLoading };
+const useToast = () => useContext(ToastContext);
+
+export { useAuth, useAuthModal, useWishlist, useCart, useLoading, useToast };

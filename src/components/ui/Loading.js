@@ -1,6 +1,6 @@
 import './Loading.css';
 import loadingGif from '../../assets/loading-image.gif';
-import { Fragment, useEffect } from 'react';
+import { Fragment } from 'react';
 
 const Loading = props => {
   return (
