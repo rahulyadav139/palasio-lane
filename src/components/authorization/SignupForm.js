@@ -7,9 +7,7 @@ import {
   useToast,
 } from '../../hooks';
 import { textFormatter } from '../../utils';
-import { useState, useEffect, Fragment } from 'react';
-// import { useAuth } from '../../contexts/auth-context';
-// import { useAuthModal } from '../../contexts/auth-modal-context';
+import { useState, Fragment } from 'react';
 
 const SignupForm = props => {
   const { loginHandler } = useAuth();
@@ -113,7 +111,7 @@ const SignupForm = props => {
     };
 
     const { data, error, status } = await sendData(
-      'https://palasio-lane.herokuapp.com/auth/signup',
+      `${process.env.REACT_APP_BACKEND_URL}/auth/signup`,
       'PUT',
       userData,
       false

@@ -7,7 +7,7 @@ const HamburgerNavigation = props => {
   const [isHamburgerNav, setIsHamburgerNav] = useState(false);
   const { isAuth, logoutHandler } = useAuth();
   const { showModal } = useAuthModal();
-  const navigate = useNavigate();
+  
 
   const backdropClasses = isHamburgerNav
     ? 'hamburger-menu__backdrop'

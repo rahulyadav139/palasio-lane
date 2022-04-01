@@ -1,11 +1,9 @@
 import './Cart.css';
 import {
   CartProductCard,
-  PriceBreakoutCard,
-  Header,
-  Footer,
+  PriceBreakoutCard
 } from '../../components';
-import { Fragment } from 'react';
+
 import { useCart } from '../../hooks';
 import { v4 as uuid } from 'uuid';
 import { Link } from 'react-router-dom';
@@ -19,8 +17,8 @@ const Cart = props => {
     cartItemsQty > 1 ? `( ${cartItemsQty} items )` : `( ${cartItemsQty} item )`;
 
   return (
-    <Fragment>
-      <Header />
+   
+     
 
       <main className="main">
         <div className="heading-4">
@@ -50,8 +48,8 @@ const Cart = props => {
         )}
       </main>
 
-      <Footer />
-    </Fragment>
+      
+   
   );
 };
 export { Cart };

@@ -6,14 +6,6 @@ import { useEffect, useState } from 'react';
 
 const AuthModal = props => {
   const { isAuthTypeLogin, onReset, onSwitch } = props;
-  // const [toast, setToast] = useState(true);
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setToast(false);
-  //   }, 2000);
-
-  //   return () => clearTimeout(timer);
-  // }, [toast]);
 
   return (
     <Modal onReset={onReset}>
@@ -35,14 +27,6 @@ const AuthModal = props => {
           <i className="fas fa-times"></i>
         </button>
       </div>
-      {/* {toast && (
-        <div class="toast danger">
-          <span class="icon small white">
-            <i class="fas fa-bell"></i>
-          </span>
-          {` ${toast}`}
-        </div>
-      )} */}
     </Modal>
   );
 };

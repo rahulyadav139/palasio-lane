@@ -53,7 +53,7 @@ const LoginForm = props => {
     }
 
     const { data, status, error } = await sendData(
-      'https://palasio-lane.herokuapp.com/auth/login',
+      `${process.env.REACT_APP_BACKEND_URL}/auth/login`,
       'POST',
       { email, password },
       false
@@ -93,9 +93,12 @@ const LoginForm = props => {
 
   const guestLoginHandler = async () => {
     const { data, error } = await sendData(
-      'https://palasio-lane.herokuapp.com/auth/login',
+      `${process.env.REACT_APP_BACKEND_URL}/auth/login`,
       'POST',
-      { email: 'rahul@gmail.com', password: 'rahulyadav' },
+      {
+        email: process.env.REACT_APP_GUEST_LOGIN_USERNAME,
+        password: process.env.REACT_APP_GUEST_LOGIN_PASSWORD,
+      },
       false
     );
 

@@ -13,14 +13,10 @@ const CartProvider = props => {
 
   const [cart, setCart] = useState([]);
 
- 
-
   const { sendData } = useFetch();
 
   const addToCartHandler = async product => {
     const { _id: prodId } = product;
-
-   
 
     if (addToCartIsReady) {
       addToCartIsReady = false;
@@ -44,7 +40,7 @@ const CartProvider = props => {
       }
 
       const { error } = await sendData(
-        'https://palasio-lane.herokuapp.com/admin/cart',
+        `${process.env.REACT_APP_BACKEND_URL}/admin/cart`,
         'PUT',
         updatedCart,
         true
@@ -73,7 +69,7 @@ const CartProvider = props => {
       }
 
       const { error } = await sendData(
-        'https://palasio-lane.herokuapp.com/admin/cart',
+        `${process.env.REACT_APP_BACKEND_URL}/admin/cart`,
         'PUT',
         updatedCart,
         true
@@ -93,7 +89,7 @@ const CartProvider = props => {
       updatedCart = cart.filter(el => el.product._id !== prodId);
 
       const { error } = await sendData(
-        'https://palasio-lane.herokuapp.com/admin/cart',
+        `${process.env.REACT_APP_BACKEND_URL}/admin/cart`,
         'PUT',
         updatedCart,
         true

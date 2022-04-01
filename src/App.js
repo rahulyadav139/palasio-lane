@@ -7,7 +7,14 @@ import {
   Cart,
 } from './pages';
 
-import { AuthModal, Loading, Toast } from './components';
+import {
+  AuthModal,
+  Loading,
+  Toast,
+  ScrollTopButton,
+  Header,
+  Footer,
+} from './components';
 import { useAuthModal, useAuth, useLoading, useToast } from './hooks';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
@@ -23,6 +30,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/products" element={<Navigate to="/" />} />
@@ -40,6 +48,9 @@ function App() {
 
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
+
+      <Footer />
+      <ScrollTopButton />
 
       {loading && <Loading />}
 
