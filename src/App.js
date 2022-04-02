@@ -49,7 +49,7 @@ function App() {
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
 
-      <Footer />
+      {!loading && <Footer />}
       <ScrollTopButton />
 
       {loading && <Loading />}
