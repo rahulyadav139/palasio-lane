@@ -12,3 +12,5 @@ export { Listing } from './listing-page/listing/Listing';
 export { WishlistProductCard } from './wishlist/WishlistProductCard';
 export { CartProductCard } from './cart/CartProductCard';
 export { PriceBreakoutCard } from './cart/PriceBreakoutCard';
+export { SingleProductCard } from './single-product-page/SingleProductCard';
+export { ProductDescription } from './single-product-page/ProductDescription';
