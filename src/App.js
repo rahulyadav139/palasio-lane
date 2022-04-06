@@ -2,6 +2,7 @@ import './App.css';
 import Homepage from './pages/Homepage';
 import Wishlist from './pages/Wishlist';
 import ProductListingPage from './pages/ProductListingPage';
+import Cart from './pages/Cart';
 import { AuthModal } from './components';
 import { useAuthModal } from './contexts/auth-modal-context';
 import { Routes, Route, Navigate } from 'react-router-dom';
@@ -26,6 +27,7 @@ function App() {
         />
 
         <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/cart" element={<Cart />} />
 
         <Route path="*" element={<Homepage />} />
       </Routes>
