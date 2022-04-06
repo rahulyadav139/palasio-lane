@@ -1,0 +1,27 @@
+.card.ecom .badge {
+  margin: 0;
+}
+.card.ecom .btn-dismiss {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1rem;
+  line-height: 1rem;
+  background: var(--off-white-color);
+  outline: none;
+  border: none;
+  cursor: pointer;
+  color: var(--grey-color);
+  transition: all 0.1s ease-in-out;
+}
+
+.card.ecom .btn-dismiss:hover {
+  background: #e5eaec;
+  color: var(--primary-color);
+}
