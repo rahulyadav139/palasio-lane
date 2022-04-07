@@ -26,7 +26,6 @@ const AuthModalProvider = props => {
   };
 
   const resetModalHandler = () => {
-    console.log('test');
     dispatch({ type: 'RESET' });
   };
 
