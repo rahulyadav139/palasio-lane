@@ -1,4 +1,4 @@
-import React, { useContext, useReducer } from 'react';
+import React, { useReducer } from 'react';
 
 const AuthContext = React.createContext();
 
@@ -40,6 +40,4 @@ const AuthProvider = props => {
   );
 };
 
-const useAuth = () => useContext(AuthContext);
-
-export { useAuth, AuthProvider };
+export { AuthContext, AuthProvider };

@@ -1,7 +1,11 @@
-import './ProductCard';
+import './ProductCard.css';
 import { Link } from 'react-router-dom';
+import { useWishlist, useAuth, useAuthModal } from '../../../hooks';
 
 const ProductCard = props => {
+  const { addToWishlist, removeFromWishlist, wishlist } = useWishlist();
+  const { isAuth } = useAuth();
+  const { showModal } = useAuthModal();
   const {
     title,
     brand,
@@ -11,36 +15,52 @@ const ProductCard = props => {
     discount,
     exclusive,
     rating,
-
     _id: prodId,
   } = props.product;
 
-  const productCardClassNamees = exclusive
+  const productCardClasses = exclusive
     ? 'card shadow ribbon ecom'
     : 'card shadow ecom';
 
+  const toggleWishListHandler = prodId => {
+    if (!isAuth) return showModal();
+
+    wishlist.items.includes(prodId)
+      ? removeFromWishlist(prodId)
+      : addToWishlist(prodId);
+  };
+
   return (
-    <div className={productCardClassNamees} ribbon-content="Exclusive">
-      <div className="image">
-        <img src={imageUrl} alt={title} />
+    <div className={productCardClasses} ribbon-content="Exclusive">
+      <Link to={`/product/${prodId}`}>
+        <div className="image">
+          <img src={imageUrl} alt={title} />
 
-        {discount !== 0 && (
-          <span className="badge highlight top left">{`-${discount}%`}</span>
-        )}
+          {discount !== 0 && (
+            <span className="badge highlight top left">{`-${discount}%`}</span>
+          )}
 
-        <span className="badge bottom left">
-          4.4 <i className="fas fa-star"></i> | 123
-        </span>
-      </div>
+          <span className="badge bottom left">
+            4.4 <i className="fas fa-star"></i> | 123
+          </span>
+        </div>
+      </Link>
       <div className="flex space-between">
         <h1 className="product-brand">{brand}</h1>
-        <button className="btn icon medium primary">
-          <i className="far fa-heart"></i>
+        <button
+          onClick={toggleWishListHandler.bind(null, prodId)}
+          className="btn btn-wishlist icon medium primary"
+        >
+          {isAuth && wishlist.items.includes(prodId) ? (
+            <i class="fas fa-heart"></i>
+          ) : (
+            <i className="far fa-heart"></i>
+          )}
         </button>
       </div>
-      <Link to={`/product/${prodId}`}>
-        <h2 className="product-title">{title.substring(0, 22) + '...'}</h2>
-      </Link>
+
+      <h2 className="product-title">{title.substring(0, 22) + '...'}</h2>
+
       {discount !== 0 && (
         <div className="price">
           <div className="price__original">{price}</div>

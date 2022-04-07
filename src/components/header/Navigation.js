@@ -1,10 +1,44 @@
 import './Navigation.css';
-import { useAuth } from '../../contexts/auth-context';
-import { useAuthModal } from '../../contexts/auth-modal-context';
+import { useAuth, useAuthModal, useWishlist, useFetch } from '../../hooks';
+import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
+let initialized = true;
 const Navigation = props => {
   const { isAuth, logoutHandler } = useAuth();
+  const { sendData } = useFetch();
   const { showModal } = useAuthModal();
+  const { wishlist, errorToUpdateWishlist } = useWishlist();
+
+  const wishlistQty = wishlist.quantity;
+
+  useEffect(() => {
+    if (!initialized) {
+      (async () => {
+        const { error } = await sendData(
+          'http://localhost:8080/admin/wishlist',
+          'PUT',
+          wishlist,
+          true
+        );
+
+        if (error) {
+          return errorToUpdateWishlist();
+        }
+      })();
+
+      return;
+    }
+
+    if (isAuth && initialized) {
+      initialized = false;
+    }
+  }, [wishlistQty, initialized, isAuth]);
+
+  const userLogoutHandler = () => {
+    logoutHandler();
+    initialized = true;
+  };
 
   return (
     <nav>
@@ -27,12 +61,16 @@ const Navigation = props => {
 
         {isAuth && (
           <li className="list-item">
-            <div className="badge-container">
-              <button className="btn icon medium primary badge-counter">
-                <i className="fas fa-heart"></i>
-              </button>
-              <span className="badge-number">10</span>
-            </div>
+            <Link to="/wishlist">
+              <div className="badge-container">
+                <button className="btn icon medium primary badge-counter">
+                  <i className="fas fa-heart"></i>
+                </button>
+                {wishlist.quantity !== 0 && (
+                  <span className="badge-number">{wishlist.quantity}</span>
+                )}
+              </div>
+            </Link>
           </li>
         )}
         <li className="list-item">
@@ -68,7 +106,7 @@ const Navigation = props => {
                   <span>Orders</span>
                 </li>
               </ul>
-              <button onClick={logoutHandler} className="btn primary">
+              <button onClick={userLogoutHandler} className="btn primary">
                 Logout
               </button>
             </div>

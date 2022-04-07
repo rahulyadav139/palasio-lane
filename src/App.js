@@ -1,25 +1,27 @@
 import './App.css';
-import Homepage from './pages/Homepage';
-import Wishlist from './pages/Wishlist';
-import ProductListingPage from './pages/ProductListingPage';
-import Cart from './pages/Cart';
+import {
+  Homepage,
+  Wishlist,
+  ProductDetailPage,
+  ProductListingPage,
+  Cart,
+} from './pages';
+
 import { AuthModal } from './components';
-import { useAuthModal } from './contexts/auth-modal-context';
+import { useAuthModal, useAuth } from './hooks';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import ProductDetailPage from './pages/ProductDetailPage';
 
 function App() {
   const { isAuthModal, resetModal, switchModal, isAuthTypeLogin } =
     useAuthModal();
 
+  const { isAuth } = useAuth();
+
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route
-          path="/products"
-          element={<Navigate to="/" element={<Homepage />} />}
-        />
+        <Route path="/products" element={<Navigate to="/" />} />
         <Route path="/products/:collection" element={<ProductListingPage />} />
 
         <Route
@@ -29,10 +31,10 @@ function App() {
 
         <Route path="/product/:prodId" element={<ProductDetailPage />} />
 
-        <Route path="/wishlist" element={<Wishlist />} />
+        {isAuth && <Route path="/wishlist" element={<Wishlist />} />}
         <Route path="/cart" element={<Cart />} />
 
-        <Route path="*" element={<Homepage />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
 
       {isAuthModal && (

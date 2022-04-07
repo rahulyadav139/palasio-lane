@@ -10,22 +10,17 @@ const CarModels = props => {
     setShowCarModels(prev => !prev);
   };
 
-
-
   const changeCarModelsHandler = e => {
-   
-
     if (e.target.checked) {
       const newArr = [...props.carModels, e.target.value];
       props.onGetCarModels(newArr);
-     
+
       return;
     }
 
     const newArr = props.carModels.filter(el => el !== e.target.value);
-  
+
     props.onGetCarModels(newArr);
-   
   };
 
   return (

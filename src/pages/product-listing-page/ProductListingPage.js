@@ -1,9 +1,9 @@
 import './ProductListingPage.css';
-import { Fragment, useEffect } from 'react';
-import { Footer, Header, Filters, Listing } from '../components';
+import { Fragment, useEffect, useState } from 'react';
+import { Footer, Header, Filters, Listing } from '../../components';
 import { useParams } from 'react-router-dom';
-import { useState } from 'react';
-import { getFilteredProducts } from '../utils';
+import { getFilteredProducts } from '../../utils';
+import { useFetch, useWishlist } from '../../hooks';
 
 const ProductListingPage = props => {
   const [price, setPrice] = useState('');
@@ -12,33 +12,63 @@ const ProductListingPage = props => {
   const [sortBy, setSortBy] = useState('popularity');
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const params = useParams();
+  const { getData, sendData } = useFetch();
+ 
 
+  const params = useParams();
   const category = params.category;
   const collection = params.collection;
 
+  // useEffect(() => {
+  //   // console.log('appnow');
+  //   (async () => {
+  //     console.log('app page');
+  //     const { error } = await sendData(
+  //       'http://localhost:8080/admin/wishlist',
+  //       'PUT',
+  //       wishlist,
+  //       true
+  //     );
+  //   })();
+  // }, [quantity]);
+
   useEffect(() => {
-    let filterBy;
+    // let filterBy;
 
-    if (category) {
-      filterBy = category;
-    } else {
-      filterBy = collection;
-    }
+    // if (category) {
+    //   filterBy = category;
+    // } else {
+    //   filterBy = collection;
+    // }
 
+    const filterBy = category ? category : collection;
+
+    // (async () => {
+    //   try {
+    //     setLoading(true);
+    //     const res = await fetch(
+    //       `http://localhost:8080/products?filterBy=${filterBy}`
+    //     );
+    //     const data = await res.json();
+
+    //     setProducts(data);
+    //     setLoading(false);
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // })();
     (async () => {
-      try {
-        setLoading(true);
-        const res = await fetch(
-          `http://localhost:8080/products?filterBy=${filterBy}`
-        );
-        const data = await res.json();
+      setLoading(true);
 
-        setProducts(data);
-        setLoading(false);
-      } catch (err) {
-        console.log(err);
-      }
+      const { data, error } = await getData(
+        `http://localhost:8080/products?filterBy=${filterBy}`,
+        false
+      );
+
+      if (error) return;
+
+      setProducts(data);
+      setLoading(false);
     })();
   }, [category, collection]);
 
@@ -87,4 +117,4 @@ const ProductListingPage = props => {
     </Fragment>
   );
 };
-export default ProductListingPage;
+export { ProductListingPage };

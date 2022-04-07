@@ -1,3 +1,10 @@
 .card.ecom .overlay p {
   font-size: 1rem;
 }
+.btn.btn-wishlist {
+  color: var(--red-color);
+}
+.btn.btn-wishlist:hover {
+  color: var(--red-color);
+  transform: scale(1.05);
+}

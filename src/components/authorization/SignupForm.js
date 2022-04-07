@@ -1,9 +1,9 @@
 import './AuthForm.css';
-import { useInput } from '../../hooks/use-input';
+import { useInput, useAuth, useAuthModal } from '../../hooks';
 import { textFormatter } from '../../utils';
 import { useState, useEffect, Fragment } from 'react';
-import { useAuth } from '../../contexts/auth-context';
-import { useAuthModal } from '../../contexts/auth-modal-context';
+// import { useAuth } from '../../contexts/auth-context';
+// import { useAuthModal } from '../../contexts/auth-modal-context';
 
 const SignupForm = props => {
   const [toast, setToast] = useState(null);

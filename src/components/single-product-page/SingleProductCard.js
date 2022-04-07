@@ -1,12 +1,54 @@
 import './SingleProductCard.css';
+import { Link } from 'react-router-dom';
+
+import { useWishlist, useAuth, useAuthModal } from '../../hooks';
 
 const SingleProductCard = props => {
-  const { title, brand, imageUrl, price, discount } = props.product;
+  const { showModal } = useAuthModal();
+  const { isAuth } = useAuth();
+  const { wishlist, removeFromWishlist, addToWishlist } = useWishlist();
+  const {
+    title,
+    brand,
+    imageUrl,
+    price,
+    discount,
+    _id: prodId,
+  } = props.product;
+
+  const toggleWishListHandler = prodId => {
+    if (!isAuth) return showModal();
+
+    addToWishlist(prodId);
+
+    wishlist.items.includes(prodId)
+      ? removeFromWishlist(prodId)
+      : addToWishlist(prodId);
+  };
+
+  const wishlistButton =
+    isAuth && wishlist.items.includes(prodId) ? (
+      <button
+        onClick={toggleWishListHandler.bind(null, prodId)}
+        className="btn primary"
+      >
+        Wishlisted
+      </button>
+    ) : (
+      <button
+        onClick={toggleWishListHandler.bind(null, prodId)}
+        className="btn outline primary"
+      >
+        Wishlist
+      </button>
+    );
   return (
     <div className="card shadow product-detail">
-      <div className="image">
-        <img className="img-responsive" src={imageUrl} alt={title} />
-      </div>
+      <Link to={`/product/${prodId}`}>
+        <div className="image">
+          <img className="img-responsive" src={imageUrl} alt={title} />
+        </div>
+      </Link>
       <div className="product-detail__text">
         <h1 className="product-brand">{title}</h1>
         <h2 className="product-title">{brand}</h2>
@@ -34,7 +76,7 @@ const SingleProductCard = props => {
               <i className="fas fa-shopping-cart"></i>
             </span>
           </button>
-          <button className="btn outline primary">Wishlist</button>
+          {wishlistButton}
         </div>
       </div>
     </div>
