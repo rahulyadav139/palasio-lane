@@ -26,7 +26,7 @@ const WishlistProvider = props => {
       updatedWishlist = [...wishlist, product];
 
       const { error } = await sendData(
-        'https://palasio-lane.herokuapp.com/admin/wishlist',
+        `${process.env.REACT_APP_BACKEND_URL}/admin/wishlist`,
         'PUT',
         updatedWishlist,
         true
@@ -43,7 +43,7 @@ const WishlistProvider = props => {
       updatedWishlist = wishlist.filter(el => el._id !== prodId);
 
       const { error } = await sendData(
-        'https://palasio-lane.herokuapp.com/admin/wishlist',
+        `${process.env.REACT_APP_BACKEND_URL}/admin/wishlist`,
         'PUT',
         updatedWishlist,
         true

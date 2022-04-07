@@ -5,3 +5,9 @@
   position: sticky;
   top: 6rem;
 }
+
+@media only screen and (max-width: 450px) {
+  .price-breakout {
+    position: static;
+  }
+}

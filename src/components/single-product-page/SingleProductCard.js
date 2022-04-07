@@ -1,10 +1,17 @@
 import './SingleProductCard.css';
 
-import { useWishlist, useAuth, useAuthModal, useCart } from '../../hooks';
+import {
+  useWishlist,
+  useAuth,
+  useAuthModal,
+  useCart,
+  useToast,
+} from '../../hooks';
 import { priceFormatter } from '../../utils';
 
 const SingleProductCard = props => {
   const { showModal } = useAuthModal();
+  const { setToast } = useToast();
   const { isAuth } = useAuth();
   const { cart, addToCart } = useCart();
   const { wishlist, removeFromWishlist, addToWishlist } = useWishlist();
@@ -17,13 +24,14 @@ const SingleProductCard = props => {
     discount,
     rating,
     _id: prodId,
+    inStock,
   } = props.product;
 
   const product = {
     title,
     brand,
     price,
-    quantity,
+    inStock,
     imageUrl,
     discount,
     rating,
@@ -38,11 +46,19 @@ const SingleProductCard = props => {
       : addToWishlist(product);
   };
 
+  const addToCartBtnClasses = inStock
+    ? 'btn primary icon-with-text'
+    : 'btn primary icon-with-text disable';
+
   const addToCartHandler = () => {
     if (!isAuth) return showModal();
 
     cart.some(el => el.product._id === prodId)
-      ? console.log('already in the cart')
+      ? setToast({
+          status: true,
+          type: 'loading',
+          message: 'Already in the cart!',
+        })
       : addToCart(product);
   };
 
@@ -66,7 +82,8 @@ const SingleProductCard = props => {
         <h1 className="product-brand">{title}</h1>
         <h2 className="product-title">{brand}</h2>
         <div className="rating">
-          4.4 <i className="fas fa-star"></i> | 3.9k Ratings
+          {rating} <i className="fas fa-star"></i> |{' '}
+          {Math.floor(Math.random() * 1000)} Ratings
         </div>
         <div className="hr-line thin solid grey"></div>
         {discount !== 0 ? (
@@ -85,7 +102,8 @@ const SingleProductCard = props => {
         <div className="buttons">
           <button
             onClick={addToCartHandler}
-            className="btn primary icon-with-text"
+            className={addToCartBtnClasses}
+            disabled={inStock ? false : true}
           >
             Add to Cart
             <span>

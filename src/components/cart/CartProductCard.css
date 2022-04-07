@@ -8,6 +8,7 @@
 }
 .card.cart-item .image {
   flex-basis: 40%;
+  position: relative;
 }
 
 .cart-item__details {
@@ -43,4 +44,14 @@
 }
 .cart-item .img-responsive {
   object-fit: contain;
+}
+.cart-item .overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba(245, 245, 245, 0.5);
+  z-index: 100;
+}
+.cart-item .overlay p {
+  font-size: 1rem;
 }

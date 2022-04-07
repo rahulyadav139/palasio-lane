@@ -1,23 +1,21 @@
 import './AuthForm.css';
-import { useInput, useAuth, useAuthModal, useFetch } from '../../hooks';
+import {
+  useInput,
+  useAuth,
+  useAuthModal,
+  useFetch,
+  useToast,
+} from '../../hooks';
 import { textFormatter } from '../../utils';
-import { useState, useEffect, Fragment } from 'react';
-// import { useAuth } from '../../contexts/auth-context';
-// import { useAuthModal } from '../../contexts/auth-modal-context';
+import { useState, Fragment } from 'react';
 
 const SignupForm = props => {
-  const [toast, setToast] = useState(null);
   const { loginHandler } = useAuth();
   const { resetModal } = useAuthModal();
   const { sendData } = useFetch();
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setToast(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, [toast]);
+  const { setToast } = useToast();
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const {
     value: firstName,
@@ -70,10 +68,14 @@ const SignupForm = props => {
   const firstNameClasses = firstNameIsInvalid ? inValidClasses : validClasses;
   const lastNameClasses = lastNameIsInvalid ? inValidClasses : validClasses;
   const emailClasses = emailIsInvalid ? inValidClasses : validClasses;
-  const passwordClasses = passwordIsInvalid ? inValidClasses : validClasses;
+
+  const passwordClasses = passwordIsInvalid
+    ? 'input-field-icon responsive error'
+    : 'input-field-icon responsive';
+
   const confirmPasswordClasses = confirmPasswordIsInvalid
-    ? inValidClasses
-    : validClasses;
+    ? ' input-field-icon responsive error'
+    : ' input-field-icon responsive';
 
   const submitFormHandler = async e => {
     e.preventDefault();
@@ -94,26 +96,13 @@ const SignupForm = props => {
     }
 
     if (password !== confirmPassword) {
-      console.log("password doesn't match");
+      setToast({
+        status: true,
+        message: "password doesn't match",
+        type: 'danger',
+      });
       return;
     }
-
-    // const res = await fetch('https://palasio-lane.herokuapp.com/auth/signup', {
-    //   method: 'PUT',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     fullName: textFormatter(`${firstName} ${lastName}`),
-    //     email,
-    //     password,
-    //   }),
-    // });
-
-    // if (res.status === 409) {
-    //   setToast('User is already registered!');
-    //   return;
-    // }
 
     const userData = {
       fullName: textFormatter(`${firstName} ${lastName}`),
@@ -122,8 +111,8 @@ const SignupForm = props => {
     };
 
     const { data, error, status } = await sendData(
-      'https://palasio-lane.herokuapp.com/auth/signup',
-      'POST',
+      `${process.env.REACT_APP_BACKEND_URL}/auth/signup`,
+      'PUT',
       userData,
       false
     );
@@ -131,14 +120,24 @@ const SignupForm = props => {
     if (error) return;
 
     if (status === 409) {
-      setToast('User is already registered!');
+      setToast({
+        status: true,
+        message: 'User is already registered!',
+        type: 'danger',
+      });
       return;
     }
 
-    // const data = await res.json();
-
     loginHandler(data.token);
     resetModal();
+  };
+
+  const showPasswordHandler = () => {
+    setShowPassword(prev => !prev);
+  };
+
+  const showConfirmPasswordHandler = () => {
+    setShowConfirmPassword(prev => !prev);
   };
 
   return (
@@ -180,24 +179,50 @@ const SignupForm = props => {
         />
         <label htmlFor="password">Password</label>
 
-        <input
-          value={password}
-          onChange={passwordChangeHandler}
-          onBlur={passwordBlurHandler}
-          className={passwordClasses}
-          id="password"
-          type="password"
-        />
+        <div className={passwordClasses}>
+          <label>
+            <input
+              id="password"
+              value={password}
+              onChange={passwordChangeHandler}
+              onBlur={passwordBlurHandler}
+              type={showPassword ? 'text' : 'password'}
+            />
+            <span
+              className="icon small btn-show-password"
+              onClick={showPasswordHandler}
+            >
+              <i
+                className={showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'}
+              ></i>
+            </span>
+          </label>
+        </div>
+
         <label htmlFor="confirm-password">Confirm Password</label>
 
-        <input
-          value={confirmPassword}
-          onChange={confirmPasswordChangeHandler}
-          onBlur={confirmPasswordBlurHandler}
-          className={confirmPasswordClasses}
-          id="confirm-password"
-          type="password"
-        />
+        <div className={confirmPasswordClasses}>
+          <label>
+            <input
+              value={confirmPassword}
+              onChange={confirmPasswordChangeHandler}
+              onBlur={confirmPasswordBlurHandler}
+              id="confirm-password"
+              className="input-field "
+              type={showConfirmPassword ? 'text' : 'password'}
+            />
+            <span
+              className="icon small btn-show-password"
+              onClick={showConfirmPasswordHandler}
+            >
+              <i
+                className={
+                  showConfirmPassword ? 'fas fa-eye-slash' : 'fas fa-eye'
+                }
+              ></i>
+            </span>
+          </label>
+        </div>
 
         <div className="flex end">
           <span className="link text-small" href="#">
@@ -217,14 +242,6 @@ const SignupForm = props => {
           </span>
         </p>
       </form>
-      {toast && (
-        <div class="toast danger">
-          <span class="icon small white">
-            <i class="fas fa-bell"></i>
-          </span>
-          {` ${toast}`}
-        </div>
-      )}
     </Fragment>
   );
 };

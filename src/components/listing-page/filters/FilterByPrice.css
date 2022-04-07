@@ -9,6 +9,8 @@
 
 .price__input {
   flex-basis: 50%;
+  border: none;
+  border-bottom: 1px solid var(--grey-color);
 }
 .price__input label {
   font-size: 75%;

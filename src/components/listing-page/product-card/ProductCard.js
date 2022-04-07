@@ -1,11 +1,18 @@
 import './ProductCard.css';
 import { Link } from 'react-router-dom';
-import { useWishlist, useAuth, useAuthModal, useCart } from '../../../hooks';
+import {
+  useWishlist,
+  useAuth,
+  useAuthModal,
+  useCart,
+  useToast,
+} from '../../../hooks';
 import { priceFormatter } from '../../../utils';
 
 const ProductCard = props => {
   const { addToWishlist, removeFromWishlist, wishlist } = useWishlist();
   const { isAuth } = useAuth();
+  const { setToast } = useToast();
   const { showModal } = useAuthModal();
   const { cart, addToCart } = useCart();
   const {
@@ -45,10 +52,13 @@ const ProductCard = props => {
 
   const addToCartHandler = () => {
     if (!isAuth) return showModal();
-    // addToCart(product);
 
-    cart.some(el => el.product._id === prodId)
-      ? console.log('already in the cart')
+    cart.some(cartItem => cartItem.product._id === prodId)
+      ? setToast({
+          status: true,
+          type: 'loading',
+          message: 'Already in the cart!',
+        })
       : addToCart(product);
   };
 
@@ -63,7 +73,8 @@ const ProductCard = props => {
           )}
 
           <span className="badge bottom left">
-            4.4 <i className="fas fa-star"></i> | 123
+            {rating} <i className="fas fa-star"></i> |{' '}
+            {Math.floor(Math.random() * 1000)}
           </span>
         </div>
       </Link>
@@ -102,9 +113,11 @@ const ProductCard = props => {
       </button>
 
       {!inStock && (
-        <span className="overlay">
-          <p>out of stock</p>
-        </span>
+        <Link to={`/product/${prodId}`}>
+          <span className="overlay">
+            <p>out of stock</p>
+          </span>
+        </Link>
       )}
     </div>
   );

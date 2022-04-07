@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useFetch } from '../hooks';
+import { useFetch, useToast } from '../hooks';
 
 const CartContext = React.createContext();
 
@@ -9,18 +9,14 @@ let removeFromCartIsReady = true;
 let removeSingleProductIsReady = true;
 
 const CartProvider = props => {
-  const [cart, setCart] = useState([]);
+  const { setToast } = useToast();
 
-  console.log(cart);
+  const [cart, setCart] = useState([]);
 
   const { sendData } = useFetch();
 
   const addToCartHandler = async product => {
     const { _id: prodId } = product;
-
-    console.log('test');
-
-    console.log(addToCartIsReady);
 
     if (addToCartIsReady) {
       addToCartIsReady = false;
@@ -30,7 +26,11 @@ const CartProvider = props => {
       if (prodIndex >= 0) {
         if (cart[prodIndex].product.inStock <= cart[prodIndex].quantity) {
           addToCartIsReady = true;
-          return console.log('all instock products are added to the cart');
+          return setToast({
+            status: true,
+            message: 'All instock products are added to the cart!',
+            type: 'loading',
+          });
         }
         updatedCart = cart.slice();
 
@@ -40,7 +40,7 @@ const CartProvider = props => {
       }
 
       const { error } = await sendData(
-        'https://palasio-lane.herokuapp.com/admin/cart',
+        `${process.env.REACT_APP_BACKEND_URL}/admin/cart`,
         'PUT',
         updatedCart,
         true
@@ -69,7 +69,7 @@ const CartProvider = props => {
       }
 
       const { error } = await sendData(
-        'https://palasio-lane.herokuapp.com/admin/cart',
+        `${process.env.REACT_APP_BACKEND_URL}/admin/cart`,
         'PUT',
         updatedCart,
         true
@@ -89,7 +89,7 @@ const CartProvider = props => {
       updatedCart = cart.filter(el => el.product._id !== prodId);
 
       const { error } = await sendData(
-        'https://palasio-lane.herokuapp.com/admin/cart',
+        `${process.env.REACT_APP_BACKEND_URL}/admin/cart`,
         'PUT',
         updatedCart,
         true

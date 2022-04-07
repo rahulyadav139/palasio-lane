@@ -19,3 +19,9 @@
 .rating .fa-star {
   color: var(--yellow-color);
 }
+
+@media only screen and (max-width: 450px) {
+  .card.product-detail {
+    grid-template-columns: 1fr;
+  }
+}

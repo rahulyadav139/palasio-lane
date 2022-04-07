@@ -3,12 +3,12 @@ import { priceFormatter } from '../../utils';
 
 const PriceBreakoutCard = ({ cart }) => {
   const cartItemsQty = cart.reduce((acc, el) => (acc += el.quantity), 0);
-  console.log(cartItemsQty);
+
   const price = cart.reduce(
     (acc, el) => (acc += el.product.price * el.quantity),
     0
   );
-  console.log(price);
+
   const discountedPrice = cart.reduce(
     (acc, el) =>
       (acc +=
@@ -21,6 +21,14 @@ const PriceBreakoutCard = ({ cart }) => {
   const shippingCharges = discountedPrice < 1000 ? discountedPrice * 0.1 : 0;
 
   const totalPrice = price - discount + tax + shippingCharges;
+
+  const isAnyProductOutOfStock = cart.some(
+    cartItem => cartItem.product.inStock === 0
+  );
+
+  const placeOrderButtonClasses = isAnyProductOutOfStock
+    ? 'btn primary disable'
+    : 'btn primary';
   return (
     <div className="price-breakout card shadow flex col">
       <div className="heading-5">PRICE DETAILS</div>
@@ -48,7 +56,12 @@ const PriceBreakoutCard = ({ cart }) => {
       </div>
       <div className="hr-line solid grey"></div>
       <p>{`You will save ${priceFormatter(discount)} on this order`}</p>
-      <button className="btn primary">Place Order</button>
+      <button
+        className={placeOrderButtonClasses}
+        disabled={isAnyProductOutOfStock}
+      >
+        Place Order
+      </button>
     </div>
   );
 };

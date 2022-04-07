@@ -7,20 +7,30 @@ import {
   Cart,
 } from './pages';
 
-import { AuthModal } from './components';
-import { useAuthModal, useAuth } from './hooks';
+import {
+  AuthModal,
+  Loading,
+  Toast,
+  ScrollTopButton,
+  Header,
+  Footer,
+} from './components';
+import { useAuthModal, useAuth, useLoading, useToast } from './hooks';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 function App() {
   const { isAuthModal, resetModal, switchModal, isAuthTypeLogin } =
     useAuthModal();
 
+  const { toast } = useToast();
+
   const { isAuth } = useAuth();
 
-  console.log('test');
+  const { loading } = useLoading();
 
   return (
     <div className="App">
+      <Header />
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/products" element={<Navigate to="/" />} />
@@ -39,6 +49,11 @@ function App() {
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
 
+      {!loading && <Footer />}
+      <ScrollTopButton />
+
+      {loading && <Loading />}
+
       {isAuthModal && (
         <AuthModal
           onReset={resetModal}
@@ -46,6 +61,8 @@ function App() {
           isAuthTypeLogin={isAuthTypeLogin}
         />
       )}
+
+      {toast.status && <Toast />}
     </div>
   );
 }

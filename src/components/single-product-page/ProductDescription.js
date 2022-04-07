@@ -7,14 +7,14 @@ const ProductDescription = props => {
   return (
     <Fragment>
       <h3>Product Highlights</h3>
-      <ul>
+      <ul className="description-items">
         {description.map(el => (
           <li key={uuid()}>{el}</li>
         ))}
       </ul>
-      <h3>Warranty Details</h3>
+      <h3 className="product-detail-title">Warranty Details</h3>
       <p>{warranty}</p>
-      <h3>Shipping Details</h3>
+      <h3 className="product-detail-title">Shipping Details</h3>
       <p>{shipping}</p>
     </Fragment>
   );

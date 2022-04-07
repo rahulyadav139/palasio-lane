@@ -2,12 +2,3 @@
   z-index: 60;
   background: rgba(0, 0, 0, 0.5);
 }
-.modal-wrapper {
-  position: fixed;
-  width: 100%;
-  max-width: 43.75rem;
-  left: 50%;
-  top: 50%;
-  transform: translateY(-50%) translateX(-50%);
-  z-index: 70;
-}

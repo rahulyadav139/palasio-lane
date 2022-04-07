@@ -160,7 +160,8 @@ a {
   }
   .nav-bar .input-field-icon {
     order: 1;
-    max-width: 100%;
+    width: 100%;
+    margin: 0;
     margin-top: 1rem;
   }
 
@@ -194,5 +195,12 @@ a {
   }
   .nav-bar .profile-item {
     display: none;
+  }
+  .theme-toggle {
+    position: relative;
+    top: 0.3125rem;
+  }
+  nav {
+    margin-left: auto;
   }
 }

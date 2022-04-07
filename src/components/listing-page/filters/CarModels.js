@@ -14,7 +14,6 @@ const CarModels = props => {
     if (e.target.checked) {
       const newArr = [...props.carModels, e.target.value];
       props.onGetCarModels(newArr);
-
       return;
     }
 

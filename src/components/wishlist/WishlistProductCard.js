@@ -11,6 +11,7 @@ const WishlistProductCard = props => {
     discount,
     imageUrl,
     exclusive,
+    inStock,
     _id: prodId,
   } = props.product;
   const { removeFromWishlist } = useWishlist();
@@ -64,6 +65,12 @@ const WishlistProductCard = props => {
       >
         <i className="fas fa-times"></i>
       </button>
+
+      {!inStock && (
+        <span className="overlay">
+          <p>out of stock</p>
+        </span>
+      )}
     </div>
   );
 };
