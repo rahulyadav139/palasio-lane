@@ -3,8 +3,13 @@ import { Fragment, useEffect } from 'react';
 import { Footer, Header, Filters, Listing } from '../components';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
+import { getFilteredProducts } from '../utils';
 
 const ProductListingPage = props => {
+  const [price, setPrice] = useState('');
+  const [carModels, setCarModels] = useState([]);
+  const [star, setStar] = useState(null);
+  const [sortBy, setSortBy] = useState('popularity');
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const params = useParams();
@@ -28,7 +33,7 @@ const ProductListingPage = props => {
           `http://localhost:8080/products?filterBy=${filterBy}`
         );
         const data = await res.json();
-        // console.log(data[0]);
+
         setProducts(data);
         setLoading(false);
       } catch (err) {
@@ -37,14 +42,44 @@ const ProductListingPage = props => {
     })();
   }, [category, collection]);
 
+  const getPriceHandler = price => {
+    setPrice(price);
+  };
+
+  const getStarHandler = star => {
+    setStar(star);
+  };
+
+  const getCarModelsHandler = models => {
+    setCarModels(models);
+  };
+
+  const getSortByHandler = sort => {
+    setSortBy(sort);
+  };
+
   return (
     <Fragment>
       {!loading && (
         <Fragment>
           <Header />
-          <main class="main-section">
-            <Filters products={products} />
-            <Listing products={products} />
+          <main className="main-section">
+            <Filters
+              onGetPrice={getPriceHandler}
+              onGetStar={getStarHandler}
+              onGetCarModels={getCarModelsHandler}
+              products={products}
+              price={price}
+              star={star}
+              carModels={carModels}
+            />
+            <Listing
+              products={getFilteredProducts(products)(price)(carModels)(star)(
+                sortBy
+              )}
+              onGetSortBy={getSortByHandler}
+              sort={sortBy}
+            />
           </main>
           <Footer />
         </Fragment>

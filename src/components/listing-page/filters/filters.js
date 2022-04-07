@@ -4,21 +4,30 @@ import FilterByPrice from './FilterByPrice';
 import FilterByRatings from './FilterByRatings';
 
 const Filters = props => {
+  const resetFilterHandler = () => {
+    props.onGetStar(null);
+    props.onGetPrice('');
+    props.onGetCarModels([]);
+  };
   return (
-    <div class="filter-section">
-      <div class="filter-section__head flex space-between align-center">
-        <div class="heading-5">FILTERS</div>
-        <button>Reset</button>
+    <div className="filter-section">
+      <div className="filter-section__head flex space-between align-center">
+        <div className="heading-5">FILTERS</div>
+        <button onClick={resetFilterHandler}>Reset</button>
       </div>
-      <div class="first-line hr-line fad"></div>
+      <div className="first-line hr-line fad"></div>
 
-      <FilterByPrice />
-      <FilterByCarModels products={props.products} />
-      <FilterByRatings />
+      <FilterByPrice onGetPrice={props.onGetPrice} price={props.price} />
+      <FilterByCarModels
+        onGetCarModels={props.onGetCarModels}
+        products={props.products}
+        carModels={props.carModels}
+      />
+      <FilterByRatings onGetStar={props.onGetStar} star={props.star} />
 
-      <div class="filter-section__buttons">
-        <button class="btn primary">Filter</button>
-        <button class="btn-reset btn outline primary">Reset</button>
+      <div className="filter-section__buttons">
+        <button className="btn primary">Filter</button>
+        <button className="btn-reset btn outline primary">Reset</button>
       </div>
     </div>
   );

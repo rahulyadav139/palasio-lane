@@ -1,6 +1,6 @@
 import './AuthForm.css';
 import { useInput } from '../../hooks/use-input';
-import { textFormatter } from '../../utils/formatter';
+import { textFormatter } from '../../utils';
 import { useState, useEffect, Fragment } from 'react';
 import { useAuth } from '../../contexts/auth-context';
 import { useAuthModal } from '../../contexts/auth-modal-context';

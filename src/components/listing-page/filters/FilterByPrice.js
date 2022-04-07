@@ -2,17 +2,35 @@ import { Fragment } from 'react';
 import './FilterByPrice.css';
 
 const FilterByPrice = props => {
+  const priceChangeHandler = e => {
+    if (e.target.value > 10000) {
+      props.onGetPrice(10000);
+      return;
+    }
+
+    if (e.target.value < 1000) {
+      props.onGetPrice(1000);
+      return;
+    }
+    props.onGetPrice(e.target.value);
+  };
+
   return (
     <Fragment>
       <h4>Price Range</h4>
-      <div class="filter-section__price">
+      <div className="filter-section__price">
         <p>Max</p>
-        <div class="input-field-icon price__input">
+        <div className="input-field-icon price__input">
           <label>
-            <span class="icon small">
-              <i class="fas fa-rupee-sign"></i>
+            <span className="icon small">
+              <i className="fas fa-rupee-sign"></i>
             </span>
-            <input placeholder="Price" type="number" />
+            <input
+              value={props.price}
+              onChange={priceChangeHandler}
+              placeholder="Price"
+              type="number"
+            />
           </label>
         </div>
       </div>
@@ -21,11 +39,13 @@ const FilterByPrice = props => {
         min="1000"
         max="10000"
         step="1000"
-        class="styled-slider"
+        className="styled-slider"
         type="range"
+        value={props.price || 1000}
+        onChange={priceChangeHandler}
       />
 
-      <div class="hr-line fad"></div>
+      <div className="hr-line fad"></div>
     </Fragment>
   );
 };

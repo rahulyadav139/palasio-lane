@@ -3,11 +3,15 @@ import './FilterByRatings.css';
 import { v4 as uuid } from 'uuid';
 
 const FilterByRatings = props => {
+  const changeStarHandler = e => {
+    props.onGetStar(e.target.value);
+  };
+
   return (
     <Fragment>
       <h4>Rating</h4>
 
-      <div class="rating-wrapper">
+      <div className="rating-wrapper">
         {Array.from({ length: 4 }).map((el, i) => (
           <div key={uuid()}>
             <input
@@ -15,11 +19,13 @@ const FilterByRatings = props => {
               name="filter-rating"
               id={`rate-${4 - i}`}
               value={4 - i}
+              onChange={changeStarHandler}
+              checked={(4 - i).toString() === props.star}
             />
-            <label for={`rate-${4 - i}`}>
-              <span class="starred">
+            <label htmlFor={`rate-${4 - i}`}>
+              <span className="starred">
                 {Array.from({ length: 4 - i }).map((el, i) => (
-                  <i key={uuid()} class="fas fa-star"></i>
+                  <i key={uuid()} className="fas fa-star"></i>
                 ))}
               </span>
             </label>

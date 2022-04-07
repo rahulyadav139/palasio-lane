@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Header.css';
 import Navigation from './Navigation';
 
@@ -33,17 +34,18 @@ const Header = props => {
         </div>
         <div className="hr-line fad"></div>
       </div>
-
-      <div className="brand">
-        <span className="brand__logo">
-          <i className="bi bi-hurricane"></i>
-        </span>
-        <span className="brand__text">
-          PALASIO
-          <br />
-          LANE
-        </span>
-      </div>
+      <Link to="/">
+        <div className="brand">
+          <span className="brand__logo">
+            <i className="bi bi-hurricane"></i>
+          </span>
+          <span className="brand__text">
+            PALASIO
+            <br />
+            LANE
+          </span>
+        </div>
+      </Link>
 
       <SearchInput />
 
@@ -51,4 +53,4 @@ const Header = props => {
     </header>
   );
 };
-export  {Header};
+export { Header };
