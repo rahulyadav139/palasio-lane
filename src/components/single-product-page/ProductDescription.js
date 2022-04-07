@@ -2,11 +2,15 @@ import { Fragment } from 'react';
 import './ProductDescription.css';
 
 const ProductDescription = props => {
+  const { description, warranty, shipping } = props.product;
   return (
     <Fragment>
       <h3>Product Highlights</h3>
       <ul>
-        <li>
+        {description.map(el => (
+          <li>{el}</li>
+        ))}
+        {/* <li>
           Clever design – Made of Heavy-duty rubber elastic and the high-quality
           spandex mesh. It is a double mesh layer car sunshade which protects
           passengers from glare and sunburn.
@@ -33,8 +37,12 @@ const ProductDescription = props => {
           Only for Rear Window – We only provide 2 units in one set of sunshades
           which fits only for the rear windows and are not compactable for
           driver and passenger seat windows.
-        </li>
+        </li> */}
       </ul>
+      <h3>Warranty Details</h3>
+      <p>{warranty}</p>
+      <h3>Shipping Details</h3>
+      <p>{shipping}</p>
     </Fragment>
   );
 };

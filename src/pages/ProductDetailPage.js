@@ -5,17 +5,38 @@ import {
   SingleProductCard,
   ProductDescription,
 } from '../components';
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 const ProductDetailPage = props => {
+  const [product, setProduct] = useState(null);
+  const params = useParams();
+  const prodId = params.prodId;
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await fetch(`http://localhost:8080/product/${prodId}`);
+        const data = await res.json();
+        setProduct(data);
+        console.log(data);
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  }, [prodId]);
   return (
     <Fragment>
-      <Header />
-      <main class="main">
-        <SingleProductCard />
-        <ProductDescription />
-      </main>
-      <Footer />
+      {product && (
+        <Fragment>
+          <Header />
+          <main class="main">
+            <SingleProductCard product={product} />
+            <ProductDescription product={product} />
+          </main>
+          <Footer />
+        </Fragment>
+      )}
     </Fragment>
   );
 };
