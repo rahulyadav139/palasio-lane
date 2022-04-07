@@ -5,6 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { CartContext, CartProvider } from './cart-context';
 import { LoadingContext, LoadingProvider } from './loading-context';
 import { ToastContext, ToastProvider } from './toast-context';
+import { OrderContext, OrderProvider } from './order-context';
 
 const Providers = props => {
   return (
@@ -13,9 +14,11 @@ const Providers = props => {
         <AuthProvider>
           <AuthModalProvider>
             <LoadingProvider>
-              <CartProvider>
-                <WishlistProvider>{props.children}</WishlistProvider>
-              </CartProvider>
+              <OrderProvider>
+                <CartProvider>
+                  <WishlistProvider>{props.children}</WishlistProvider>
+                </CartProvider>
+              </OrderProvider>
             </LoadingProvider>
           </AuthModalProvider>
         </AuthProvider>
@@ -32,5 +35,5 @@ export {
   CartContext,
   LoadingContext,
   ToastContext,
+  OrderContext,
 };
-

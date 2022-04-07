@@ -1,7 +1,13 @@
 import './PriceBreakoutCard.css';
 import { priceFormatter } from '../../utils';
+import { Link, useNavigate } from 'react-router-dom';
+import { useOrder } from '../../hooks';
 
 const PriceBreakoutCard = ({ cart }) => {
+  const { setOrderDetails } = useOrder();
+
+  const navigate = useNavigate();
+
   const cartItemsQty = cart.reduce((acc, el) => (acc += el.quantity), 0);
 
   const price = cart.reduce(
@@ -29,6 +35,57 @@ const PriceBreakoutCard = ({ cart }) => {
   const placeOrderButtonClasses = isAnyProductOutOfStock
     ? 'btn primary disable'
     : 'btn primary';
+
+  const placeAnOrderHandler = async () => {
+    let orderId;
+    try {
+      const res = await fetch('https://api.razorpay.com/v1/orders', {
+        headers: {
+          Authorization: {
+            username: process.env.REACT_APP_RAZORPAY_API_KEY,
+            password: process.env.REACT_APP_RAZORPAY_API_SECRET,
+          },
+          'Content-Type': 'application/json',
+        },
+        method: 'POST',
+        body: JSON.stringify({
+          amount: 500,
+          currency: 'INR',
+          receipt: 'qwsaq1',
+          partial_payment: true,
+          first_payment_min_amount: 230,
+        }),
+      });
+
+      const data = await res.json();
+
+      setOrderDetails({
+        price,
+        discount,
+        tax,
+        shippingCharges,
+        totalPrice,
+        cartItemsQty,
+        orderId: data.id,
+      });
+
+      navigate(`/checkout/${data.id}`);
+    } catch (err) {
+      console.log(err);
+    }
+
+    // setOrderDetails({
+    //   price,
+    //   discount,
+    //   tax,
+    //   shippingCharges,
+    //   totalPrice,
+    //   cartItemsQty,
+    //   orderId,
+    // });
+
+    // navigate(`/checkout/sdfgsfgs`);
+  };
   return (
     <div className="price-breakout card shadow flex col">
       <div className="heading-5">PRICE DETAILS</div>
@@ -56,9 +113,11 @@ const PriceBreakoutCard = ({ cart }) => {
       </div>
       <div className="hr-line solid grey"></div>
       <p>{`You will save ${priceFormatter(discount)} on this order`}</p>
+
       <button
         className={placeOrderButtonClasses}
         disabled={isAnyProductOutOfStock}
+        onClick={placeAnOrderHandler}
       >
         Place Order
       </button>

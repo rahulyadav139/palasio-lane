@@ -10,7 +10,7 @@ const ToastProvider = props => {
   const defaultValues = {
     toast,
     setToast,
-    resetToast: () => {
+    resetToast() {
       setToast(initialToast);
     },
   };

@@ -27,17 +27,6 @@ const ProductCard = props => {
     _id: prodId,
   } = props.product;
 
-  const product = {
-    title,
-    brand,
-    price,
-    inStock,
-    imageUrl,
-    discount,
-    rating,
-    _id: prodId,
-  };
-
   const productCardClasses = exclusive
     ? 'card shadow ribbon ecom'
     : 'card shadow ecom';
@@ -45,21 +34,21 @@ const ProductCard = props => {
   const toggleWishListHandler = () => {
     if (!isAuth) return showModal();
 
-    wishlist.some(el => el._id === prodId)
+    wishlist.includes(prodId)
       ? removeFromWishlist(prodId)
-      : addToWishlist(product);
+      : addToWishlist(prodId);
   };
 
   const addToCartHandler = () => {
     if (!isAuth) return showModal();
 
-    cart.some(cartItem => cartItem.product._id === prodId)
+    cart.some(cartItem => cartItem.product === prodId)
       ? setToast({
           status: true,
           type: 'loading',
           message: 'Already in the cart!',
         })
-      : addToCart(product);
+      : addToCart(prodId);
   };
 
   return (
@@ -84,11 +73,13 @@ const ProductCard = props => {
           onClick={toggleWishListHandler}
           className="btn btn-wishlist icon medium primary"
         >
-          {isAuth && wishlist.some(el => el._id === prodId) ? (
-            <i className="fas fa-heart"></i>
-          ) : (
-            <i className="far fa-heart"></i>
-          )}
+          <i
+            className={
+              isAuth && wishlist.includes(prodId)
+                ? 'fas fa-heart'
+                : 'far fa-heart'
+            }
+          ></i>
         </button>
       </div>
 

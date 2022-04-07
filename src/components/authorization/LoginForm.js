@@ -82,7 +82,7 @@ const LoginForm = props => {
       });
     }
 
-    loginHandler(data.token);
+    loginHandler(data.fullName, data.token, data.addresses);
 
     getUpdatedWishlist(data.wishlist);
 
@@ -109,7 +109,9 @@ const LoginForm = props => {
         type: 'danger',
       });
 
-    loginHandler(data.token);
+    console.log(data);
+
+    loginHandler(data.fullName, data.token, data.addresses);
 
     getUpdatedWishlist(data.wishlist);
 

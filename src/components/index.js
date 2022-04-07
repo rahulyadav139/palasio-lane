@@ -16,3 +16,6 @@ export { SingleProductCard } from './single-product-page/SingleProductCard';
 export { ProductDescription } from './single-product-page/ProductDescription';
 export { Loading } from './ui/Loading';
 export { Toast } from './ui/Toast';
+export { ManageAddress } from './address/ManageAddress';
+export { AddressCard } from './address/AddressCard';
+export { CouponsModal } from './coupon/CouponsModal';

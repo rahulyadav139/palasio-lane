@@ -5,6 +5,7 @@ import {
   ProductDetailPage,
   ProductListingPage,
   Cart,
+  Checkout,
 } from './pages';
 
 import {
@@ -45,6 +46,7 @@ function App() {
 
         {isAuth && <Route path="/wishlist" element={<Wishlist />} />}
         {isAuth && <Route path="/cart" element={<Cart />} />}
+        {true && <Route path="/checkout/:orderId" element={<Checkout />} />}
 
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

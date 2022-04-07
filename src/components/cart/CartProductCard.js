@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { priceFormatter } from '../../utils';
 
 const CartProductCard = ({ product, quantity }) => {
-  const { addToCart, removeFromCart, removeSingleProduct } = useCart();
+  const { addToCart, decreaseCartItemQuantity, removeProduct } = useCart();
   const { addToWishlist } = useWishlist();
 
   const {
@@ -18,8 +18,8 @@ const CartProductCard = ({ product, quantity }) => {
   } = product;
 
   const moveToWishlistHandler = () => {
-    removeSingleProduct(prodId);
-    addToWishlist(product);
+    removeProduct(prodId);
+    addToWishlist(prodId);
   };
 
   const discountedPrice = price * ((100 - discount) / 100);
@@ -57,14 +57,14 @@ const CartProductCard = ({ product, quantity }) => {
         <div className="flex gap align-center cart-item__quantity">
           <span className="heading-6">Quantity:</span>
           <button
-            onClick={removeFromCart.bind(null, prodId)}
+            onClick={decreaseCartItemQuantity.bind(null, prodId)}
             className="btn icon small"
           >
             <i className="fas fa-minus-circle"></i>
           </button>
           <div className="flex center">{quantity}</div>
           <button
-            onClick={addToCart.bind(null, product)}
+            onClick={addToCart.bind(null, prodId)}
             className="btn icon small"
           >
             <i className="fas fa-plus-circle"></i>
@@ -73,7 +73,7 @@ const CartProductCard = ({ product, quantity }) => {
 
         <div className="cart-item__buttons">
           <button
-            onClick={removeSingleProduct.bind(null, prodId)}
+            onClick={removeProduct.bind(null, prodId)}
             className="btn primary"
           >
             <strong>Remove From Cart</strong>

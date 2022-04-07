@@ -1,0 +1,30 @@
+.address-modal {
+  position: fixed;
+  width: 100%;
+  max-width: 35rem;
+  left: 50%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  z-index: 70;
+  padding: 1rem;
+  background: var(--invert-font-color);
+}
+.new-address-form {
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.btn-dismiss {
+  position: absolute;
+  margin: 1rem;
+  top: 0;
+  right: 0;
+}
+.form-actions {
+  grid-column-end: -1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}

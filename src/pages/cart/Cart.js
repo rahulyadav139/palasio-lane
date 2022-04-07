@@ -3,11 +3,28 @@ import { CartProductCard, PriceBreakoutCard } from '../../components';
 import { useCart } from '../../hooks';
 import { v4 as uuid } from 'uuid';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useFetch } from '../../hooks';
 
 const Cart = props => {
-  const { cart } = useCart();
+  const { getData } = useFetch();
+  const [cart, setCart] = useState([]);
+  const { cart: cartLocal } = useCart();
 
-  const cartItemsQty = cart.reduce((acc, el) => (acc += el.quantity), 0) ?? 0;
+  const cartLocalQty = cartLocal.reduce((acc, el) => (acc += el?.quantity), 0);
+
+  useEffect(() => {
+    (async () => {
+      const { data } = await getData(
+        `${process.env.REACT_APP_BACKEND_URL}/admin/cart/get-items`,
+        true
+      );
+
+      setCart(data);
+    })();
+  }, [cartLocalQty]);
+
+  const cartItemsQty = cart.reduce((acc, el) => (acc += el?.quantity), 0) ?? 0;
 
   const headingMsg =
     cartItemsQty > 1 ? `( ${cartItemsQty} items )` : `( ${cartItemsQty} item )`;
