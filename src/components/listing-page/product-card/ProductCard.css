@@ -8,3 +8,6 @@
   color: var(--red-color);
   transform: scale(1.05);
 }
+.ecom .image img {
+  object-fit: contain;
+}

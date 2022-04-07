@@ -1,6 +1,9 @@
 .listing-section {
   padding: 1rem;
 }
+.listing {
+  min-height: 80vh;
+}
 .listing-section .heading-5 {
   margin-bottom: 0.5rem;
 }
@@ -21,7 +24,7 @@
 }
 .listing-section__products {
   display: grid;
-  grid-template-columns: repeat(4, minmax(10rem, auto));
+  grid-template-columns: repeat(4, minmax(10rem, 20rem));
   gap: 1.5rem;
   grid-auto-flow: row dense;
 }
@@ -33,6 +36,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 3rem;
 }
 
 .listing-section__pages ul {

@@ -1,9 +1,9 @@
-import './Filters.css';
+import './FilterTable.css';
 import FilterByCarModels from './FilterByCarModels';
 import FilterByPrice from './FilterByPrice';
 import FilterByRatings from './FilterByRatings';
 
-const Filters = props => {
+const FilterTable = props => {
   const resetFilterHandler = () => {
     props.onGetStar(null);
     props.onGetPrice('');
@@ -25,11 +25,14 @@ const Filters = props => {
       />
       <FilterByRatings onGetStar={props.onGetStar} star={props.star} />
 
+      <div className="first-line hr-line fad"></div>
+
       <div className="filter-section__buttons">
         <button className="btn primary">Filter</button>
         <button className="btn-reset btn outline primary">Reset</button>
       </div>
+      <div></div>
     </div>
   );
 };
-export { Filters };
+export { FilterTable };
