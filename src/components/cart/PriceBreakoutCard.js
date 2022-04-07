@@ -74,17 +74,17 @@ const PriceBreakoutCard = ({ cart }) => {
       console.log(err);
     }
 
-    // setOrderDetails({
-    //   price,
-    //   discount,
-    //   tax,
-    //   shippingCharges,
-    //   totalPrice,
-    //   cartItemsQty,
-    //   orderId,
-    // });
+    setOrderDetails({
+      price,
+      discount,
+      tax,
+      shippingCharges,
+      totalPrice,
+      cartItemsQty,
+      orderId,
+    });
 
-    // navigate(`/checkout/sdfgsfgs`);
+    navigate(`/checkout/sdfgsfgs`);
   };
   return (
     <div className="price-breakout card shadow flex col">

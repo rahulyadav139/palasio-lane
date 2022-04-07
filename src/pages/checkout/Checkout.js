@@ -67,12 +67,12 @@ const Checkout = props => {
   };
 
   const payNowHandler = () => {
-    const rzp1 = new Razorpay({
-      ...razorPayOption,
-      amount: `'${totalPrice}'`,
-      order_id: orderId,
-    });
-    rzp1.open();
+    // const rzp1 = new Razorpay({
+    //   ...razorPayOption,
+    //   amount: `'${totalPrice}'`,
+    //   order_id: orderId,
+    // });
+    // rzp1.open();
   };
 
   return (
