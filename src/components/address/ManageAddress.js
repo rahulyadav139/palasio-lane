@@ -2,6 +2,7 @@ import './ManageAddress.css';
 import { Modal } from '../ui/Modal';
 import { useState, useEffect } from 'react';
 import { useFetch, useAuth } from '../../hooks';
+import { textFormatter } from '../../utils';
 
 const ManageAddress = ({
   onHide,
@@ -45,7 +46,7 @@ const ManageAddress = ({
 
   const addressManageHandler = async e => {
     e.preventDefault();
-    console.log(addressData);
+
     const { data } = await sendData(
       `${process.env.REACT_APP_BACKEND_URL}/admin/manage-address`,
       'POST',
@@ -76,7 +77,10 @@ const ManageAddress = ({
         <h4>Address</h4>
         <textarea
           onChange={e =>
-            setAddressData(prev => ({ ...prev, address: e.target.value }))
+            setAddressData(prev => ({
+              ...prev,
+              address: textFormatter(e.target.value),
+            }))
           }
           className="input-field"
           rows={4}
@@ -85,7 +89,10 @@ const ManageAddress = ({
         <h4>Landmark</h4>
         <input
           onChange={e =>
-            setAddressData(prev => ({ ...prev, landmark: e.target.value }))
+            setAddressData(prev => ({
+              ...prev,
+              landmark: textFormatter(e.target.value),
+            }))
           }
           value={addressData.landmark}
           className="input-field"

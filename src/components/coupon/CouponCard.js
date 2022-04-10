@@ -1,22 +1,18 @@
 import './CouponCard.css';
 import { useState } from 'react';
+import { useToast, useOrder } from '../../hooks';
 
-const CouponCard = ({
-  onSetCoupon,
-  coupon,
-  onHide,
-  totalCartValue,
-  onSetToast,
-}) => {
+const CouponCard = ({ onSetCoupon, coupon, onHide, orderValue }) => {
+  const { setToast } = useToast();
   const [applyCoupon, setApplyCoupon] = useState('');
   const { title, description } = coupon;
 
   const applyCouponHandler = e => {
-    if (totalCartValue < coupon.min) {
-      return onSetToast({
+    if (orderValue < coupon.min) {
+      return setToast({
         status: true,
         type: 'danger',
-        message: `Cart value should be atleast ${coupon.min}`,
+        message: `Cart value should be at-least ${coupon.min}`,
       });
     }
 

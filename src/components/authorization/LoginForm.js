@@ -55,7 +55,7 @@ const LoginForm = props => {
     const { data, status, error } = await sendData(
       `${process.env.REACT_APP_BACKEND_URL}/auth/login`,
       'POST',
-      { email, password },
+      { email: email.toLowerCase(), password },
       false
     );
 
@@ -82,11 +82,20 @@ const LoginForm = props => {
       });
     }
 
-    loginHandler(data.fullName, data.token, data.addresses);
+    const {
+      fullName,
+      token,
+      addresses,
+      email: userEmail,
+      wishlist,
+      cart,
+    } = data;
 
-    getUpdatedWishlist(data.wishlist);
+    loginHandler(fullName, token, addresses, userEmail);
 
-    getUpdatedCart(data.cart);
+    getUpdatedWishlist(wishlist);
+
+    getUpdatedCart(cart);
 
     resetModal();
   };
@@ -109,13 +118,20 @@ const LoginForm = props => {
         type: 'danger',
       });
 
-    console.log(data);
+    const {
+      fullName,
+      token,
+      addresses,
+      email: userEmail,
+      wishlist,
+      cart,
+    } = data;
 
-    loginHandler(data.fullName, data.token, data.addresses);
+    loginHandler(fullName, token, addresses, userEmail);
 
-    getUpdatedWishlist(data.wishlist);
+    getUpdatedWishlist(wishlist);
 
-    getUpdatedCart(data.cart);
+    getUpdatedCart(cart);
 
     resetModal();
   };

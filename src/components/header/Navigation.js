@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 const Navigation = props => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') ?? 'light');
-  const { isAuth, logoutHandler } = useAuth();
+  const { isAuth, logoutHandler, user } = useAuth();
   const { showModal } = useAuthModal();
   const { wishlist } = useWishlist();
   const { cart } = useCart();
@@ -50,67 +50,61 @@ const Navigation = props => {
           </div>
         </li>
 
-        {isAuth && (
-          <li className="list-item">
-            <Link to="/wishlist">
-              <div className="badge-container">
-                <button className="btn icon medium primary badge-counter">
-                  <i className="fas fa-heart"></i>
+        {isAuth ? (
+          <>
+            <li className="list-item">
+              <Link to="/wishlist">
+                <div className="badge-container">
+                  <button className="btn icon medium primary badge-counter">
+                    <i className="fas fa-heart"></i>
+                  </button>
+                  {wishlistQty !== 0 && (
+                    <span className="badge-number">{wishlistQty}</span>
+                  )}
+                </div>
+              </Link>
+            </li>
+
+            <li className="list-item">
+              <Link to="/cart">
+                <div className="badge-container">
+                  <button className="btn icon medium primary badge-counter">
+                    <i className="fas fa-shopping-cart"></i>
+                  </button>
+
+                  {cartItemsQty !== 0 && (
+                    <span className="badge-number">{cartItemsQty}</span>
+                  )}
+                </div>
+              </Link>
+            </li>
+
+            <li className="profile-item list-item">
+              <div className="avatar small">{user[0]}</div>
+
+              <div className="profile-item-dropdown shadow">
+                <ul>
+                  <li>
+                    <span className="icon primary small">
+                      <i className="fas fa-user"></i>
+                    </span>
+                    <span>My Profile</span>
+                  </li>
+
+                  <li>
+                    <span className="icon primary small">
+                      <i className="bi bi-box"></i>
+                    </span>
+                    <span>Orders</span>
+                  </li>
+                </ul>
+                <button onClick={logoutHandler} className="btn primary">
+                  Logout
                 </button>
-                {wishlistQty !== 0 && (
-                  <span className="badge-number">{wishlistQty}</span>
-                )}
               </div>
-            </Link>
-          </li>
-        )}
-        {isAuth && (
-          <li className="list-item">
-            <Link to="/cart">
-              <div className="badge-container">
-                <button className="btn icon medium primary badge-counter">
-                  <i className="fas fa-shopping-cart"></i>
-                </button>
-
-                {cartItemsQty !== 0 && (
-                  <span className="badge-number">{cartItemsQty}</span>
-                )}
-              </div>
-            </Link>
-          </li>
-        )}
-        {isAuth && (
-          <li className="profile-item list-item">
-            <div className="avatar small">
-              <img
-                src="https://i.picsum.photos/id/704/536/354.jpg?hmac=k_PDx86tD-ILOtsUOKY9t5LAL5ycKiQ4ryVdlxhWoek"
-                alt="sample"
-              />
-            </div>
-
-            <div className="profile-item-dropdown shadow">
-              <ul>
-                <li>
-                  <span className="icon primary small">
-                    <i className="fas fa-user"></i>
-                  </span>
-                  <span>My Profile</span>
-                </li>
-
-                <li>
-                  <span className="icon primary small">
-                    <i className="bi bi-box"></i>
-                  </span>
-                  <span>Orders</span>
-                </li>
-              </ul>
-              <button onClick={logoutHandler} className="btn primary">
-                Logout
-              </button>
-            </div>
-          </li>
-        )}
-        {!isAuth && (
+            </li>
+          </>
+        ) : (
           <li className="login-item">
             <button
               onClick={showModal}

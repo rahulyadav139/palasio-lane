@@ -106,7 +106,7 @@ const SignupForm = props => {
 
     const userData = {
       fullName: textFormatter(`${firstName} ${lastName}`),
-      email,
+      email: email.toLowerCase(),
       password,
     };
 
@@ -128,7 +128,9 @@ const SignupForm = props => {
       return;
     }
 
-    loginHandler(data.fullName, data.token, []);
+    const { fullName: user, token } = data;
+
+    loginHandler(user, token, []);
     resetModal();
   };
 

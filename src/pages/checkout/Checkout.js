@@ -1,24 +1,19 @@
 import './Checkout.css';
 import { Fragment, useState, useRef } from 'react';
-import { ManageAddress, AddressCard, CouponsModal } from '../../components';
-import { useAuth, useOrder, useToast } from '../../hooks';
-import couponsData from '../../data/coupons-data.json';
-import { priceFormatter, razorPayOption } from '../../utils';
+import { ManageAddress, AddressCard, DeliveryAddress } from '../../components';
+import { useAuth, useOrder, useToast, useFetch, useCart } from '../../hooks';
+import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const Checkout = props => {
-  const { addresses } = useAuth();
+  const { getUpdatedCart } = useCart();
+  const navigate = useNavigate();
+  const { sendData } = useFetch();
+  const { addresses, user, email } = useAuth();
   const { setToast } = useToast();
-  const {
-    orderDetails: {
-      price,
-      discount,
-      tax,
-      shippingCharges,
-      cartItemsQty,
-      totalPrice,
-      orderId,
-    },
-  } = useOrder();
+  const { orderDetails } = useOrder();
+  const { totalPrice: orderValue } = orderDetails;
+  const { orderId } = useParams();
 
   const [manageAddress, setManageAddress] = useState({
     showModal: false,
@@ -26,53 +21,67 @@ const Checkout = props => {
     address: '',
   });
   const [selectedAddress, setSelectedAddress] = useState(null);
-  const [isCouponsModal, setIsCouponsModal] = useState(false);
-  const [coupon, setCoupon] = useState({ discount: 0 });
-  const [invalidCoupon, setInvalidCoupon] = useState(false);
-
-  const couponInput = useRef();
 
   const selectDeliveryAddressHandler = e => {
     setSelectedAddress(JSON.parse(e.target.value));
   };
 
-  const showCouponsModalHandler = () => {
-    setIsCouponsModal(prev => !prev);
-  };
+  const payNowHandler = () => {
+    if (!selectedAddress)
+      return setToast({
+        status: true,
+        type: 'danger',
+        message: 'Please choose a delivery address!',
+      });
 
-  const applyCouponHandler = () => {
-    setInvalidCoupon(false);
+    const razorPayModal = new window.Razorpay({
+      key: process.env.REACT_APP_RAZORPAY_API_KEY,
+      amount: orderValue * 100,
+      currency: 'INR',
+      name: 'Palasio Lane',
+      description: 'Test Transaction',
+      order_id: orderId,
+      handler: async res => {
+        const { error } = await sendData(
+          `${process.env.REACT_APP_BACKEND_URL}/admin/order`,
+          'POST',
+          {
+            orderDetails,
+            deliveryAddress: selectedAddress,
+            transactionId: res.razorpay_payment_id,
+            razorPayOrderId: res.razorpay_order_id,
+          },
+          true
+        );
 
-    const couponValue = couponInput.current.value;
-
-    const couponApplied = couponsData.find(
-      coupon => coupon.title === couponValue.toUpperCase()
-    );
-
-    if (!couponApplied) {
-      return setInvalidCoupon(true);
-    } else {
-      totalPrice < couponApplied.min
-        ? setToast({
+        if (error) {
+          setToast({
             status: true,
             type: 'danger',
-            message: `Cart value should be atleast ${couponApplied.min}`,
-          })
-        : setCoupon(couponApplied);
-    }
-  };
+            message:
+              'Order sent failed, money will be refunded in 2-3 working days',
+          });
+          return navigate('/cart');
+        }
 
-  const removeCouponHandler = () => {
-    setCoupon({ discount: 0 });
-  };
+        getUpdatedCart([]);
 
-  const payNowHandler = () => {
-    // const rzp1 = new Razorpay({
-    //   ...razorPayOption,
-    //   amount: `'${totalPrice}'`,
-    //   order_id: orderId,
-    // });
-    // rzp1.open();
+        navigate('/');
+      },
+      prefill: {
+        name: user,
+        email,
+        contact: '9876543210',
+      },
+      notes: {
+        address: 'Palasio Lane Corporate Office',
+      },
+      theme: {
+        color: '#2b6777',
+      },
+    });
+
+    razorPayModal.open();
   };
 
   return (
@@ -101,7 +110,7 @@ const Checkout = props => {
         {addresses.length !== 0 ? (
           <div className="addresses-container">
             {addresses.map(address => (
-              <div>
+              <div key={address._id}>
                 <input
                   id={address._id}
                   type="radio"
@@ -122,100 +131,11 @@ const Checkout = props => {
         ) : (
           <p className="text-center text-bold">No address available</p>
         )}
-        <div className="delivery-address">
-          <h5 className="heading-5">Delivery Address</h5>
+        <DeliveryAddress selectedAddress={selectedAddress} />
 
-          {selectedAddress ? (
-            <div className="address-details">
-              <div>
-                <b>Address:</b> {selectedAddress.address}
-              </div>
-              <div>
-                <b>Pin:</b> {selectedAddress.pin}
-              </div>
-              <div>
-                <b>State:</b> {selectedAddress.state}
-              </div>
-              <div>
-                <b>District:</b> {selectedAddress.district}
-              </div>
-            </div>
-          ) : (
-            <p>No address selected</p>
-          )}
-        </div>
-        <div>
-          <h5 className="heading-5">Order Summary</h5>
-          <div className="order-summary">
-            <div className="order-summary__data">
-              <div className="flex space-between">
-                <p className=" text-bold">Price (items: {cartItemsQty})</p>
-                <p>{priceFormatter(price + tax)}</p>
-              </div>
-              <div className="flex space-between">
-                <p className=" text-bold">Discount</p>
-                <p>{priceFormatter(-discount)}</p>
-              </div>
-              <div className="flex space-between">
-                <p className=" text-bold">Delivery</p>
-                <p>{priceFormatter(shippingCharges)}</p>
-              </div>
-              <div className="flex space-between">
-                <p className=" text-bold">Coupon Discount</p>
-                <p>{priceFormatter(-coupon.discount)}</p>
-              </div>
-              <div className="hr-line solid thin"></div>
-              <div className="flex space-between">
-                <p className="text-large text-bold">Sub Total</p>
-                <p className="text-large text-bold">
-                  {priceFormatter(totalPrice - coupon.discount)}
-                </p>
-              </div>
-            </div>
-            <div className="flex col">
-              <div className="flex gap space-around align-center">
-                <p className="heading-5">Coupon</p>
-                {!coupon.title ? (
-                  <input ref={couponInput} className="input-field" />
-                ) : (
-                  <div className="coupon-container">
-                    <p className="coupon">{coupon.title}</p>
-                  </div>
-                )}
-
-                <button
-                  onClick={
-                    coupon.title ? removeCouponHandler : applyCouponHandler
-                  }
-                  className="btn outline primary"
-                >
-                  {coupon.title ? 'Remove' : 'Apply'}
-                </button>
-              </div>
-              {invalidCoupon && (
-                <p className="invalid-coupon-msg">Invalid coupon!</p>
-              )}
-              <p
-                onClick={() => setIsCouponsModal(true)}
-                className="text-center text-small text-bold btn-choose-coupons"
-              >
-                Choose Coupons
-              </p>
-            </div>
-          </div>
-        </div>
         <button onClick={payNowHandler} className="btn primary btn-pay-now">
           Pay Now
         </button>
-
-        {isCouponsModal && (
-          <CouponsModal
-            onSetCoupon={setCoupon}
-            onModalAction={showCouponsModalHandler}
-            totalCartValue={totalPrice}
-            onSetToast={setToast}
-          />
-        )}
 
         {manageAddress.showModal && (
           <ManageAddress

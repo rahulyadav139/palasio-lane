@@ -5,17 +5,20 @@ const AuthContext = React.createContext();
 const initialState = {
   isAuth: false,
   token: '',
-  fullName: '',
+  user: '',
+  email: '',
   addresses: [],
 };
 
 const authReducer = (state, action) => {
   if (action.type === 'LOGIN') {
+    const { token, user, addresses, email } = action;
     return {
       isAuth: true,
-      token: action.token,
-      fullName: action.fullName,
-      addresses: action.addresses,
+      token,
+      user,
+      addresses,
+      email,
     };
   }
 
@@ -24,18 +27,19 @@ const authReducer = (state, action) => {
   }
 
   if (action.type === 'UPDATE-ADDRESS') {
+    const { addresses } = action;
     return {
       ...state,
-      addresses: action.addresses,
+      addresses,
     };
   }
 };
 
-const AuthProvider = props => {
+const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
-  const loginHandler = (fullName, token, addresses) => {
-    dispatch({ type: 'LOGIN', token, fullName, addresses });
+  const loginHandler = (fullName, token, addresses, email) => {
+    dispatch({ type: 'LOGIN', token, user: fullName, addresses, email });
   };
 
   const logoutHandler = () => {
@@ -47,19 +51,14 @@ const AuthProvider = props => {
   };
 
   const defaultValue = {
-    isAuth: state.isAuth,
-    token: state.token,
-    fullName: state.fullName,
-    addresses: state.addresses,
+    ...state,
     loginHandler,
     logoutHandler,
     updateAddress: updateAddressHandler,
   };
 
   return (
-    <AuthContext.Provider value={defaultValue}>
-      {props.children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={defaultValue}>{children}</AuthContext.Provider>
   );
 };
 
