@@ -71,7 +71,7 @@ const ManageAddress = ({
 
   return (
     <Modal onReset={onHide} className="address-modal">
-      <h2>Add New Address</h2>
+      <h2>{updateAddress ? 'Update Address' : 'Add New Address'}</h2>
       <div className="hr-line solid thin"></div>
       <form onSubmit={addressManageHandler} className="new-address-form">
         <h4>Address</h4>

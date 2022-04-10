@@ -73,7 +73,7 @@ const ChangePassword = props => {
         type: 'danger',
         status: true,
         message:
-          'Password should be at least 6 characters long and includes capital letter, small letter and special character! ',
+          'Password should be at least 6 characters long and includes capital letter, small letter and special character!',
       });
     }
 
