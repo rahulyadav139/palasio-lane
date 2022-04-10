@@ -6,6 +6,7 @@ import {
   ProductListingPage,
   Cart,
   Checkout,
+  UserProfile,
 } from './pages';
 
 import {
@@ -46,12 +47,14 @@ function App() {
 
         {isAuth && <Route path="/wishlist" element={<Wishlist />} />}
         {isAuth && <Route path="/cart" element={<Cart />} />}
-        {true && <Route path="/checkout/:orderId" element={<Checkout />} />}
+        {isAuth && <Route path="/checkout/:orderId" element={<Checkout />} />}
+        {isAuth && <Route path="/profile/*" element={<UserProfile />} />}
 
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
 
       {!loading && <Footer />}
+
       <ScrollTopButton />
 
       {loading && <Loading />}

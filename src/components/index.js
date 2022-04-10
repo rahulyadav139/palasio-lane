@@ -20,3 +20,4 @@ export { ManageAddress } from './address/ManageAddress';
 export { AddressCard } from './address/AddressCard';
 export { CouponsModal } from './coupon/CouponsModal';
 export { DeliveryAddress } from './address/DeliveryAddress';
+export { Profile } from './profile/Profile';

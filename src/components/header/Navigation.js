@@ -84,19 +84,22 @@ const Navigation = props => {
 
               <div className="profile-item-dropdown shadow">
                 <ul>
-                  <li>
-                    <span className="icon primary small">
-                      <i className="fas fa-user"></i>
-                    </span>
-                    <span>My Profile</span>
-                  </li>
-
-                  <li>
-                    <span className="icon primary small">
-                      <i className="bi bi-box"></i>
-                    </span>
-                    <span>Orders</span>
-                  </li>
+                  <Link to="/profile">
+                    <li>
+                      <span className="icon primary small">
+                        <i className="fas fa-user"></i>
+                      </span>
+                      <span>My Profile</span>
+                    </li>
+                  </Link>
+                  <Link to="/profile/orders">
+                    <li>
+                      <span className="icon primary small">
+                        <i className="bi bi-box"></i>
+                      </span>
+                      <span>Orders</span>
+                    </li>
+                  </Link>
                 </ul>
                 <button onClick={logoutHandler} className="btn primary">
                   Logout
