@@ -23,3 +23,4 @@ export { DeliveryAddress } from './address/DeliveryAddress';
 export { Profile } from './profile/Profile';
 export { ChangePassword } from './change-password/ChangePassword';
 export { UserAddress } from './address/UserAddress';
+export { DeleteUserAccount } from './delete-account/DeleteUserAccount';
