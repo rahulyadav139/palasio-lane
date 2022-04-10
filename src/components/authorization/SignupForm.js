@@ -95,6 +95,24 @@ const SignupForm = props => {
       return;
     }
 
+    const regexSmallLater = /[a-z]/g;
+    const regexCapitalLater = /[A-Z]/g;
+    const regexSpecialChar = /[^a-zA-Z0-9]/g;
+
+    if (
+      !password.match(regexSmallLater) ||
+      !password.match(regexCapitalLater) ||
+      !password.match(regexSpecialChar)
+    ) {
+      setToast({
+        type: 'danger',
+        status: true,
+        message:
+          'Password should be at least 6 characters long and includes capital letter, small letter and special character! ',
+      });
+      return;
+    }
+
     if (password !== confirmPassword) {
       setToast({
         status: true,

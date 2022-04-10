@@ -1,6 +1,6 @@
 import './UserProfile.css';
 import { Routes, Route, NavLink, Navigate } from 'react-router-dom';
-import { Profile } from '../../components';
+import { Profile, ChangePassword } from '../../components';
 
 const UserProfile = props => {
   return (
@@ -19,9 +19,9 @@ const UserProfile = props => {
         <div className="user-profile-main">
           <Routes>
             <Route path="/" element={<Profile />} />
-            <Route path="orders" element={<div></div>} />
+            <Route path="orders" element={<div>test</div>} />
             <Route path="address" element={<div></div>} />
-            <Route path="change-password" element={<div></div>} />
+            <Route path="change-password" element={<ChangePassword />} />
             <Route path="delete-account" element={<div></div>} />
             <Route path="*" element={<Navigate to="/profile" />} />
           </Routes>

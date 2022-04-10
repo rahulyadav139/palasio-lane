@@ -4,7 +4,7 @@ import { useAuth } from '../../hooks';
 const Profile = props => {
   const { user, email } = useAuth();
   return (
-    <div className="flex col gap">
+    <div className="flex col gap user-details">
       <div className="flex gap">
         <p className="text-bold">Name:</p>
         <p>{user}</p>
