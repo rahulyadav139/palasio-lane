@@ -4,9 +4,7 @@ import { useFetch, useToast } from '../hooks';
 
 const WishlistContext = React.createContext();
 
-let updatedWishlist, isExist;
-let addToWishlistIsReady = true;
-let removeFromWishlistIsReady = true;
+let isExist;
 
 const WishlistProvider = props => {
   const { setToast } = useToast();
@@ -15,8 +13,6 @@ const WishlistProvider = props => {
   const { sendData } = useFetch();
 
   const addToWishlist = async prodId => {
-    // const prodId = product._id;
-
     isExist = wishlist.includes(prodId);
 
     if (isExist) return wishlist;
@@ -35,34 +31,8 @@ const WishlistProvider = props => {
           message: 'Something went wrong!',
         })
       : setWishlist(prev => prev.concat(prodId));
-
-    // if(!error) {
-
-    //   setWishlist(prev=> prev.concat(prodId))
-
-    //   // updatedWishlist = [...wishlist, product];
-
-    // }
-
-    // if (addToWishlistIsReady) {
-    //   addToWishlistIsReady = false;
-
-    //   updatedWishlist = [...wishlist, product];
-
-    //   const { error } = await sendData(
-    //     `${process.env.REACT_APP_BACKEND_URL}/admin/wishlist`,
-    //     'PUT',
-    //     updatedWishlist,
-    //     true
-    //   );
-
-    //   if (!error) setWishlist(updatedWishlist);
-    //   addToWishlistIsReady = true;
-    // }
   };
   const removeFromWishlist = async prodId => {
-    // updatedWishlist = wishlist.filter(el => el._id !== prodId);
-
     const { error } = await sendData(
       `${process.env.REACT_APP_BACKEND_URL}/admin/wishlist/remove-product`,
       'POST',
@@ -77,8 +47,6 @@ const WishlistProvider = props => {
           message: 'Something went wrong!',
         })
       : setWishlist(prev => prev.filter(id => id !== prodId));
-
-    // if (!error) setWishlist(updatedWishlist);
   };
 
   const getUpdatedWishlist = wishlist => {

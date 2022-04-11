@@ -18,7 +18,6 @@ const Orders = props => {
       );
 
       setOrders(data);
-      console.log(data);
     })();
   }, []);
 

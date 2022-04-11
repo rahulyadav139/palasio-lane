@@ -11,8 +11,6 @@ const OrderProductCard = ({ productData }) => {
 
   const priceAfterDiscount = priceAtPurchased * (1 - discountAtPurchased / 100);
 
-  const totalPrice = priceAfterDiscount * quantity;
-
   return (
     <>
       <div className="order-card__product">
@@ -24,10 +22,6 @@ const OrderProductCard = ({ productData }) => {
           <h4 className="text-grey">{brand}</h4>
           <p>{`Quantity: ${quantity}`}</p>
           <p>{`Price: ${priceFormatter(priceAfterDiscount)}`}</p>
-
-          {/* <p>{`${quantity} x ${priceFormatter(
-            priceAfterDiscount
-          )} = ${priceFormatter(totalPrice)}`}</p> */}
         </div>
       </div>
       <div className="hr-line thin fad"></div>

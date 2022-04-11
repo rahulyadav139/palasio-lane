@@ -14,8 +14,7 @@ const OrderDetailsModal = ({ onReset, deliveryAddress, priceBreakout }) => {
     orderValue,
   } = priceBreakout;
 
-  console.log(1 - discount / 100);
-  console.log(discount);
+ 
 
   return (
     <Modal onReset={onReset}>

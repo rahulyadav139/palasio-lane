@@ -37,7 +37,6 @@ const authReducer = (state, action) => {
 
 const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
-  console.log(state);
 
   const loginHandler = (fullName, token, addresses, email) => {
     dispatch({ type: 'LOGIN', token, user: fullName, addresses, email });

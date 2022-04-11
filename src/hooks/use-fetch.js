@@ -68,6 +68,7 @@ const useFetch = () => {
         setLoading(false);
       } catch (err) {
         error = err;
+        console.log(err)
         setLoading(false);
       }
 
