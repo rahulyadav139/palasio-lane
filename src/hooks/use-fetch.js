@@ -15,17 +15,26 @@ const useFetch = () => {
             'Content-Type': 'application/json',
           };
 
+      const apiCallOptions =
+        method === 'DELETE'
+          ? {
+              method,
+              headers,
+            }
+          : {
+              method,
+              headers,
+              body: JSON.stringify(body),
+            };
+
       try {
         setLoading(true);
-        const res = await fetch(url, {
-          method,
-          headers,
-          body: JSON.stringify(body),
-        });
+        const res = await fetch(url, apiCallOptions);
 
         status = res.status;
 
         data = await res.json();
+
         setLoading(false);
       } catch (err) {
         error = err;

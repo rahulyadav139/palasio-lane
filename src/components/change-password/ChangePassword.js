@@ -84,10 +84,10 @@ const ChangePassword = props => {
         message: "Password doesn't match!",
       });
 
-    const { error } = await sendData(
+    const { error, status } = await sendData(
       `${process.env.REACT_APP_BACKEND_URL}/admin/change-password`,
       'POST',
-      { newPassword },
+      { oldPassword, newPassword },
       true
     );
 
@@ -97,6 +97,22 @@ const ChangePassword = props => {
         type: 'danger',
         message: 'Something went wrong!',
       });
+
+    if (status === 401) {
+      return setToast({
+        status: true,
+        type: 'danger',
+        message: 'Incorrect password!',
+      });
+    }
+
+    if (status === 403) {
+      return setToast({
+        status: true,
+        type: 'danger',
+        message: 'Are you kidding me? This is a test account.',
+      });
+    }
 
     setToast({
       status: true,

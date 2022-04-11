@@ -66,7 +66,7 @@ const Checkout = props => {
 
         getUpdatedCart([]);
 
-        navigate('/');
+        navigate('/profile/orders');
       },
       prefill: {
         name: user,

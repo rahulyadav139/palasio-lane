@@ -1,5 +1,12 @@
 import './Navigation.css';
-import { useAuth, useAuthModal, useWishlist, useCart } from '../../hooks';
+import {
+  useAuth,
+  useAuthModal,
+  useWishlist,
+  useCart,
+  useOrder,
+  useToast,
+} from '../../hooks';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
@@ -7,8 +14,10 @@ const Navigation = props => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') ?? 'light');
   const { isAuth, logoutHandler, user } = useAuth();
   const { showModal } = useAuthModal();
-  const { wishlist } = useWishlist();
-  const { cart } = useCart();
+  const { wishlist, getUpdatedWishlist } = useWishlist();
+  const { cart, getUpdatedCart } = useCart();
+  const { resetOrderDetails } = useOrder();
+  const { setToast } = useToast();
 
   const wishlistQty = wishlist.length;
   const cartItemsQty = cart.reduce((acc, el) => (acc += el.quantity), 0);
@@ -27,6 +36,18 @@ const Navigation = props => {
       setTheme('light');
       localStorage.setItem('theme', 'light');
     }
+  };
+
+  const userLogoutHandler = () => {
+    getUpdatedCart([]);
+    getUpdatedWishlist([]);
+    resetOrderDetails();
+    logoutHandler();
+    setToast({
+      status: true,
+      type: 'success',
+      message: 'Logout successfully!',
+    });
   };
 
   return (
@@ -101,7 +122,7 @@ const Navigation = props => {
                     </li>
                   </Link>
                 </ul>
-                <button onClick={logoutHandler} className="btn primary">
+                <button onClick={userLogoutHandler} className="btn primary">
                   Logout
                 </button>
               </div>

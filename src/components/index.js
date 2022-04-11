@@ -24,3 +24,5 @@ export { Profile } from './profile/Profile';
 export { ChangePassword } from './change-password/ChangePassword';
 export { UserAddress } from './address/UserAddress';
 export { DeleteUserAccount } from './delete-account/DeleteUserAccount';
+export { Orders } from './order/Orders';
+export { OrderProductCard } from './order/OrderProductCard';

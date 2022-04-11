@@ -17,9 +17,9 @@ const AddressCard = props => {
 
   const deleteAddressHandler = async () => {
     const { data, error } = await sendData(
-      `${process.env.REACT_APP_BACKEND_URL}/admin/delete-address`,
-      'POST',
-      { addressId: _id },
+      `${process.env.REACT_APP_BACKEND_URL}/admin/delete-address/${_id}`,
+      'DELETE',
+      {},
       true
     );
 

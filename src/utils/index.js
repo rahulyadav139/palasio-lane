@@ -1,3 +1,2 @@
-export { textFormatter, priceFormatter } from './formatter';
+export { textFormatter, priceFormatter, dateFormatter } from './formatter';
 export { getFilteredProducts } from './product-filters';
-

@@ -146,9 +146,9 @@ const SignupForm = props => {
       return;
     }
 
-    const { fullName: user, token } = data;
+    const { fullName: user, token, email: userEmail } = data;
 
-    loginHandler(user, token, []);
+    loginHandler(user, token, [], userEmail);
     resetModal();
   };
 

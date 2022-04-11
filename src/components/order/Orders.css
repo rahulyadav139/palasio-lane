@@ -1,0 +1,25 @@
+.order-card {
+  padding: 1rem;
+}
+.order-card__header {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 0.3rem;
+}
+
+.order-card__header > div:nth-child(3) > p:nth-child(2) {
+  cursor: pointer;
+}
+
+.order-card__header div:last-child {
+  margin-left: auto;
+}
+.order-card__header p {
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.ordered-products-container {
+  margin: 0.5rem 0;
+}

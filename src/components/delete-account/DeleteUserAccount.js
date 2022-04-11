@@ -1,17 +1,28 @@
 import './DeleteUserAccount.css';
 import randomString from 'random-string';
 import { useRef, useState } from 'react';
-import { useToast, useFetch } from '../../hooks';
+import {
+  useToast,
+  useFetch,
+  useAuth,
+  useWishlist,
+  useCart,
+  useOrder,
+} from '../../hooks';
 import { useNavigate } from 'react-router-dom';
 
 const DeleteUserAccount = props => {
   const [deleteAccountCaptcha, setDeleteAccountCaptcha] = useState(
     randomString({ length: 8 })
   );
+  const { getUpdatedCart } = useCart();
+  const { getUpdatedWishlist } = useWishlist();
+  const { resetOrderDetails } = useOrder();
   const inputRef = useRef();
   const navigate = useNavigate();
   const { setToast } = useToast();
   const { sendData } = useFetch();
+  const { logoutHandler } = useAuth();
 
   const userAccountDeleteHandler = async () => {
     const userInput = inputRef.current.value;
@@ -27,10 +38,10 @@ const DeleteUserAccount = props => {
       return;
     }
 
-    const { error } = await sendData(
-      `${process.env.REACT_APP_BACKEND_URL}/delete-account`,
+    const { error, status } = await sendData(
+      `${process.env.REACT_APP_BACKEND_URL}/admin/delete-account`,
       'DELETE',
-      {},
+      undefined,
       true
     );
 
@@ -41,6 +52,24 @@ const DeleteUserAccount = props => {
         message: 'Something went wrong!',
       });
 
+    if (status === 403) {
+      return setToast({
+        status: true,
+        type: 'danger',
+        message: 'Are you kidding me? This is a test account.',
+      });
+    }
+
+    getUpdatedCart([]);
+    getUpdatedWishlist([]);
+    resetOrderDetails();
+    logoutHandler();
+
+    setToast({
+      status: true,
+      type: 'success',
+      message: 'Account deleted successfully!',
+    });
     navigate('/');
   };
 
