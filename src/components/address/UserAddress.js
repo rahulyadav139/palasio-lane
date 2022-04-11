@@ -34,6 +34,9 @@ const UserAddress = props => {
       {addresses.map(address => (
         <AddressCard setManageAddress={setManageAddress} address={address} />
       ))}
+      {addresses.length === 0 && (
+        <p className="no-address-msg">No address available!</p>
+      )}
 
       {manageAddress.showModal && (
         <ManageAddress

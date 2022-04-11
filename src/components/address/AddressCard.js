@@ -47,14 +47,14 @@ const AddressCard = props => {
           onClick={editAddressHandler}
           className="btn icon small circle primary"
         >
-          <i class="fas fa-pen"></i>
+          <i className="fas fa-pen"></i>
         </button>
 
         <button
           onClick={deleteAddressHandler}
           className="btn icon small circle primary"
         >
-          <i class="fas fa-trash"></i>
+          <i className="fas fa-trash"></i>
         </button>
       </div>
     </div>

@@ -3,3 +3,12 @@
   flex-direction: column;
   gap: 0.5rem;
 }
+.no-address-msg {
+  text-align: center;
+  margin-top: 5rem;
+}
+.no-address-msg::first-letter {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  line-height: 0;
+}
