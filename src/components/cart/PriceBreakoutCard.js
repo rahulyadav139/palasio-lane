@@ -119,10 +119,12 @@ const PriceBreakoutCard = ({ cart }) => {
         <p className="text-small">Delivery Charges</p>
         <p className="text-small">{priceFormatter(shippingCharges)}</p>
       </div>
-      <div className="flex space-between">
-        <p className="text-small">Coupon Discount</p>
-        <p className="text-small">{priceFormatter(-coupon.discount)}</p>
-      </div>
+      {coupon.discount !== 0 && (
+        <div className="flex space-between">
+          <p className="text-small">Coupon Discount</p>
+          <p className="text-small">{priceFormatter(-coupon.discount)}</p>
+        </div>
+      )}
       <div className="hr-line solid grey"></div>
       <div className="flex space-between align-center">
         <p className="text-bold">TOTAL AMOUNT</p>

@@ -1,7 +1,7 @@
 import './ManageAddress.css';
 import { Modal } from '../ui/Modal';
 import { useState, useEffect } from 'react';
-import { useFetch, useAuth } from '../../hooks';
+import { useFetch, useAuth, useToast } from '../../hooks';
 import { textFormatter } from '../../utils';
 
 const ManageAddress = ({
@@ -13,6 +13,7 @@ const ManageAddress = ({
   setSelectedAddress,
 }) => {
   const { sendData } = useFetch();
+  const { setToast } = useToast();
   const { updateAddress: updateAddressHandler } = useAuth();
   const [addressData, setAddressData] = useState(
     updateAddress
@@ -46,6 +47,24 @@ const ManageAddress = ({
 
   const addressManageHandler = async e => {
     e.preventDefault();
+
+    const { address, landmark, pin, district, state } = addressData;
+
+    if (!address || !landmark || !pin) {
+      return setToast({
+        status: true,
+        type: 'danger',
+        message: 'Invalid address!',
+      });
+    }
+
+    if (!district || !state) {
+      return setToast({
+        status: true,
+        type: 'danger',
+        message: 'Invalid pin code!',
+      });
+    }
 
     const { data } = await sendData(
       `${process.env.REACT_APP_BACKEND_URL}/admin/manage-address`,

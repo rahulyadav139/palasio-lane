@@ -7,17 +7,17 @@ import { dateFormatter, priceFormatter } from '../../utils';
 
 const Orders = props => {
   const [orders, setOrders] = useState([]);
-  const [isOrderDetailsModal, setIsOrderDetailsModal] = useState(false);
+  const [orderDetails, setOrderDetails] = useState(null);
   const { getData } = useFetch();
 
   useEffect(() => {
     (async () => {
-      const { data, error } = await getData(
+      const { data } = await getData(
         `${process.env.REACT_APP_BACKEND_URL}/admin/order`,
         true
       );
 
-      setOrders(data);
+      setOrders(data.reverse());
     })();
   }, []);
 
@@ -39,7 +39,12 @@ const Orders = props => {
                 <div>
                   <p className="text-bold">{`ORDER # ${order.razorPayOrderId}`}</p>
                   <p
-                    onClick={() => setIsOrderDetailsModal(true)}
+                    onClick={() =>
+                      setOrderDetails({
+                        deliveryAddress: order.deliveryAddress,
+                        priceBreakout: order.priceBreakout,
+                      })
+                    }
                     className="text-primary"
                   >
                     View Order Details
@@ -55,16 +60,17 @@ const Orders = props => {
                   />
                 ))}
               </div>
-              {isOrderDetailsModal && (
-                <OrderDetailsModal
-                  onReset={() => setIsOrderDetailsModal(false)}
-                  deliveryAddress={order.deliveryAddress}
-                  priceBreakout={order.priceBreakout}
-                />
-              )}
             </div>
           ))
         : ''}
+
+      {orderDetails && (
+        <OrderDetailsModal
+          onReset={() => setOrderDetails(null)}
+          deliveryAddress={orderDetails.deliveryAddress}
+          priceBreakout={orderDetails.priceBreakout}
+        />
+      )}
     </>
   );
 };

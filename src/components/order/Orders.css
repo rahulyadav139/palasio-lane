@@ -1,5 +1,6 @@
 .order-card {
   padding: 1rem;
+  margin-bottom: 1rem;
 }
 .order-card__header {
   display: flex;

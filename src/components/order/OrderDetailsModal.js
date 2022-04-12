@@ -14,8 +14,6 @@ const OrderDetailsModal = ({ onReset, deliveryAddress, priceBreakout }) => {
     orderValue,
   } = priceBreakout;
 
- 
-
   return (
     <Modal onReset={onReset}>
       <div className="order-price-breakout-details">

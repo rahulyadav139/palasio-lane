@@ -33,6 +33,14 @@ const authReducer = (state, action) => {
       addresses,
     };
   }
+  if (action.type === 'UPDATE-EMAIL') {
+    const { updatedEmail } = action;
+    return { ...state, email: updatedEmail };
+  }
+  if (action.type === 'UPDATE-NAME') {
+    const { updatedName } = action;
+    return { ...state, user: updatedName };
+  }
 };
 
 const AuthProvider = ({ children }) => {
@@ -50,11 +58,20 @@ const AuthProvider = ({ children }) => {
     dispatch({ type: 'UPDATE-ADDRESS', addresses });
   };
 
+  const updateEmailHandler = updatedEmail => {
+    dispatch({ type: 'UPDATE-EMAIL', updatedEmail });
+  };
+  const updateNameHandler = updatedName => {
+    dispatch({ type: 'UPDATE-NAME', updatedName });
+  };
+
   const defaultValue = {
     ...state,
     loginHandler,
     logoutHandler,
     updateAddress: updateAddressHandler,
+    updateEmail: updateEmailHandler,
+    updateName: updateNameHandler,
   };
 
   return (
