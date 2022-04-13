@@ -1,17 +1,21 @@
 import './AddressCard.css';
 import { useAuth, useFetch, useToast } from '../../hooks';
 
-const AddressCard = props => {
-  const { address, landmark, pin, state, district, _id } = props.address;
+const AddressCard = ({
+  address: userAddress,
+  isDeleteButton,
+  setManageAddress,
+}) => {
+  const { address, landmark, pin, state, district, _id } = userAddress;
   const { updateAddress } = useAuth();
   const { sendData } = useFetch();
   const { setToast } = useToast();
 
   const editAddressHandler = () => {
-    props.setManageAddress({
+    setManageAddress({
       showModal: true,
       updateAddress: true,
-      address: props.address,
+      address: userAddress,
     });
   };
 
@@ -50,12 +54,14 @@ const AddressCard = props => {
           <i className="fas fa-pen"></i>
         </button>
 
-        <button
-          onClick={deleteAddressHandler}
-          className="btn icon small circle primary"
-        >
-          <i className="fas fa-trash"></i>
-        </button>
+        {isDeleteButton && (
+          <button
+            onClick={deleteAddressHandler}
+            className="btn icon small circle primary btn-delete"
+          >
+            <i className="fas fa-trash"></i>
+          </button>
+        )}
       </div>
     </div>
   );

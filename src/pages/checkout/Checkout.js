@@ -123,6 +123,7 @@ const Checkout = props => {
                   <AddressCard
                     setManageAddress={setManageAddress}
                     address={address}
+                    isDeleteButton={false}
                   />
                 </label>
               </div>

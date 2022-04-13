@@ -32,7 +32,11 @@ const UserAddress = props => {
         </button>
       </div>
       {addresses.map(address => (
-        <AddressCard setManageAddress={setManageAddress} address={address} />
+        <AddressCard
+          setManageAddress={setManageAddress}
+          address={address}
+          isDeleteButton={true}
+        />
       ))}
       {addresses.length === 0 && (
         <p className="no-address-msg">No address available!</p>
