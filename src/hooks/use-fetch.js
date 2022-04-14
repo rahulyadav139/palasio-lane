@@ -1,9 +1,10 @@
-import { useAuth, useLoading } from './index';
+import { useAuth, useLoading, useToast } from './index';
 import { useCallback } from 'react';
 
 const useFetch = () => {
-  const { token } = useAuth();
   const { setLoading } = useLoading();
+  const { token, logoutHandler } = useAuth();
+  const { setToast } = useToast();
 
   const sendData = useCallback(
     async (url, method, body, authStatus = false) => {
@@ -30,6 +31,17 @@ const useFetch = () => {
       try {
         setLoading(true);
         const res = await fetch(url, apiCallOptions);
+
+        if (res.status === 400) {
+          logoutHandler();
+          setToast({
+            status: true,
+            type: 'loading',
+            message: 'You logged out!',
+          });
+
+          return;
+        }
 
         status = res.status;
 
@@ -62,13 +74,24 @@ const useFetch = () => {
         setLoading(true);
         const res = await fetch(url, options);
 
+        if (res.status === 400) {
+          logoutHandler();
+          setToast({
+            status: true,
+            type: 'loading',
+            message: 'You logged out!',
+          });
+
+          return;
+        }
+
         status = res.status;
 
         data = await res.json();
         setLoading(false);
       } catch (err) {
         error = err;
-        console.log(err)
+        console.log(err);
         setLoading(false);
       }
 

@@ -41,13 +41,25 @@ const authReducer = (state, action) => {
     const { updatedName } = action;
     return { ...state, user: updatedName };
   }
+
+  if (action.type === 'GET-TOKEN') {
+    return { ...state, token: action.token };
+  }
 };
 
 const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   const loginHandler = (fullName, token, addresses, email) => {
-    dispatch({ type: 'LOGIN', token, user: fullName, addresses, email });
+    document.cookie = `token=${token}`;
+
+    dispatch({
+      type: 'LOGIN',
+      token,
+      user: fullName,
+      addresses,
+      email,
+    });
   };
 
   const logoutHandler = () => {
@@ -65,6 +77,10 @@ const AuthProvider = ({ children }) => {
     dispatch({ type: 'UPDATE-NAME', updatedName });
   };
 
+  const getTokenHandler = token => {
+    dispatch({ type: 'GET-TOKEN', token });
+  };
+
   const defaultValue = {
     ...state,
     loginHandler,
@@ -72,6 +88,7 @@ const AuthProvider = ({ children }) => {
     updateAddress: updateAddressHandler,
     updateEmail: updateEmailHandler,
     updateName: updateNameHandler,
+    getToken: getTokenHandler,
   };
 
   return (
