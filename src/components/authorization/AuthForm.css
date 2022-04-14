@@ -35,3 +35,7 @@
 .btn-show-password {
   cursor: pointer;
 }
+.forgot-password-link {
+  cursor: pointer;
+  color: var(--primary-color);
+}

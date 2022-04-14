@@ -10,7 +10,7 @@ import {
 } from '../../hooks';
 import { useState } from 'react';
 
-const LoginForm = props => {
+const LoginForm = ({ onReset, onSwitch, onShowForgotPasswordModal }) => {
   const { loginHandler } = useAuth();
   const { resetModal } = useAuthModal();
   const { getUpdatedWishlist } = useWishlist();
@@ -140,6 +140,11 @@ const LoginForm = props => {
     setShowPassword(prev => !prev);
   };
 
+  const forgotPasswordHandler = () => {
+    onReset();
+    onShowForgotPasswordModal();
+  };
+
   return (
     <form onSubmit={submitHandler} className="auth-form">
       <h1 className="text-primary">Log in</h1>
@@ -173,7 +178,10 @@ const LoginForm = props => {
       </div>
 
       <div className="flex end">
-        <span className="link text-small" href="#">
+        <span
+          onClick={forgotPasswordHandler}
+          className="forgot-password-link text-small"
+        >
           forgot password?
         </span>
       </div>
@@ -192,7 +200,7 @@ const LoginForm = props => {
       <p>
         New to palasio lane?{' '}
         <span
-          onClick={props.onSwitch}
+          onClick={onSwitch}
           className="btn-switch text-bold text-primary-dark"
         >
           Sign up

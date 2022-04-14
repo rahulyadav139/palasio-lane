@@ -16,6 +16,7 @@ import {
   ScrollTopButton,
   Header,
   Footer,
+  ForgotPassword,
 } from './components';
 import {
   useAuthModal,
@@ -27,13 +28,15 @@ import {
   useCart,
 } from './hooks';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [isPasswordModal, setIsPasswordModal] = useState(false);
+
   const { isAuthModal, resetModal, switchModal, isAuthTypeLogin } =
     useAuthModal();
 
-  const { toast } = useToast();
+  const { toast, setToast } = useToast();
 
   const { isAuth, loginHandler } = useAuth();
 
@@ -65,7 +68,15 @@ function App() {
           }
         );
 
-        if (res.status === 409) return;
+        if (res.status === 400) {
+          setToast({
+            status: true,
+            type: 'loading',
+            message: 'You logged out!',
+          });
+          document.cookie = 'token=;expires=Thu, 01 Jan 1970 00:00:01 GMT';
+          return;
+        }
 
         const data = await res.json();
 
@@ -123,6 +134,13 @@ function App() {
           onReset={resetModal}
           onSwitch={switchModal}
           isAuthTypeLogin={isAuthTypeLogin}
+          onShowForgotPasswordModal={() => setIsPasswordModal(true)}
+        />
+      )}
+
+      {isPasswordModal && (
+        <ForgotPassword
+          onHideForgotPasswordModal={() => setIsPasswordModal(false)}
         />
       )}
 

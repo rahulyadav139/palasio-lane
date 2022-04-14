@@ -5,6 +5,7 @@ import {
   NavLink,
   Navigate,
   useNavigate,
+  useLocation,
 } from 'react-router-dom';
 import {
   Profile,
@@ -22,6 +23,7 @@ const UserProfile = props => {
   const { setToast } = useToast();
   const { logoutHandler } = useAuth();
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   const userLogoutHandler = () => {
     getUpdatedCart([]);
@@ -41,11 +43,36 @@ const UserProfile = props => {
       <div className="hr-line fad"></div>
       <div className="user-profile-container">
         <div className="user-profile-sidebar">
-          <NavLink to="/profile">Profile</NavLink>
-          <NavLink to="/profile/orders">Orders</NavLink>
-          <NavLink to="/profile/address">Address</NavLink>
-          <NavLink to="/profile/change-password">Change Password</NavLink>
-          <NavLink to="/profile/delete-account">Delete Account</NavLink>
+          <NavLink
+            className={pathname === '/profile' ? 'active-page' : ''}
+            to="/profile"
+          >
+            Profile
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? 'active-page' : '')}
+            to="/profile/orders"
+          >
+            Orders
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? 'active-page' : '')}
+            to="/profile/address"
+          >
+            Address
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? 'active-page' : '')}
+            to="/profile/change-password"
+          >
+            Change Password
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? 'active-page' : '')}
+            to="/profile/delete-account"
+          >
+            Delete Account
+          </NavLink>
           <button onClick={userLogoutHandler} className="btn primary">
             Logout
           </button>

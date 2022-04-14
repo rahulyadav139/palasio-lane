@@ -33,6 +33,7 @@ const UserAddress = props => {
       </div>
       {addresses.map(address => (
         <AddressCard
+          key={address._id}
           setManageAddress={setManageAddress}
           address={address}
           isDeleteButton={true}

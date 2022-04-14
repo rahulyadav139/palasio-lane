@@ -25,3 +25,14 @@
 .user-profile-main {
   padding: 1rem;
 }
+
+.active-page {
+  background: var(--primary-color);
+  color: var(--white-color);
+  border-top-right-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+}
+
+a.active-page::first-letter {
+  color: var(--white-color);
+}

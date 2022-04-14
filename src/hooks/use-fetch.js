@@ -40,6 +40,8 @@ const useFetch = () => {
             message: 'You logged out!',
           });
 
+          document.cookie = 'token=;expires=Thu, 01 Jan 1970 00:00:01 GMT';
+          setLoading(false);
           return;
         }
 
@@ -81,6 +83,7 @@ const useFetch = () => {
             type: 'loading',
             message: 'You logged out!',
           });
+          document.cookie = `token=,expires=${new Date()}`;
 
           return;
         }

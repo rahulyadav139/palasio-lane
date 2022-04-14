@@ -4,6 +4,7 @@ import { useFetch } from '../../hooks';
 import { OrderProductCard } from './OrderProductCard';
 import { OrderDetailsModal } from './OrderDetailsModal';
 import { dateFormatter, priceFormatter } from '../../utils';
+import { v4 as uuid } from 'uuid';
 
 const Orders = props => {
   const [orders, setOrders] = useState([]);
@@ -25,7 +26,7 @@ const Orders = props => {
     <>
       {orders.length !== 0
         ? orders.map(order => (
-            <div className="order-card shadow">
+            <div key={uuid()} className="order-card shadow">
               <div className="order-card__header">
                 <div>
                   <p className="text-bold">ORDER PLACED</p>
