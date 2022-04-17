@@ -13,6 +13,7 @@ import {
   UserAddress,
   DeleteUserAccount,
   Orders,
+  Header,
 } from '../../components';
 import { useCart, useWishlist, useOrder, useToast, useAuth } from '../../hooks';
 
@@ -38,57 +39,60 @@ const UserProfile = props => {
     });
   };
   return (
-    <main className="main">
-      <div className="heading-4">Account</div>
-      <div className="hr-line fad"></div>
-      <div className="user-profile-container">
-        <div className="user-profile-sidebar">
-          <NavLink
-            className={pathname === '/profile' ? 'active-page' : ''}
-            to="/profile"
-          >
-            Profile
-          </NavLink>
-          <NavLink
-            className={({ isActive }) => (isActive ? 'active-page' : '')}
-            to="/profile/orders"
-          >
-            Orders
-          </NavLink>
-          <NavLink
-            className={({ isActive }) => (isActive ? 'active-page' : '')}
-            to="/profile/address"
-          >
-            Address
-          </NavLink>
-          <NavLink
-            className={({ isActive }) => (isActive ? 'active-page' : '')}
-            to="/profile/change-password"
-          >
-            Change Password
-          </NavLink>
-          <NavLink
-            className={({ isActive }) => (isActive ? 'active-page' : '')}
-            to="/profile/delete-account"
-          >
-            Delete Account
-          </NavLink>
-          <button onClick={userLogoutHandler} className="btn primary">
-            Logout
-          </button>
+    <>
+      <Header />
+
+      <main className="main">
+        <div className="heading-4">Account</div>
+        <div className="hr-line fad"></div>
+        <div className="user-profile-container">
+          <div className="user-profile-sidebar">
+            <NavLink
+              className={pathname === '/profile' ? 'active-page' : ''}
+              to="/profile"
+            >
+              Profile
+            </NavLink>
+            <NavLink
+              className={({ isActive }) => (isActive ? 'active-page' : '')}
+              to="/profile/orders"
+            >
+              Orders
+            </NavLink>
+            <NavLink
+              className={({ isActive }) => (isActive ? 'active-page' : '')}
+              to="/profile/address"
+            >
+              Address
+            </NavLink>
+            <NavLink
+              className={({ isActive }) => (isActive ? 'active-page' : '')}
+              to="/profile/change-password"
+            >
+              Change Password
+            </NavLink>
+            <NavLink
+              className={({ isActive }) => (isActive ? 'active-page' : '')}
+              to="/profile/delete-account"
+            >
+              Delete Account
+            </NavLink>
+            <button onClick={userLogoutHandler} className="btn primary">
+              Logout
+            </button>
+          </div>
+          <div className="user-profile-main">
+            <Routes>
+              <Route path="/" element={<Profile />} />
+              <Route path="orders" element={<Orders />} />
+              <Route path="address" element={<UserAddress />} />
+              <Route path="change-password" element={<ChangePassword />} />
+              <Route path="delete-account" element={<DeleteUserAccount />} />
+            </Routes>
+          </div>
         </div>
-        <div className="user-profile-main">
-          <Routes>
-            <Route path="/" element={<Profile />} />
-            <Route path="orders" element={<Orders />} />
-            <Route path="address" element={<UserAddress />} />
-            <Route path="change-password" element={<ChangePassword />} />
-            <Route path="delete-account" element={<DeleteUserAccount />} />
-            <Route path="*" element={<Navigate to="/profile" />} />
-          </Routes>
-        </div>
-      </div>
-    </main>
+      </main>
+    </>
   );
 };
 export { UserProfile };

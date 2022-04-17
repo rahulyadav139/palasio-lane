@@ -84,7 +84,7 @@ const useFetch = () => {
             message: 'You logged out!',
           });
           document.cookie = `token=,expires=${new Date()}`;
-
+          setLoading(false);
           return;
         }
 

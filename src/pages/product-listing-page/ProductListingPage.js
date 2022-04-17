@@ -1,6 +1,6 @@
 import './ProductListingPage.css';
 import { Fragment, useEffect, useState } from 'react';
-import { FilterTable, Listing } from '../../components';
+import { FilterTable, Header, Listing } from '../../components';
 import { useParams } from 'react-router-dom';
 import { getFilteredProducts } from '../../utils';
 import { useFetch } from '../../hooks';
@@ -59,6 +59,7 @@ const ProductListingPage = props => {
   };
   return (
     <Fragment>
+      <Header />
       {!loading && (
         <main className="main-section">
           <FilterTable

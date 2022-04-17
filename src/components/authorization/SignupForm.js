@@ -244,11 +244,6 @@ const SignupForm = props => {
           </label>
         </div>
 
-        <div className="flex end">
-          <span className="link text-small" href="#">
-            forgot password?
-          </span>
-        </div>
         <button type="submit" className="btn primary">
           Signup
         </button>

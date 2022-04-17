@@ -1,6 +1,11 @@
 import './Checkout.css';
 import { Fragment, useState, useRef } from 'react';
-import { ManageAddress, AddressCard, DeliveryAddress } from '../../components';
+import {
+  ManageAddress,
+  AddressCard,
+  DeliveryAddress,
+  Header,
+} from '../../components';
 import { useAuth, useOrder, useToast, useFetch, useCart } from '../../hooks';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
@@ -86,6 +91,7 @@ const Checkout = props => {
 
   return (
     <Fragment>
+      <Header />
       <main className="main">
         <div className="heading-4">Checkout</div>
         <div className="hr-line fad"></div>
