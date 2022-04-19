@@ -28,6 +28,16 @@
 .hide-filter-section {
   display: block;
 }
+
+.out-of-stock-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.out-of-stock-container input,
+.out-of-stock-container label {
+  cursor: pointer;
+}
 @media only screen and (max-width: 450px) {
   .filter-section {
     /* display: none; */

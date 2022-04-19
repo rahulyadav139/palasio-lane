@@ -31,7 +31,7 @@ const SearchInput = props => {
   };
 
   const getSearchInputHandler = e => {
-    searchDebounceHandler(e.target.value, 1000);
+    searchDebounceHandler(e.target.value, 250);
     setSearchInput(e.target.value);
   };
 

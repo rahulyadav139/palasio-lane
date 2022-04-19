@@ -13,8 +13,6 @@ const CartProvider = props => {
   const { sendData } = useFetch();
 
   const addToCartHandler = async prodId => {
-    
-
     const { error, status } = await sendData(
       `${process.env.REACT_APP_BACKEND_URL}/admin/cart/add-to-cart`,
       'POST',
@@ -22,7 +20,7 @@ const CartProvider = props => {
       true
     );
 
-    if (status === 400) {
+    if (status === 403) {
       return setToast({
         status: true,
         message: 'All in-stock products are added to the cart!',

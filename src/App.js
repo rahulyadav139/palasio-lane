@@ -40,7 +40,7 @@ function App() {
 
   const { toast, setToast } = useToast();
 
-  const { isAuth, loginHandler } = useAuth();
+  const { loginHandler } = useAuth();
 
   const { loading } = useLoading();
 

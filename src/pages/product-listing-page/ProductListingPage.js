@@ -11,6 +11,7 @@ const ProductListingPage = props => {
   const [carModels, setCarModels] = useState([]);
   const [star, setStar] = useState(null);
   const [sortBy, setSortBy] = useState('popularity');
+  const [outOfStock, setOutOfStock] = useState(false);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const { getData } = useFetch();
@@ -57,6 +58,10 @@ const ProductListingPage = props => {
   const showFiltersHandler = () => {
     setShowFilters(prev => !prev);
   };
+
+  const getOutOfStockHandler = boolean => {
+    setOutOfStock(boolean);
+  };
   return (
     <Fragment>
       <Header />
@@ -66,6 +71,7 @@ const ProductListingPage = props => {
             onGetPrice={getPriceHandler}
             onGetStar={getStarHandler}
             onGetCarModels={getCarModelsHandler}
+            onGetOutOfStock={getOutOfStockHandler}
             products={products}
             price={price}
             star={star}
@@ -77,7 +83,7 @@ const ProductListingPage = props => {
           <Listing
             products={getFilteredProducts(products)(price)(carModels)(star)(
               sortBy
-            )}
+            )(outOfStock)}
             onGetSortBy={getSortByHandler}
             sort={sortBy}
             onFilters={showFiltersHandler}
