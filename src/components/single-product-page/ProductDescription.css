@@ -1,0 +1,13 @@
+.description-items {
+  list-style: decimal;
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.description-items li {
+  line-height: 1.5rem;
+}
+.product-detail-title {
+  margin: 0.5rem 0;
+}

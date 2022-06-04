@@ -1,0 +1,11 @@
+.coupons-modal {
+  position: fixed;
+  width: 100%;
+  max-width: 35rem;
+  left: 50%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  z-index: 70;
+  padding: 1rem;
+  background: var(--invert-font-color);
+}

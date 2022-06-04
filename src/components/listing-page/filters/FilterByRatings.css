@@ -1,0 +1,14 @@
+.rating-wrapper label {
+  cursor: pointer;
+}
+.rating-wrapper div {
+  margin-bottom: 0.5rem;
+}
+
+.rating-wrapper span {
+  color: #facd03;
+  padding-left: 0.5rem;
+}
+.rating-wrapper input:checked + label {
+  font-weight: bold;
+}

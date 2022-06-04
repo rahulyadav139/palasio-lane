@@ -1,0 +1,41 @@
+.auth-form .input-field-icon {
+  width: 100%;
+}
+.auth-form {
+  flex-basis: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 2rem;
+  background: var(--white-color);
+}
+.auth-form label {
+  display: block;
+  font-size: 0.8rem;
+}
+.input-field-icon label {
+  display: inline-flex;
+}
+.btn-switch {
+  cursor: pointer;
+}
+
+.wrapper-username {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.wrapper-username input {
+  width: 100%;
+}
+.wrapper-username label {
+  margin-bottom: 0.5rem;
+}
+.btn-show-password {
+  cursor: pointer;
+}
+.forgot-password-link {
+  cursor: pointer;
+  color: var(--primary-color);
+}

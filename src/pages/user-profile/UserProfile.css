@@ -1,0 +1,38 @@
+.user-profile-container {
+  display: grid;
+  grid-template-columns: 2.5fr 7.5fr;
+}
+.user-profile-sidebar {
+  padding: 0.5rem;
+  border-right: 1px solid var(--grey-color);
+  height: 80vh;
+  position: sticky;
+  top: 5rem;
+}
+.user-profile-sidebar a {
+  display: block;
+  padding: 0.5rem 1rem;
+}
+.user-profile-sidebar a::first-letter {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  line-height: 0;
+}
+.user-profile-sidebar button {
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+}
+.user-profile-main {
+  padding: 1rem;
+}
+
+.active-page {
+  background: var(--primary-color);
+  color: var(--white-color);
+  border-top-right-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+}
+
+a.active-page::first-letter {
+  color: var(--white-color);
+}

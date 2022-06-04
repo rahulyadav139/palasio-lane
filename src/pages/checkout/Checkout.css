@@ -1,0 +1,65 @@
+.addresses-container {
+  display: grid;
+
+  /* grid-template-columns: repeat(5, 1fr); */
+  gap: 0.5rem;
+  margin: 1rem auto;
+}
+.addresses-container input {
+  display: none;
+}
+.addresses-container label {
+  cursor: pointer;
+  display: inline-block;
+  border: 2px solid transparent;
+  width: 100%;
+}
+.addresses-container input:checked + label {
+  border-color: var(--primary-color-dark);
+}
+.delivery-address {
+  display: flex;
+  gap: 2rem;
+  justify-content: flex-start;
+  margin: 1rem auto;
+}
+.address-details {
+  font-size: 0.9rem;
+}
+.order-summary {
+  display: grid;
+  grid-template-columns: 5fr 5fr;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+.order-summary__data {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.btn-pay-now {
+  margin-top: 1rem;
+}
+.btn-choose-coupons {
+  border-bottom: 1px solid var(--black-color);
+  padding-bottom: 0.2rem;
+  width: fit-content;
+  margin: 1rem auto;
+  cursor: pointer;
+}
+.coupon {
+  padding: 0.5rem 1rem;
+  background: var(--primary-color-dark);
+  color: var(--white-color);
+  border-radius: 0.5rem;
+  font-size: 0.7rem;
+  width: fit-content;
+}
+.coupon-container {
+  flex-grow: 5;
+}
+.invalid-coupon-msg {
+  text-align: center;
+  margin-top: 0.5rem;
+  color: var(--red-color);
+}

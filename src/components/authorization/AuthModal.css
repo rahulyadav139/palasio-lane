@@ -1,0 +1,36 @@
+.modal-auth {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  max-width: 43.75rem;
+  left: 50%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  z-index: 70;
+}
+
+.modal-auth__brand {
+  flex-basis: 40%;
+  background: var(--primary-color);
+}
+
+.modal-auth .btn-dismiss {
+  position: absolute;
+  margin: 2rem;
+  top: 0;
+  right: 0;
+}
+.modal-auth .brand-logo {
+  color: var(--white-color);
+  font-size: 3rem;
+}
+
+@media only screen and (max-width: 450px) {
+  .modal-auth__brand {
+    display: none;
+  }
+  .modal-auth {
+    display: block;
+    width: 80%;
+  }
+}

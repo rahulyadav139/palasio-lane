@@ -1,0 +1,4 @@
+.modal-backdrop {
+  z-index: 60;
+  background: rgba(0, 0, 0, 0.2);
+}

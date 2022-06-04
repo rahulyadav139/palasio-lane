@@ -1,0 +1,7 @@
+.user-details {
+  width: fit-content;
+  margin: auto;
+}
+.user-details p {
+  font-size: 1.2rem;
+}

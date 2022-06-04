@@ -1,0 +1,44 @@
+.hero .input-field-icon {
+  /* width: 100%;
+  max-width: 20rem; */
+}
+.nav-bar .input-field-icon {
+  position: relative;
+}
+.search {
+  position: relative;
+}
+.search-result {
+  position: absolute;
+  top: 1.25rem;
+  left: 0;
+  transform: translateY(2.5rem);
+  width: 100%;
+  background: var(--invert-font-color);
+}
+.search-result h4 {
+  border-bottom: 1px solid var(--grey-color);
+}
+.search-result__product {
+  display: grid;
+  grid-template-columns: 1fr 9fr;
+  gap: 1rem;
+}
+.search-result {
+  padding: 1rem;
+  /* padding-top: 0; */
+  display: none;
+}
+.search-result p,
+.search-result h4 {
+  margin-bottom: 0.2rem;
+}
+.search-result p {
+  cursor: pointer;
+}
+.search-result__product {
+  margin-bottom: 0.3rem;
+}
+.input-field-icon:focus-within .search-result {
+  display: block;
+}

@@ -1,0 +1,43 @@
+.main {
+  max-width: 56.25rem;
+  margin: 2rem auto;
+
+  min-height: 80vh;
+}
+.cart {
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.empty-cart {
+  width: fit-content;
+  margin: auto;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.empty-cart p {
+  font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 450px) {
+  .main {
+    padding: 2rem;
+  }
+  .cart {
+    flex-direction: column;
+  }
+  .price-breakout {
+    margin: 1rem 5rem;
+    order: -1;
+    position: static;
+  }
+  .price-breakout div.hr-line {
+    height: 0.5px;
+  }
+}

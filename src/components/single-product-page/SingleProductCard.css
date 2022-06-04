@@ -1,0 +1,27 @@
+.card.product-detail {
+  display: grid;
+  grid-template-columns: 4fr 6fr;
+  grid-template-rows: 19rem;
+  box-shadow: none;
+}
+.product-detail .image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-detail .image img {
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center;
+}
+
+.rating .fa-star {
+  color: var(--yellow-color);
+}
+
+@media only screen and (max-width: 450px) {
+  .card.product-detail {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,21 @@
+.testimonial-container {
+  position: relative;
+  margin-bottom: 3rem;
+}
+.testimonial {
+  max-width: 37.5rem;
+  margin: auto;
+  text-align: center;
+  padding: 2rem 3rem;
+}
+.testimonial p.testimonial__text {
+  margin-bottom: 1rem;
+}
+.testimonial p.testimonial__text::first-letter {
+  font-size: 2rem;
+  color: var(--primary-color);
+  line-height: 1rem;
+}
+.testimonial .avatar {
+  margin: auto;
+}

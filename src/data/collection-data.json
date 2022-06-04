@@ -1,0 +1,73 @@
+[{
+        "collection": "Car Interior",
+        "param": "interior",
+        "categories": [{
+
+                "categoryName": "Car Seat Covers",
+                "param": "seat covers",
+                "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-seat-cover-sm.webp"
+            },
+            {
+
+                "categoryName": "Car Seat Cushions",
+                "param": "seat cushions",
+                "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-seat-cushions.webp"
+            },
+            {
+
+                "categoryName": "Car Footmats",
+                "param": "footmats",
+                "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/footmat-sm.webp"
+
+            },
+            {
+
+                "categoryName": "Car Organizers",
+                "param": "organizers",
+                "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-organizers-sm.webp"
+            },
+            {
+
+                "categoryName": "Car Steering Covers",
+                "param": "steering covers",
+                "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-steering-covers-sm.webp"
+            }
+        ]
+    },
+    {
+        "collection": "Car Exterior",
+        "param": "exterior",
+        "categories": [{
+
+                "categoryName": "Car Body Covers",
+                "param": "body covers",
+                "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-body-cover-sm.webp"
+            },
+            {
+
+                "categoryName": "Car Horns",
+                "param": "horns",
+                "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-horn-sm.webp"
+            },
+            {
+
+                "categoryName": "Car Bumper Guards",
+                "param": "bumper guards",
+                "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-bumper-guard-sm.webp"
+
+            },
+            {
+
+                "categoryName": "Car Parking Sensors and Cameras",
+                "param": "parking sensors",
+                "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-parking-sensors-and-cameras-sm.webp"
+            },
+            {
+
+                "categoryName": "Car Wiper Blade",
+                "param": "wiper blades",
+                "imageRef": "https://www.autofurnish.com/Themes/DefaultClean/Content/images/product/car-wiper-blades-sm.webp"
+            }
+        ]
+    }
+]

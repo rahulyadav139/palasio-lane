@@ -1,0 +1,53 @@
+.price-breakout {
+  flex-basis: 40%;
+  gap: 0.5rem;
+  height: fit-content;
+  position: sticky;
+  top: 6rem;
+}
+
+.coupon-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.coupon-container input,
+.coupon-container button {
+  font-size: 0.8rem;
+}
+.coupon-container input {
+  flex-grow: 1;
+}
+.choose-coupon-text {
+  font-size: 0.75rem;
+  text-align: center;
+  padding-bottom: 0.3rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.invalid-coupon-msg {
+  text-align: center;
+  margin-top: 0.5rem;
+  color: var(--red-color);
+  font-size: 0.75rem;
+}
+
+.coupon {
+  padding: 0.5rem 1rem;
+  background: var(--primary-color-dark);
+  color: var(--white-color);
+  border-radius: 0.5rem;
+  font-size: 0.7rem;
+  width: fit-content;
+}
+.coupon-chip-container {
+  flex-grow: 5;
+  display: flex;
+  align-items: center;
+}
+
+@media only screen and (max-width: 450px) {
+  .price-breakout {
+    position: static;
+  }
+}

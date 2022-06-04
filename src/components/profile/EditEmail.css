@@ -1,0 +1,16 @@
+.form-update-email {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.form-update-email label {
+  display: block;
+  font-size: 0.8rem;
+}
+.form-update-email label,
+.form-update-email input,
+.form-update-email button {
+  width: 100%;
+  margin: auto;
+}
