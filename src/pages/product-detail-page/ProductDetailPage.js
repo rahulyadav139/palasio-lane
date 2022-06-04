@@ -1,5 +1,9 @@
 import './ProductDetailPage.css';
-import { SingleProductCard, ProductDescription } from '../../components';
+import {
+  SingleProductCard,
+  ProductDescription,
+  Header,
+} from '../../components';
 import { Fragment, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../hooks';
@@ -24,6 +28,7 @@ const ProductDetailPage = props => {
   }, [prodId, getData]);
   return (
     <Fragment>
+      <Header />
       {product && (
         <main className="main">
           <SingleProductCard product={product} />

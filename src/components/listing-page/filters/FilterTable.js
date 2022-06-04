@@ -8,11 +8,18 @@ const FilterTable = props => {
     props.onGetStar(null);
     props.onGetPrice('');
     props.onGetCarModels([]);
+    props.onGetOutOfStock(false);
   };
 
   const resetFiltersHandler = () => {
     resetFilterHandler();
     props.onFilters();
+  };
+
+  const outOfStockHandler = e => {
+    e.target.checked
+      ? props.onGetOutOfStock(true)
+      : props.onGetOutOfStock(false);
   };
   return (
     <div
@@ -37,6 +44,17 @@ const FilterTable = props => {
       <FilterByRatings onGetStar={props.onGetStar} star={props.star} />
 
       <div className="first-line hr-line fad"></div>
+
+      <h4>Stock Status</h4>
+      <div className="out-of-stock-container">
+        <input
+          id="out-of-stock"
+          type="checkbox"
+          value="out-of-stock"
+          onChange={outOfStockHandler}
+        />
+        <label htmlFor="out-of-stock">Out of Stock</label>
+      </div>
 
       <div className="filter-section__buttons">
         <button onClick={props.onFilters} className="btn primary">

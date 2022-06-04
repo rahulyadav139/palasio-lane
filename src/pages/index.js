@@ -5,3 +5,5 @@ export { ProductListingPage } from './product-listing-page/ProductListingPage';
 export { Wishlist } from './wishlist/Wishlist';
 export { Checkout } from './checkout/Checkout';
 export { UserProfile } from './user-profile/UserProfile';
+export { ResetPasswordPage } from './reset-password/ResetPasswordPage';
+export { PageNotFound } from './page-not-found/PageNotFound';

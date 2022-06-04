@@ -27,3 +27,4 @@ export { DeleteUserAccount } from './delete-account/DeleteUserAccount';
 export { Orders } from './order/Orders';
 export { OrderProductCard } from './order/OrderProductCard';
 export { ForgotPassword } from './forgot-password/ForgotPassword';
+export { PrivateRoutes } from './private-routes/PrivateRoutes';

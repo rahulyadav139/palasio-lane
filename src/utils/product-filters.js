@@ -32,7 +32,12 @@ const getFilteredProducts = products => {
                     a.price * ((100 - a.discount) / 100)
                 );
             default:
-              return thirdFiltered;
+              return outOfStock => {
+                const fourthFiltered = outOfStock
+                  ? thirdFiltered
+                  : thirdFiltered.filter(product => product.inStock !== 0);
+                return fourthFiltered;
+              };
           }
         };
       };

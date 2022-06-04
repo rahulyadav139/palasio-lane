@@ -1,0 +1,20 @@
+.main-page-not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.main-page-not-found h1 {
+  font-size: 7rem;
+  transform: translateY(-40px);
+  position: absolute;
+  top: 0;
+}
+.main-page-not-found img {
+  height: 450px;
+  background-position: center;
+}
+.page-not-found-details {
+  transform: translateY(-50px);
+}

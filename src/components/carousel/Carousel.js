@@ -43,6 +43,7 @@ const Carousel = props => {
       {carouselData.map((el, i) => (
         <div key={uuid()} className="slide">
           <img
+            style={{ width: '100%' }}
             className={i === index ? 'img-responsive' : 'img-responsive hidden'}
             src={el.image}
             alt={el.id}

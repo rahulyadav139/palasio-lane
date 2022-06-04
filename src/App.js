@@ -7,6 +7,8 @@ import {
   Cart,
   Checkout,
   UserProfile,
+  ResetPasswordPage,
+  PageNotFound,
 } from './pages';
 
 import {
@@ -17,13 +19,13 @@ import {
   Header,
   Footer,
   ForgotPassword,
+  PrivateRoutes,
 } from './components';
 import {
   useAuthModal,
   useAuth,
   useLoading,
   useToast,
-  useFetch,
   useWishlist,
   useCart,
 } from './hooks';
@@ -38,7 +40,7 @@ function App() {
 
   const { toast, setToast } = useToast();
 
-  const { isAuth, loginHandler } = useAuth();
+  const { loginHandler } = useAuth();
 
   const { loading } = useLoading();
 
@@ -102,10 +104,9 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/products" element={<Navigate to="/" />} />
+        <Route path="/products" element={<ProductListingPage />} />
         <Route path="/products/:collection" element={<ProductListingPage />} />
 
         <Route
@@ -115,12 +116,19 @@ function App() {
 
         <Route path="/product/:prodId" element={<ProductDetailPage />} />
 
-        {isAuth && <Route path="/wishlist" element={<Wishlist />} />}
-        {isAuth && <Route path="/cart" element={<Cart />} />}
-        {isAuth && <Route path="/checkout/:orderId" element={<Checkout />} />}
-        {isAuth && <Route path="/profile/*" element={<UserProfile />} />}
+        <Route element={<PrivateRoutes />}>
+          <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout/:orderId" element={<Checkout />} />
+          <Route path="/profile/*" element={<UserProfile />} />
+        </Route>
 
-        <Route path="*" element={<Navigate to="/" />} />
+        <Route
+          path="/reset-password/:passwordToken"
+          element={<ResetPasswordPage />}
+        />
+        <Route path="/page-not-found" element={<PageNotFound />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
 
       {!loading && <Footer />}

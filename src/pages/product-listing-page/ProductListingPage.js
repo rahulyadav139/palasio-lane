@@ -1,6 +1,6 @@
 import './ProductListingPage.css';
 import { Fragment, useEffect, useState } from 'react';
-import { FilterTable, Listing } from '../../components';
+import { FilterTable, Header, Listing } from '../../components';
 import { useParams } from 'react-router-dom';
 import { getFilteredProducts } from '../../utils';
 import { useFetch } from '../../hooks';
@@ -11,6 +11,7 @@ const ProductListingPage = props => {
   const [carModels, setCarModels] = useState([]);
   const [star, setStar] = useState(null);
   const [sortBy, setSortBy] = useState('popularity');
+  const [outOfStock, setOutOfStock] = useState(false);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const { getData } = useFetch();
@@ -57,14 +58,20 @@ const ProductListingPage = props => {
   const showFiltersHandler = () => {
     setShowFilters(prev => !prev);
   };
+
+  const getOutOfStockHandler = boolean => {
+    setOutOfStock(boolean);
+  };
   return (
     <Fragment>
+      <Header />
       {!loading && (
         <main className="main-section">
           <FilterTable
             onGetPrice={getPriceHandler}
             onGetStar={getStarHandler}
             onGetCarModels={getCarModelsHandler}
+            onGetOutOfStock={getOutOfStockHandler}
             products={products}
             price={price}
             star={star}
@@ -76,7 +83,7 @@ const ProductListingPage = props => {
           <Listing
             products={getFilteredProducts(products)(price)(carModels)(star)(
               sortBy
-            )}
+            )(outOfStock)}
             onGetSortBy={getSortByHandler}
             sort={sortBy}
             onFilters={showFiltersHandler}
