@@ -1,5 +1,5 @@
 import './Toast.css';
-import { Fragment, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useToast } from '../../hooks';
 
 const Toast = props => {

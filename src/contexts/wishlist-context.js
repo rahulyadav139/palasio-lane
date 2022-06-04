@@ -1,57 +1,52 @@
 import React, { useState } from 'react';
 
-import { useFetch } from '../hooks';
+import { useFetch, useToast } from '../hooks';
 
 const WishlistContext = React.createContext();
 
-let updatedWishlist, isExist;
-let addToWishlistIsReady = true;
-let removeFromWishlistIsReady = true;
+let isExist;
 
 const WishlistProvider = props => {
+  const { setToast } = useToast();
   const [wishlist, setWishlist] = useState([]);
 
   const { sendData } = useFetch();
 
-  const addToWishlist = async product => {
-    const prodId = product._id;
-
+  const addToWishlist = async prodId => {
     isExist = wishlist.includes(prodId);
 
     if (isExist) return wishlist;
 
-    if (addToWishlistIsReady) {
-      addToWishlistIsReady = false;
+    const { error } = await sendData(
+      `${process.env.REACT_APP_BACKEND_URL}/admin/wishlist/add-new-product`,
+      'POST',
+      { prodId },
+      true
+    );
 
-      updatedWishlist = [...wishlist, product];
-
-      const { error } = await sendData(
-        `${process.env.REACT_APP_BACKEND_URL}/admin/wishlist`,
-        'PUT',
-        updatedWishlist,
-        true
-      );
-
-      if (!error) setWishlist(updatedWishlist);
-      addToWishlistIsReady = true;
-    }
+    error
+      ? setToast({
+          type: 'danger',
+          status: true,
+          message: 'Something went wrong!',
+        })
+      : setWishlist(prev => prev.concat(prodId));
   };
   const removeFromWishlist = async prodId => {
-    if (removeFromWishlistIsReady) {
-      removeFromWishlistIsReady = false;
+    const { error } = await sendData(
+      `${process.env.REACT_APP_BACKEND_URL}/admin/wishlist/remove-product`,
+      'POST',
+      { prodId },
+      true
+    );
 
-      updatedWishlist = wishlist.filter(el => el._id !== prodId);
-
-      const { error } = await sendData(
-        `${process.env.REACT_APP_BACKEND_URL}/admin/wishlist`,
-        'PUT',
-        updatedWishlist,
-        true
-      );
-
-      if (!error) setWishlist(updatedWishlist);
-      removeFromWishlistIsReady = true;
-    }
+    error
+      ? setToast({
+          type: 'danger',
+          status: true,
+          message: 'Something went wrong!',
+        })
+      : setWishlist(prev => prev.filter(id => id !== prodId));
   };
 
   const getUpdatedWishlist = wishlist => {

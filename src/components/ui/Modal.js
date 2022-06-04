@@ -15,7 +15,10 @@ const Modal = props => {
         <ModalBackdrop onReset={props.onReset} />,
         overlay
       )}
-      {ReactDom.createPortal(<div>{props.children}</div>, overlay)}
+      {ReactDom.createPortal(
+        <div className={props.className}>{props.children}</div>,
+        overlay
+      )}
     </Fragment>
   );
 };

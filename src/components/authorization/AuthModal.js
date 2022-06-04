@@ -5,7 +5,8 @@ import SignupForm from './SignupForm';
 import { useEffect, useState } from 'react';
 
 const AuthModal = props => {
-  const { isAuthTypeLogin, onReset, onSwitch } = props;
+  const { isAuthTypeLogin, onReset, onSwitch, onShowForgotPasswordModal } =
+    props;
 
   return (
     <Modal onReset={onReset}>
@@ -18,7 +19,11 @@ const AuthModal = props => {
         </div>
 
         {isAuthTypeLogin ? (
-          <LoginForm onSwitch={onSwitch} />
+          <LoginForm
+            onSwitch={onSwitch}
+            onReset={onReset}
+            onShowForgotPasswordModal={onShowForgotPasswordModal}
+          />
         ) : (
           <SignupForm onSwitch={onSwitch} />
         )}

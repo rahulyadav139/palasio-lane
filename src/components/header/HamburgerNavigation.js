@@ -1,13 +1,23 @@
 import { Fragment, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './HamburgerNavigation.css';
-import { useAuth, useAuthModal } from '../../hooks';
+import {
+  useAuth,
+  useAuthModal,
+  useWishlist,
+  useCart,
+  useOrder,
+  useToast,
+} from '../../hooks';
 
 const HamburgerNavigation = props => {
   const [isHamburgerNav, setIsHamburgerNav] = useState(false);
   const { isAuth, logoutHandler } = useAuth();
   const { showModal } = useAuthModal();
-  
+  const { getUpdatedCart } = useCart();
+  const { getUpdatedWishlist } = useWishlist();
+  const { resetOrderDetails } = useOrder();
+  const { setToast } = useToast();
 
   const backdropClasses = isHamburgerNav
     ? 'hamburger-menu__backdrop'
@@ -18,8 +28,16 @@ const HamburgerNavigation = props => {
     : 'hamburger-menu hamburger-menu--hide';
 
   const userLogoutHandler = () => {
+    getUpdatedCart([]);
+    getUpdatedWishlist([]);
+    resetOrderDetails();
     logoutHandler();
     setIsHamburgerNav(false);
+    setToast({
+      status: true,
+      type: 'success',
+      message: 'Logout successfully!',
+    });
   };
 
   const userLoginHandler = () => {

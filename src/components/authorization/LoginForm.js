@@ -10,7 +10,7 @@ import {
 } from '../../hooks';
 import { useState } from 'react';
 
-const LoginForm = props => {
+const LoginForm = ({ onReset, onSwitch, onShowForgotPasswordModal }) => {
   const { loginHandler } = useAuth();
   const { resetModal } = useAuthModal();
   const { getUpdatedWishlist } = useWishlist();
@@ -55,7 +55,7 @@ const LoginForm = props => {
     const { data, status, error } = await sendData(
       `${process.env.REACT_APP_BACKEND_URL}/auth/login`,
       'POST',
-      { email, password },
+      { email: email.toLowerCase(), password },
       false
     );
 
@@ -82,11 +82,20 @@ const LoginForm = props => {
       });
     }
 
-    loginHandler(data.token);
+    const {
+      fullName,
+      token,
+      addresses,
+      email: userEmail,
+      wishlist,
+      cart,
+    } = data;
 
-    getUpdatedWishlist(data.wishlist);
+    loginHandler(fullName, token, addresses, userEmail);
 
-    getUpdatedCart(data.cart);
+    getUpdatedWishlist(wishlist);
+
+    getUpdatedCart(cart);
 
     resetModal();
   };
@@ -109,17 +118,31 @@ const LoginForm = props => {
         type: 'danger',
       });
 
-    loginHandler(data.token);
+    const {
+      fullName,
+      token,
+      addresses,
+      email: userEmail,
+      wishlist,
+      cart,
+    } = data;
 
-    getUpdatedWishlist(data.wishlist);
+    loginHandler(fullName, token, addresses, userEmail);
 
-    getUpdatedCart(data.cart);
+    getUpdatedWishlist(wishlist);
+
+    getUpdatedCart(cart);
 
     resetModal();
   };
 
   const showPasswordHandler = () => {
     setShowPassword(prev => !prev);
+  };
+
+  const forgotPasswordHandler = () => {
+    onReset();
+    onShowForgotPasswordModal();
   };
 
   return (
@@ -155,7 +178,10 @@ const LoginForm = props => {
       </div>
 
       <div className="flex end">
-        <span className="link text-small" href="#">
+        <span
+          onClick={forgotPasswordHandler}
+          className="forgot-password-link text-small"
+        >
           forgot password?
         </span>
       </div>
@@ -174,7 +200,7 @@ const LoginForm = props => {
       <p>
         New to palasio lane?{' '}
         <span
-          onClick={props.onSwitch}
+          onClick={onSwitch}
           className="btn-switch text-bold text-primary-dark"
         >
           Sign up

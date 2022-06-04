@@ -1,0 +1,15 @@
+.coupon-card input {
+  display: none;
+}
+.coupon-card > label {
+  padding: 0.2rem;
+  border: 1.5px solid var(--grey-color);
+  border-radius: 0.2rem;
+  display: block;
+  text-align: center;
+  margin: 0.5rem auto;
+  cursor: pointer;
+}
+.coupon-card input:checked + label {
+  border-color: var(--primary-color);
+}

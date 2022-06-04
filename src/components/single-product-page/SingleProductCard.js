@@ -105,7 +105,7 @@ const SingleProductCard = props => {
             className={addToCartBtnClasses}
             disabled={inStock ? false : true}
           >
-            Add to Cart
+            {inStock ? 'Add to Cart' : 'Out of Stock'}
             <span>
               <i className="fas fa-shopping-cart"></i>
             </span>

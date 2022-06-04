@@ -7,4 +7,5 @@ export {
   useCart,
   useLoading,
   useToast,
+  useOrder,
 } from './use-context';

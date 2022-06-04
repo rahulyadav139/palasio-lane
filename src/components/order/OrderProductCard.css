@@ -1,0 +1,16 @@
+.order-card__product {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 2fr 8fr;
+}
+.order-card__product img {
+  margin: auto;
+}
+.order-card__product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.order-card__product-details p {
+  margin-top: auto;
+}

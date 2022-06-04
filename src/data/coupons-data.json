@@ -1,0 +1,13 @@
+[{
+        "title": "NEW1000",
+        "description": " Big Bachat Dhamaal: Get Rs. 1000 OFF for new user, , min transaction required Rs. 5000",
+        "min": 5000,
+        "discount": 1000
+    },
+    {
+        "title": "SUMMER2000",
+        "description": "Big Bachat Dhamaal: Get Rs. 1000 OFF, min transaction required Rs. 10000",
+        "min": 10000,
+        "discount": 2000
+    }
+]

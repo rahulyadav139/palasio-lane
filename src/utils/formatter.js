@@ -18,4 +18,14 @@ const priceFormatter = price => {
   return formatterPrice;
 };
 
-export { textFormatter, priceFormatter };
+const dateFormatter = date => {
+  const formattedDate = new Date(date).toLocaleString('en-IN', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+  });
+
+  return formattedDate;
+};
+
+export { textFormatter, priceFormatter, dateFormatter };

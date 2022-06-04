@@ -16,7 +16,6 @@ const getFilteredProducts = products => {
         return sortBy => {
           switch (sortBy) {
             case 'low-to-high':
-              console.log(sortBy);
               return thirdFiltered
                 .slice()
                 .sort(

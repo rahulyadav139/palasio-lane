@@ -1,0 +1,22 @@
+.address-card {
+  padding: 1rem;
+  display: flex;
+  gap: 0.2rem;
+  font-size: 0.8rem;
+  position: relative;
+  align-items: center;
+}
+
+.address-card-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+.address-card-actions button.icon.circle {
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 0.65rem;
+}
+.address-card-actions button.icon.circle.btn-delete {
+  background-color: var(--red-color);
+}
