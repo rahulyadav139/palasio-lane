@@ -46,6 +46,13 @@ const ForgotPassword = ({ onHideForgotPasswordModal }) => {
         message: 'Invalid email address!',
       });
 
+    if (status === 500)
+      return setToast({
+        status: true,
+        type: 'danger',
+        message: 'Server error!',
+      });
+
     setToast({
       status: true,
       type: 'loading',
