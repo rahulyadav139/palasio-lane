@@ -17,10 +17,7 @@ Shop online for a wide range of Car Decor Accessories with Palasio Lane!
 
 **Client:** React, React Router
 
-
 **Server:** Node, Express, MongoDB, Mongoose, Nodemailer
-
-
 
 **Authentication:** JWT, Password Encryption with Bcrypt
 
@@ -61,7 +58,7 @@ Shop online for a wide range of Car Decor Accessories with Palasio Lane!
 
 ## 🌐 Demo
 
-Have a look at the live demo of [Palasio Lane](https://palasio-lane-store.netlify.app/).
+Have a look at the live demo of [Palasio Lane](https://palasio-lane.netlify.app/).
 
 
 ## 🚀 About Me
