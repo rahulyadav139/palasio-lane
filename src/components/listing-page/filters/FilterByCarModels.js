@@ -6,6 +6,7 @@ import CarModels from './CarModels';
 
 const FilterByCarModels = props => {
   const products = props.products;
+
   const carDetails = products
     .map(el => el.car)
     .filter(el => el !== 'universal');
@@ -35,7 +36,7 @@ const FilterByCarModels = props => {
       {carDetailsForFilter.length !== 0 && (
         <Fragment>
           <h4>Car Model</h4>
-          {carDetailsForFilter.map(car => (
+          {carDetailsForFilter?.map(car => (
             <CarModels
               key={uuid()}
               manufacturer={car.manufacturer}

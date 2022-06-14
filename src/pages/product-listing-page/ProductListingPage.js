@@ -11,6 +11,7 @@ const ProductListingPage = props => {
   const [carModels, setCarModels] = useState([]);
   const [star, setStar] = useState(null);
   const [sortBy, setSortBy] = useState('popularity');
+  console.log(sortBy);
   const [outOfStock, setOutOfStock] = useState(false);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -72,7 +73,7 @@ const ProductListingPage = props => {
             onGetStar={getStarHandler}
             onGetCarModels={getCarModelsHandler}
             onGetOutOfStock={getOutOfStockHandler}
-            products={products}
+            products={getFilteredProducts(products)(outOfStock)()()()()}
             price={price}
             star={star}
             carModels={carModels}
@@ -81,9 +82,9 @@ const ProductListingPage = props => {
           />
 
           <Listing
-            products={getFilteredProducts(products)(price)(carModels)(star)(
-              sortBy
-            )(outOfStock)}
+            products={getFilteredProducts(products)(outOfStock)(price)(
+              carModels
+            )(star)(sortBy)}
             onGetSortBy={getSortByHandler}
             sort={sortBy}
             onFilters={showFiltersHandler}
