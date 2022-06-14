@@ -4,6 +4,7 @@ import FilterByPrice from './FilterByPrice';
 import FilterByRatings from './FilterByRatings';
 
 const FilterTable = props => {
+  console.log(props.products);
   const resetFilterHandler = () => {
     props.onGetStar(null);
     props.onGetPrice('');
