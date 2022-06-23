@@ -3,15 +3,15 @@ import './FilterByPrice.css';
 
 const FilterByPrice = props => {
   const priceChangeHandler = e => {
-    if (e.target.value > 10000) {
-      props.onGetPrice(10000);
-      return;
-    }
+    // if (e.target.value > 10000) {
+    //   props.onGetPrice(10000);
+    //   return;
+    // }
 
-    if (e.target.value < 1000) {
-      props.onGetPrice(1000);
-      return;
-    }
+    // if (e.target.value < 1000) {
+    //   props.onGetPrice(1000);
+    //   return;
+    // }
     props.onGetPrice(e.target.value);
   };
 

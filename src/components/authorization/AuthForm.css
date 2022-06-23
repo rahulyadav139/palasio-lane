@@ -9,6 +9,9 @@
   padding: 2rem;
   background: var(--white-color);
 }
+.dark-theme .auth-form {
+  background: var(--invert-font-color);
+}
 .auth-form label {
   display: block;
   font-size: 0.8rem;
