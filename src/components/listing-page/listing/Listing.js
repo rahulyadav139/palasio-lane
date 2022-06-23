@@ -54,13 +54,17 @@ const Listing = props => {
           <label htmlFor="high-to-low">Price - High to Low</label>
         </div>
 
-        <div className="listing-section__products">
-          {props.products.map(el => (
-            <ProductCard key={uuid()} product={el} />
-          ))}
-        </div>
+        {Boolean(props.products.length) ? (
+          <div className="listing-section__products">
+            {props.products.map(el => (
+              <ProductCard key={uuid()} product={el} />
+            ))}
+          </div>
+        ) : (
+          <p className="text-bold">No products</p>
+        )}
       </div>
-      <div className="listing-section__pages">
+      {/* <div className="listing-section__pages">
         <ul>
           <li>1</li>
           <li>2</li>
@@ -69,7 +73,7 @@ const Listing = props => {
           <li>5</li>
           <li>{'>'}</li>
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 };
